@@ -1,0 +1,16 @@
+PREPFNCHELP(assemble_modify);
+PREPFNCHELP(backpack_condition);
+PREPFNCHELP(holder_modify);
+PREPFNCHELP(holder_open_condition);
+PREPFNCHELP(holder_open_run);
+PREPFNCHELP(holder_run);
+PREPFNC(assemble);
+PREPFNC(backpack_pos);
+PREPFNC(bases);
+PREPFNC(can_assemble);
+PREPFNC(can_disassemble);
+PREPFNC(can_pickup);
+PREPFNC(ground_pos);
+PREPFNC(has_inventory);
+PREPFNC(nearest_base);
+PREPFNC(player_pickup);

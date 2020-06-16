@@ -1,21 +1,15 @@
-#include "macros.hpp"
+#include "script_component.hpp"
 
-class CfgFunctions {
-	#include "cfgfunctions.hpp"
-};
-
-class CfgPatches
-{
-	class PREFIX
-	{
+class CfgPatches {
+	class ADDON {
+		name = COMPONENT_NAME;
 		units[] = {};
 		weapons[] = {};
-		requiredVersion = 1.82;
-		requiredAddons[] = {
-			QUOT(SHARED_PREFIX)
-		};
+		requiredVersion = REQUIRED_VERSION;
+		requiredAddons[] = {"AIME_main"};
+		authors[] = {"upsilon", "johnb43"};
 	};
 };
 
-#include "cfgvehicles.hpp"
-#include "cfgevhandlers.hpp"
+#include "CfgVehicles.hpp"
+#include "CfgEventHandlers.hpp"

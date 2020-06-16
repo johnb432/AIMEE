@@ -1,0 +1,14 @@
+PREPFNCHELP(change_condition);
+PREPFNCHELP(change_submenus);
+PREPFNCHELP(eject_condition);
+PREPFNCHELP(getin_condition);
+PREPFNCHELP(getin_run);
+PREPFNCHELP(getout_condition);
+PREPFNCHELP(getout_eject_condition);
+PREPFNCHELP(turnin_condition);
+PREPFNCHELP(turnout_condition);
+PREPFNC(can_eject);
+PREPFNC(can_switch);
+PREPFNC(can_turnout);
+PREPFNC(can_getout);
+PREPFNC(eject);

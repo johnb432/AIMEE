@@ -6,7 +6,7 @@ import subprocess
 
 ######## GLOBALS #########
 MAINPREFIX = "x"
-PREFIX = "no_actions_"
+PREFIX = "AIME_"
 ##########################
 
 def mod_time(path):

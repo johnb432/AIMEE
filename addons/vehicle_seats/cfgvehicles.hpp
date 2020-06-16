@@ -1,12 +1,12 @@
-#include "macros.hpp"
+#include "script_component.hpp"
 
 #define GETIN_ACTION \
-	class CLAS(getin_action) {\
+	class GVAR(getInAction) {\
 		displayName = "Get In";\
-		condition = QUOT(call FNC(getin_condition));\
-		statement = QUOT(call FNC(getin_run));\
+		condition = QUOTE(call FUNC(getin_condition));\
+		statement = QUOTE(call FUNC(getin_run));\
 		icon = "\a3\ui_f\data\igui\cfg\actions\obsolete\ui_action_getin_ca.paa";\
-		insertChildren = QUOT(call FNC(change_submenus));\
+		insertChildren = QUOTE(call FUNC(change_submenus));\
 	}
 
 class CfgVehicles {
@@ -64,56 +64,54 @@ class CfgVehicles {
 	class Man;
 	class CAManBase: Man {
 		class ACE_SelfActions {
-			class CLAS(change_action) {
+			class changeAction {
 				displayName = "Change Seat";
-				condition = QUOT(call FNC(change_condition));
+				condition = QUOTE(call FUNC(change_condition));
 				icon = "\a3\ui_f\data\igui\cfg\actions\obsolete\ui_action_getincargo.paa";
 				exceptions[] = {"isNotInside"};
-				insertChildren = QUOT(call FNC(change_submenus));
-
-				class CLAS(turnout_action) {
-					displayName = "Turn out";
-					condition = QUOT(call FNC(turnout_condition));
-					statement = "_player action ['TurnOut', vehicle _player]";
-					icon = "\A3\ui_f\data\gui\rsc\rscdisplaymultiplayer\arrow_up_ca.paa";
-					exceptions[] = {"isNotInside"};
-				};
+				insertChildren = QUOTE(call FUNC(change_submenus));
 			};
 
-			class CLAS(turnin_action) {
+			class turnOutAction {
+				displayName = "Turn out";
+				condition = QUOTE(call FUNC(turnout_condition));
+				statement = "_player action ['TurnOut', vehicle _player]";
+				icon = "\A3\ui_f\data\gui\rsc\rscdisplaymultiplayer\arrow_up_ca.paa";
+				exceptions[] = {"isNotInside"};
+			};
+
+			class turnInAction {
 				displayName = "Turn in";
-				condition = QUOT(call FNC(turnin_condition));
+				condition = QUOTE(call FUNC(turnin_condition));
 				statement = "_player action ['TurnIn', vehicle _player]";
 				icon = "\A3\ui_f\data\gui\rsc\rscdisplaymultiplayer\arrow_down_ca.paa";
 				exceptions[] = {"isNotInside"};
 			};
 
-			class CLAS(eject_action) {
+			class ejectAction {
 				displayName = "Eject";
-				condition = QUOT(call FNC(eject_condition));
+				condition = QUOTE(call FUNC(eject_condition));
 				icon = "\a3\ui_f\data\igui\cfg\actions\eject_ca.paa";
 				exceptions[] = {"isNotInside"};
-
-				class CLAS(eject_confirm_action) {
+				class ejectConfirmAction {
 					displayName = "Confirm Eject";
 					condition = "true";
-					statement = QUOT(ARR2(_player, vehicle _player) call FNC(eject));
+					statement = QUOTE(ARR2(_player, vehicle _player) call FUNC(eject));
 					icon = "\a3\ui_f\data\igui\cfg\actions\ico_on_ca.paa";
 					exceptions[] = {"isNotInside"};
 				};
 			};
 
-			class CLAS(getout_action) {
+			class getOutAction {
 				displayName = "Get Out";
-				condition = QUOT(call FNC(getout_condition));
+				condition = QUOTE(call FUNC(getout_condition));
 				statement = "_player action ['GetOut', vehicle _player]";
 				icon = "\a3\ui_f\data\igui\cfg\actions\getout_ca.paa";
 				exceptions[] = {"isNotInside"};
-
-				class CLAS(eject_action) {
+				class ejectAction {
 					displayName = "Eject";
-					condition = QUOT(call FNC(getout_eject_condition));
-					statement = QUOT(ARR2(_player, vehicle _player) call FNC(eject));
+					condition = QUOTE(call FUNC(getout_eject_condition));
+					statement = QUOTE(ARR2(_player, vehicle _player) call FUNC(eject));
 					icon = "\a3\ui_f\data\igui\cfg\actions\eject_ca.paa";
 					exceptions[] = {"isNotInside"};
 				};
