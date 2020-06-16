@@ -1,22 +1,22 @@
-# ArmaForces - No Actions
+# AIME - ACE interaction menu expansion fixed
 
 [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2132195038)<br/>
-[GitHub](https://github.com/johnb432/No-Actions)
+[GitHub](https://github.com/johnb432/AIME-fix)
 
 ## Content
 
 This addon adds various ace interactions to various items.
 
-- Turning Engine On & Off
+- Turning engine on & off
 - Ejecting
-- Getting Out
+- Getting out
 - Accessing inventories
 - Opening backpacks
 - Picking up weapons
 - Changing ammo types
 - and more
 
-[No actions](https://steamcommunity.com/sharedfiles/filedetails/?id=2126300184) removes vanilla scroll wheel interactions, both mods can be used together.
+[No actions](https://steamcommunity.com/sharedfiles/filedetails/?id=2126300184)removes vanilla scroll wheel interactions, both mods can be used together.
 
 ## Credit
 
