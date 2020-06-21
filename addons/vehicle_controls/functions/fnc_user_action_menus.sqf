@@ -39,7 +39,7 @@ private _condition = {
 private _menus = [];
 
 {
-	if (getText (_x >> "shortcut") != "Eject") then {
+	if (getText (_x >> "shortcut") != "Eject" || {getText (_x >> "shortcut") == "Eject" && "FIR" in (typeOf _target)}) then {
 		private _ace_action = [
 			str getNumber (_x >> "userActionID"),
 			getText (_x >> "displayName"),

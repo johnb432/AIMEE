@@ -27,7 +27,4 @@ params [
 	"_oldMagazine"
 ];
 
-// multiple reloads simultaneously or in close intervals unlikely, ignore race condition for now
-if (isNil QGVAR(handleReloaded) || { !GVAR(handleReloaded) }) exitWith { nil };
-GVAR(handleReloaded) = false;
-_unit addMagazine [GVAR(oldMagazine), GVAR(oldMagazineCount)];
+GVAR(reloadFinished) = true;

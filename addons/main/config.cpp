@@ -2,15 +2,17 @@
 
 class CfgPatches {
 	class ADDON {
+		name = COMPONENT_NAME;
 		units[] = {};
 		weapons[] = {};
-		requiredVersion = 1.82;
+		requiredVersion = REQUIRED_VERSION;
 		requiredAddons[] = {
 			"cba_common",
 			"cba_xeh",
 			"ace_interact_menu",
 			"ace_interaction"
 		};
+		authors[] = {"upsilon", "johnb43"};
 	};
 };
 

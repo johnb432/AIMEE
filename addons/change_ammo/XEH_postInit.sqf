@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+GVAR(reloadFinished) = true;
+
 _change_ammo = [
 	QGVAR(ammoClass),
 	"Change Ammo Type",
@@ -13,7 +15,7 @@ _change_ammo = [
 		];
 
 		if (!GVAR(settingAmmoClass) || { _player call EFUNC(main,operating_uav) }) exitWith { false };
-		_player == vehicle _player || { [_player, vehicle _player] call FUNC(is_ffv) };
+		_player == vehicle _player || { _player call CBA_fnc_canUseWeapon };
 	},
 	FUNC(ammomenus),
 	nil,

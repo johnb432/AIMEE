@@ -65,7 +65,7 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(settingUserActions),
 	"CHECKBOX",
-	"Show custom component toggles (helicopter doors, ramps etc.)",
+	["Show custom component toggles", "Such as helicopter doors, ramps etc."],
 	COMPONENT_NAME,
 	true
 ] call CBA_fnc_addSetting;
