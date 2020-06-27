@@ -44,7 +44,7 @@ else {
 	magazines _target
 };
 
-private _search = if (_is_vehicle && {(_state select 1) == "HE" || {(_state select 1) == "AP"}}) then {
+private _search = if (_is_vehicle && {(_state select 1) == "HE" || {(_state select 1) == "AP"} || {(_state select 1) == "MODE_PLAYER_ALL"}}) then {
 	true;
 } else {
 	false;
@@ -91,7 +91,7 @@ private _vehicle_exec = {
 	private _State = weaponState [_target, _Turret];
 	private _muzzle = _State select 1;
 
-	if (_muzzle == "HE" || {_muzzle == "AP"}) then {
+	if (_muzzle == "HE" || {_muzzle == "AP"} || {_muzzle == "MODE_PLAYER_ALL"}) then {
 		_args set [1, _muzzle];
 	};
 
