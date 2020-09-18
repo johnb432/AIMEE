@@ -16,7 +16,7 @@ This addon adds various ace interactions to various items.
 - Changing ammo types
 - and more
 
-[No actions](https://steamcommunity.com/sharedfiles/filedetails/?id=2126300184)removes vanilla scroll wheel interactions, both mods can be used together.
+[No actions](https://steamcommunity.com/sharedfiles/filedetails/?id=2126300184) removes vanilla scroll wheel interactions, both mods can be used together.
 
 ## Credit
 
