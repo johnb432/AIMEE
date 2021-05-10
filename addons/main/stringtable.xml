@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AIME">
+    <Package name="main">
+        <Key ID="STR_AIME_main_HideAction">
+            <English>Hide actions if associated keybindings exist</English>
+            <German>Interaktionen verstecken falls zugewiesene Keybinds existieren</German>
+            <French>Cacher interactions si keybinds correspondant existent</French>
+        </Key>
+        <Key ID="STR_AIME_main_HideActionToolTip">
+            <English>Hides interactions if keybind are present.</English>
+            <German>Versteckt Interaktionen falls Keybinds vorhanden sind.</German>
+            <French>Cache des interactions si les keybinds sont présents.</French>
+        </Key>
+    </Package>
+</Project>

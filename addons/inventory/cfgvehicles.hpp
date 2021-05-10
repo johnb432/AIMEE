@@ -1,161 +1,146 @@
 #include "script_component.hpp"
 
-#define INVENTORY_DISTANCE 2.5
-
 #define VEHICLE_INVENTORY_ACTION \
-	class GVAR(openAction) {\
-		displayName = "Inventory";\
-		condition = QUOTE(GVAR(settingOpenAction)\
-				 && { alive _target }\
-				 && { _target call FUNC(has_inventory) });\
-		statement = "_player action [""Gear"", _target]";\
-		icon = "\A3\ui_f\data\igui\cfg\actions\gear_ca.paa";\
-		exceptions[] = {"isNotSwimming"};\
-	}
-
-class DefaultEventhandlers;
+   	class GVAR(openAction) {\
+        condition = QUOTE(GVAR(settingOpenAction) && {alive _target} && {_target call FUNC(hasInventory)});\
+        displayName = CQSTRING(STR_action_gear);\
+        exceptions[] = {"isNotSwimming"};\
+        icon = ICON_INVENTORY;\
+        statement = QPACTION('Gear',_target);\
+   	}
 
 class CfgVehicles {
-	class ReammoBox;
-	class WeaponHolder: ReammoBox {
-		class Eventhandlers: DefaultEventhandlers {
-		};
+    class ReammoBox;
+    class WeaponHolder: ReammoBox {
+        class ACE_Actions {
+            class GVAR(holderAction) {
+                condition = QUOTE(GVAR(settingHolderAction) && {_player distance _target < GVAR(settingOpenActionRange)});
+                displayName = DEFAULT_TEXT;
+                distance = DISTANCE_INTERACTION;
+                modifierFunction = QUOTE(call FUNC(holderModify));
+                position = QUOTE(_target worldToModel (getPosATL _target));
+                statement = QUOTE(if !(_target call FUNC(canPickup) && {[ARR_2(_player,_target)] call FUNC(playerPickup)}) then {PACTION('Gear',_target)});
 
-		class ACE_Actions {
-			class GVAR(holderAction) {
-				displayName = "Standby...";
-				condition = QGVAR(settingHolderAction);
-				statement = QUOTE(call FUNC(holder_run));
-				modifierFunction = QUOTE(call FUNC(holder_modify));
-				distance = INVENTORY_DISTANCE;
-				position = QUOTE(_target call FUNC(ground_pos));
+                class GVAR(holderOpenAction) {
+                    condition = QUOTE(GVAR(settingOpenAction) && {!isNull firstBackpack _target} && {(firstBackpack _target) call FUNC(hasInventory)} && {_target call FUNC(canPickup)});
+                    displayName = CQSTRING(STR_single_open);
+                    icon = ICON_INVENTORY;
+                    statement = QPACTION('Gear',firstBackpack _target);
+                };
+            };
+        };
+    };
 
-				class GVAR(holder_open_action) {
-					displayName = "Open";
-					condition = QUOTE(call FUNC(holder_open_condition));
-					statement = QUOTE(call FUNC(holder_open_run));
-					icon = "\A3\ui_f\data\igui\cfg\actions\gear_ca.paa";
-				};
-			};
-		};
-	};
+    class ThingX;
+    class WeaponHolderSimulated: ThingX {
+        class ACE_Actions {
+            class GVAR(holderAction) {
+                condition = QUOTE(GVAR(settingHolderAction) && {_player distance _target < GVAR(settingOpenActionRange)});
+                displayName = DEFAULT_TEXT;
+                distance = DISTANCE_INTERACTION;
+                modifierFunction = QUOTE(call FUNC(holderModify));
+                position = QUOTE(_target worldToModel (getPosATL _target));
+                statement = QUOTE(if !(_target call FUNC(canPickup) && {[ARR_2(_player,_target)] call FUNC(playerPickup)}) then {PACTION('Gear',_target)});
+            };
+        };
+    };
 
-	class ThingX;
-	class WeaponHolderSimulated: ThingX {
-		class ACE_Actions {
-			class GVAR(holderAction) {
-				displayName = "Standby...";
-				condition = QGVAR(settingHolderAction);
-				statement = QUOTE(call FUNC(holder_run));
-				modifierFunction = QUOTE(call FUNC(holder_modify));
-				distance = INVENTORY_DISTANCE;
-				position = QUOTE(_target call FUNC(ground_pos));
-			};
-		};
-	};
+    class LandVehicle;
+    class Car: LandVehicle {
+        class ACE_Actions {
+            class ACE_MainActions {
+                VEHICLE_INVENTORY_ACTION;
+            };
+        };
+    };
 
-	class LandVehicle;
-	class Car: LandVehicle {
-		class ACE_Actions {
-			class ACE_MainActions {
-				VEHICLE_INVENTORY_ACTION;
-			};
-		};
-	};
+    class Tank: LandVehicle {
+        class ACE_Actions {
+            class ACE_MainActions {
+                VEHICLE_INVENTORY_ACTION;
+            };
+        };
+    };
 
-	class Tank: LandVehicle {
-		class ACE_Actions {
-			class ACE_MainActions {
-				VEHICLE_INVENTORY_ACTION;
-			};
-		};
-	};
+    class Air;
+    class Helicopter: Air {
+        class ACE_Actions {
+            class ACE_MainActions {
+                VEHICLE_INVENTORY_ACTION;
+            };
+        };
+    };
 
-	class Air;
-	class Helicopter: Air {
-		class ACE_Actions {
-			class ACE_MainActions {
-				VEHICLE_INVENTORY_ACTION;
-			};
-		};
-	};
+    class Plane: Air {
+        class ACE_Actions {
+            class ACE_MainActions {
+                VEHICLE_INVENTORY_ACTION;
+            };
+        };
+    };
 
-	class Plane: Air {
-		class ACE_Actions {
-			class ACE_MainActions {
-				VEHICLE_INVENTORY_ACTION;
-			};
-		};
-	};
+    class Ship;
+    class Ship_F: Ship {
+        class ACE_Actions {
+            class ACE_MainActions {
+                VEHICLE_INVENTORY_ACTION;
+            };
+        };
+    };
 
-	class Ship;
-	class Ship_F: Ship {
-		class ACE_Actions {
-			class ACE_MainActions {
-				VEHICLE_INVENTORY_ACTION;
-			};
-		};
-	};
+    class StaticWeapon: LandVehicle {
+        class ACE_Actions {
+            class ACE_MainActions {
+                class GVAR(disassembleAction) {
+                    condition = QUOTE(GVAR(settingAssembleAction) && {alive _target} && {_target call FUNC(canDisassemble)});
+                    displayName = CSTRING(disassemble);
+                    icon = ICON_REPAIR;
+                    statement = QPACTION('Disassemble', _target);
+                };
+            };
+        };
+    };
 
-	class StaticWeapon: LandVehicle {
-		class ACE_Actions {
-			class ACE_MainActions {
-				class GVAR(disassembleAction) {
-					displayName = "Disassemble";
-					condition = QUOTE(GVAR(settingAssembleAction)\
-							 && { alive _target }\
-							 && { [_player, _target] call FUNC(can_disassemble) });
-					statement = "_player action [""Disassemble"", _target]";
-					icon = "\A3\ui_f\data\igui\cfg\actions\repair_ca.paa";
-				};
-			};
-		};
-	};
+    class Man;
+    class CAManBase: Man {
+        class ACE_Actions {
+            class GVAR(backpackAction3d) {
+                condition = QUOTE(GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _player} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)} && {_player distance _target < GVAR(settingOpenActionRange)});
+                displayName = CSTRING(openBackpack);
+                distance = DISTANCE_INTERACTION;
+                exceptions[] = {"isNotSwimming"};
+                icon = ICON_INVENTORY;
+                position = QUOTE(_target call FUNC(backpackPos));
+                statement = QPACTION('OpenBag',_target);
+            };
 
-	class Man;
-	class CAManBase: Man {
-		class ACE_Actions {
-			class GVAR(backpackAction3d) {
-				displayName = "Open backpack";
-				condition = QUOTE(GVAR(settingBackpackAction)\
-						 && { call FUNC(backpack_condition) });
-				statement = "_player action [""OpenBag"", _target]";
-				icon = "\A3\ui_f\data\igui\cfg\actions\gear_ca.paa";
-				exceptions[] = {"isNotSwimming"};
-				distance = INVENTORY_DISTANCE;
-				position = QUOTE(_target call FUNC(backpack_pos));
-			};
+            class ACE_MainActions {
+                class GVAR(backpackAction) {
+                    condition = QUOTE(!GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _player} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)} && {_player distance _target < GVAR(settingOpenActionRange)});
+                    displayName = CSTRING(openBackpack);
+                    exceptions[] = {"isNotSwimming"};
+                    icon = ICON_INVENTORY;
+                    statement = QPACTION('OpenBag',_target);
+                };
 
-			class ACE_MainActions {
-				class GVAR(backpackAction) {
-					displayName = "Open backpack";
-					condition = QUOTE(!GVAR(settingBackpackAction)\
-							 && { call FUNC(backpack_condition) });
-					statement = "_player action [""OpenBag"", _target]";
-					icon = "\A3\ui_f\data\igui\cfg\actions\gear_ca.paa";
-					exceptions[] = {"isNotSwimming"};
-				};
+                class GVAR(openAction) {
+                    condition = QUOTE(GVAR(settingOpenAction) && {!alive _target} && {isNull objectParent _player} && {_player distance _target < GVAR(settingOpenActionRange)});
+                    displayName = CQSTRING(STR_action_gear);
+                    exceptions[] = {"isNotSwimming"};
+                    icon = ICON_INVENTORY;
+                    statement = QPACTION('Gear',_target);
+                };
+            };
+        };
 
-				class GVAR(openAction) {
-					displayName = "Inventory";
-					condition = QUOTE(GVAR(settingOpenAction)\
-							 && { !alive _target });
-					statement = "_player action [""Gear"", _target]";
-					icon = "\A3\ui_f\data\igui\cfg\actions\gear_ca.paa";
-					exceptions[] = {"isNotSwimming"};
-				};
-			};
-		};
-
-		class ACE_SelfActions {
-			class GVAR(assembleAction) {
-				displayName = "Standby...";
-				condition = QUOTE(GVAR(settingAssembleAction)\
-						 && { ARR2(_player, backpack _player) call FUNC(can_assemble) });
-				statement = QUOTE(ARR2(_player, backpack _player) call FUNC(assemble));
-				icon = "\A3\ui_f\data\igui\cfg\actions\repair_ca.paa";
-				modifierFunction = QUOTE(call FUNC(assemble_modify));
-			};
-		};
-	};
+        class ACE_SelfActions {
+            class GVAR(assembleAction) {
+                condition = QUOTE(GVAR(settingAssembleAction) && {[ARR_2(_player,backpackContainer _player)] call FUNC(canAssemble)});
+                displayName = DEFAULT_TEXT;
+                icon = ICON_REPAIR;
+                modifierFunction = QUOTE(call FUNC(assembleModify));
+                statement = QUOTE([ARR_2(_player,backpackContainer _player)] call FUNC(assemble));
+            };
+        };
+    };
 };

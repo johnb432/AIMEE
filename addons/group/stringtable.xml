@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AIME">
+    <Package name="group">
+        <Key ID="STR_AIME_group_EnableStepDown">
+            <Original>Allow players to step down as leader</Original>
+            <English>Allow players to step down as leader</English>
+            <German>Gruppenführerabgebung zulassen</German>
+            <French>Permission du menu "changer magazines"</French>
+        </Key>
+        <Key ID="STR_AIME_group_EnableStepDownToolTip">
+            <Original>Allows the player step down as a leader using the ACE self-interaction menu.</Original>
+            <English>Allows the player step down as a leader using the ACE self-interaction menu.</English>
+            <German>Erlaubt den Spieler den Gruppenführerstatus mit einer ACE-Selbstinteraktion abzugeben.</German>
+            <French>Permet au joueur de renoncer à la position commandante avec une interaction ACE sur soi-même.</French>
+        </Key>
+        <Key ID="STR_AIME_group_StepDown">
+            <Original>Step down as leader</Original>
+            <English>Step down as leader</English>
+            <German>Gruppenführerstatus abgeben</German>
+            <French>Renoncer à la position commandante</French>
+        </Key>
+    </Package>
+</Project>

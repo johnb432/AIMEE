@@ -7,19 +7,19 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 [
-	QGVAR(settingAmmoClass),
-	"CHECKBOX",
-	"Enable ammo switch menu",
-	COMPONENT_NAME,
-	true
+    QGVAR(settingAmmoClass),
+    "CHECKBOX",
+    [LLSTRING(EnableAmmoMenu), LLSTRING(EnableAmmoMenuToolTip)],
+    COMPONENT_NAME,
+    true
 ] call CBA_fnc_addSetting;
 
 [
-	QGVAR(settingVehicleAmmoClass),
-	"CHECKBOX",
-	"Enable vehicle gunner ammo switch menu",
-	COMPONENT_NAME,
-	true
+    QGVAR(settingVehicleAmmoClass),
+    "CHECKBOX",
+    [LLSTRING(EnableAmmoMenuVehicle), LLSTRING(EnableAmmoMenuVehicleToolTip)],
+    COMPONENT_NAME,
+    true
 ] call CBA_fnc_addSetting;
 
 ADDON = true;

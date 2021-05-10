@@ -7,27 +7,27 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 [
-	QGVAR(term_action),
-	"CHECKBOX",
-	"Add UAV terminal to equipments menu",
-	COMPONENT_NAME,
-	true
+   	QGVAR(termAction),
+   	"CHECKBOX",
+    [LLSTRING(EnableUAVTerminalMenu), LLSTRING(EnableUAVTerminalMenuToolTip)],
+   	COMPONENT_NAME,
+   	true
 ] call CBA_fnc_addSetting;
 
 [
-	QGVAR(uav_action),
-	"CHECKBOX",
-	"Take/release control using self-interaction",
-	COMPONENT_NAME,
-	true
+   	QGVAR(UAVAction),
+   	"CHECKBOX",
+    [LLSTRING(EnableUAVControl), LLSTRING(EnableUAVControlToolTip)],
+   	COMPONENT_NAME,
+   	true
 ] call CBA_fnc_addSetting;
 
 [
-	QGVAR(gps_action),
-	"CHECKBOX",
-	"Add GPS to equipments menu",
-	COMPONENT_NAME,
-	true
+   	QGVAR(GPSAction),
+   	"CHECKBOX",
+    [LLSTRING(EnableGPSMenu), LLSTRING(EnableGPSMenuToolTip)],
+   	COMPONENT_NAME,
+   	true
 ] call CBA_fnc_addSetting;
 
 ADDON = true;

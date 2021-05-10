@@ -1,121 +1,129 @@
-#include "script_component.hpp"
-
 #define GETIN_ACTION \
-	class GVAR(getInAction) {\
-		displayName = "Get In";\
-		condition = QUOTE(call FUNC(getin_condition));\
-		statement = QUOTE(call FUNC(getin_run));\
-		icon = "\a3\ui_f\data\igui\cfg\actions\obsolete\ui_action_getin_ca.paa";\
-		insertChildren = QUOTE(call FUNC(change_submenus));\
-	}
+   	class GVAR(getInAction) {\
+      		condition = QUOTE(GVAR(settingGetInAction) && {alive _target} && {locked _target <= 1} && {!([ARR_2(side _player,side _target)] call BIS_fnc_sideIsEnemy)} && {((fullCrew [ARR_3(_target,"",true)]) findIf {[ARR_3(_player,_target,_x)] call FUNC(canSwitch)}) isNotEqualTo -1});\
+      		displayName = CQSTRING(STR_rscMenu.hppRscGroupRootMenu_Items_GetIn1);\
+        icon = ICON_GET_IN;\
+      		insertChildren = QUOTE([ARR_2(_target,_player)] call FUNC(changeSubMenus));\
+        statement = QUOTE([ARR_2(_target,_player)] call FUNC(getInRun));\
+   	}
 
 class CfgVehicles {
-	class LandVehicle;
-	class Car: LandVehicle {
-		class ACE_Actions {
-			class ACE_MainActions {
-				GETIN_ACTION;
-			};
-		};
-	};
+   	class LandVehicle;
+   	class Car: LandVehicle {
+      		class ACE_Actions {
+         			class ACE_MainActions {
+         				   GETIN_ACTION;
+         			};
+      		};
+   	};
 
-	class Tank: LandVehicle {
-		class ACE_Actions {
-			class ACE_MainActions {
-				GETIN_ACTION;
-			};
-		};
-	};
+    class Motorcycle: LandVehicle {
+      		class ACE_Actions {
+         			class ACE_MainActions {
+         				   GETIN_ACTION;
+         			};
+      		};
+   	};
 
-	class Air;
-	class Helicopter: Air {
-		class ACE_Actions {
-			class ACE_MainActions {
-				GETIN_ACTION;
-			};
-		};
-	};
+    class StaticWeapon: LandVehicle {
+      		class ACE_Actions {
+         			class ACE_MainActions {
+         				   GETIN_ACTION;
+         			};
+      		};
+   	};
 
-	class Plane: Air {
-		class ACE_Actions {
-			class ACE_MainActions {
-				GETIN_ACTION;
-			};
-		};
-	};
+   	class Tank: LandVehicle {
+      		class ACE_Actions {
+         			class ACE_MainActions {
+         				   GETIN_ACTION;
+         			};
+      		};
+   	};
 
-	class Ship;
-	class Ship_F: Ship {
-		class ACE_Actions {
-			class ACE_MainActions {
-				GETIN_ACTION;
-			};
-		};
-	};
+   	class Air;
+   	class Helicopter: Air {
+      		class ACE_Actions {
+         			class ACE_MainActions {
+         				   GETIN_ACTION;
+         			};
+      		};
+   	};
 
-	class StaticWeapon: LandVehicle {
-		class ACE_Actions {
-			class ACE_MainActions {
-				GETIN_ACTION;
-			};
-		};
-	};
+   	class Plane: Air {
+      		class ACE_Actions {
+         			class ACE_MainActions {
+         				   GETIN_ACTION;
+         			};
+  		    };
+   	};
 
-	class Man;
-	class CAManBase: Man {
-		class ACE_SelfActions {
-			class changeAction {
-				displayName = "Change Seat";
-				condition = QUOTE(call FUNC(change_condition));
-				icon = "\a3\ui_f\data\igui\cfg\actions\obsolete\ui_action_getincargo.paa";
-				exceptions[] = {"isNotInside"};
-				insertChildren = QUOTE(call FUNC(change_submenus));
-			};
+   	class Ship;
+   	class Ship_F: Ship {
+      		class ACE_Actions {
+         			class ACE_MainActions {
+         				   GETIN_ACTION;
+         			};
+      		};
+   	};
 
-			class turnOutAction {
-				displayName = "Turn out";
-				condition = QUOTE(call FUNC(turnout_condition));
-				statement = "_player action ['TurnOut', vehicle _player]";
-				icon = "\A3\ui_f\data\gui\rsc\rscdisplaymultiplayer\arrow_up_ca.paa";
-				exceptions[] = {"isNotInside"};
-			};
+   	class Man;
+   	class CAManBase: Man {
+      		class ACE_SelfActions {
+         			class GVAR(changeAction) {
+            				condition = QUOTE(GVAR(settingChangeAction) && {!isTurnedOut _player} && {locked objectParent _player <= 1} && {isMultiplayer || {effectiveCommander objectParent _player isEqualTo _player}});
+            				displayName = CSTRING(ChangeSeat);
+                exceptions[] = {"isNotInside"};
+                icon = ICON_CHANGE_SEAT;
+            				insertChildren = QUOTE([ARR_2(_target,_player)] call FUNC(changeSubMenus));
+         			};
 
-			class turnInAction {
-				displayName = "Turn in";
-				condition = QUOTE(call FUNC(turnin_condition));
-				statement = "_player action ['TurnIn', vehicle _player]";
-				icon = "\A3\ui_f\data\gui\rsc\rscdisplaymultiplayer\arrow_down_ca.paa";
-				exceptions[] = {"isNotInside"};
-			};
+         			class GVAR(turnOutAction) {
+            				condition = QUOTE(GVAR(settingTurnOutAction) && {!isTurnedOut _player} && {'TurnOut' call EFUNC(main,ignoreKeybindForInputAction)} && {[ARR_2(_player,objectParent _player)] call FUNC(canTurnOut)});
+            				displayName = CQSTRING(STR_action_turnout);
+                exceptions[] = {"isNotInside"};
+                icon = ICON_ARROW_UP;
+                statement = QPACTION('TurnOut',objectParent _player);
+         			};
 
-			class ejectAction {
-				displayName = "Eject";
-				condition = QUOTE(call FUNC(eject_condition));
-				icon = "\a3\ui_f\data\igui\cfg\actions\eject_ca.paa";
-				exceptions[] = {"isNotInside"};
-				class ejectConfirmAction {
-					displayName = "Confirm Eject";
-					condition = "true";
-					statement = QUOTE(ARR2(_player, vehicle _player) call FUNC(eject));
-					icon = "\a3\ui_f\data\igui\cfg\actions\ico_on_ca.paa";
-					exceptions[] = {"isNotInside"};
-				};
-			};
+         			class GVAR(turnInAction) {
+            				condition = QUOTE(GVAR(settingTurnOutAction) && {isTurnedOut _player} && {'TurnOut' call EFUNC(main,ignoreKeybindForInputAction)});
+            				displayName = CQSTRING(STR_action_turnin);
+                exceptions[] = {"isNotInside"};
+                icon = ICON_ARROW_DOWN;
+                statement = QPACTION('TurnIn',objectParent _player);
+         			};
 
-			class getOutAction {
-				displayName = "Get Out";
-				condition = QUOTE(call FUNC(getout_condition));
-				statement = "_player action ['GetOut', vehicle _player]";
-				icon = "\a3\ui_f\data\igui\cfg\actions\getout_ca.paa";
-				exceptions[] = {"isNotInside"};
-				class ejectAction {
-					displayName = "Eject";
-					condition = QUOTE(call FUNC(getout_eject_condition));
-					statement = QUOTE(ARR2(_player, vehicle _player) call FUNC(eject));
-					icon = "\a3\ui_f\data\igui\cfg\actions\eject_ca.paa";
-					exceptions[] = {"isNotInside"};
-				};
-			};
-		};
-	};
+         			class GVAR(ejectActionMoving) {
+            				condition = QUOTE(GVAR(settingGetOutAction) && {!isNull objectParent _player} && {'Eject' call EFUNC(main,ignoreKeybindForInputAction)} && {!(abs speed (objectParent _player) < 2 && {(getPos objectParent _player) select 2 < 2})} && {[ARR_2(_player,objectParent _player)] call FUNC(canEject) isNotEqualTo EJECT_TYPE_NONE});
+                displayName = CQSTRING(STR_action_eject);
+                exceptions[] = {"isNotInside"};
+                icon = ICON_EJECT;
+
+            				class GVAR(ejectConfirmAction) {
+               					condition = QUOTE(true);
+                    displayName = CSTRING(ConfirmEject);
+                    exceptions[] = {"isNotInside"};
+                    icon = ICON_CONFIRM;
+                    statement = QUOTE([ARR_2(_player,objectParent _player)] call FUNC(eject));
+            				};
+         			};
+
+         			class GVAR(getOutAction) {
+            				condition = QUOTE(GVAR(settingGetOutAction) && {!isNull objectParent _player} && {'GetOut' call EFUNC(main,ignoreKeybindForInputAction)} && {abs speed (objectParent _player) < 2} && {(getPos (objectParent _player)) select 2 < 2});
+                displayName = CQSTRING(STR_action_getout);
+                exceptions[] = {"isNotInside"};
+                icon = ICON_GET_OUT;
+                statement = QPACTION('GetOut',objectParent _player);
+
+            				class GVAR(ejectAction) {
+               					condition = QUOTE('Eject' call EFUNC(main,ignoreKeybindForInputAction) && {[ARR_2(_player,objectParent _player)] call FUNC(canEject) >= 0});
+                    displayName = CQSTRING(STR_action_eject);
+                    exceptions[] = {"isNotInside"};
+                    icon = ICON_EJECT;
+                    statement = QUOTE([ARR_2(_player,objectParent _player)] call FUNC(eject));
+            				};
+         			};
+      		};
+   	};
 };

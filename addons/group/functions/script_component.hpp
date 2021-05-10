@@ -1,1 +1,0 @@
-#include "\x\AIME\addons\group\script_component.hpp"

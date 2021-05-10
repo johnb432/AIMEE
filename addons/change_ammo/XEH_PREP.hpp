@@ -1,4 +1,3 @@
-PREPFNC(ammomenus);
-PREPFNC(loadmag);
-PREPFNC(magazines);
-PREPFNC(reloaded_handler);
+PREPFNC(ammoMenus);
+PREPFNC(findCompatMag);
+PREPFNC(loadMag);
