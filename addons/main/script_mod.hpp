@@ -1,6 +1,6 @@
 // COMPONENT should be defined in the script_component.hpp and included BEFORE this hpp
 #define MAINPREFIX x
-#define PREFIX AIME
+#define PREFIX AIMEE
 
 #include "script_version.hpp"
 
@@ -13,7 +13,7 @@
 #define REQUIRED_CBA_VERSION {3,12,2}
 
 #ifdef COMPONENT_BEAUTIFIED
-    #define COMPONENT_NAME QUOTE(AIME - COMPONENT_BEAUTIFIED)
+    #define COMPONENT_NAME QUOTE(AIMEE - COMPONENT_BEAUTIFIED)
 #else
-    #define COMPONENT_NAME QUOTE(AIME - COMPONENT)
+    #define COMPONENT_NAME QUOTE(AIMEE - COMPONENT)
 #endif

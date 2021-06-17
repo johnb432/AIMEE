@@ -1,1 +1,1 @@
-#include "\x\AIME\addons\vehicle_seats\script_component.hpp"
+#include "\x\AIMEE\addons\vehicle_seats\script_component.hpp"
