@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="AIME">
+<Project name="AIMEE">
     <Package name="vehicle_controls">
-        <Key ID="STR_AIME_vehicle_controls_Flaps">
+        <Key ID="STR_AIMEE_vehicle_controls_Flaps">
             <English>Flaps</English>
             <German>Luftfahrzeugklappen</German>
             <French>Volets</French>

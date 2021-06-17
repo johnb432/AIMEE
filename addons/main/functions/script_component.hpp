@@ -1,1 +1,1 @@
-#include "\x\AIME\addons\main\script_component.hpp"
+#include "\x\AIMEE\addons\main\script_component.hpp"

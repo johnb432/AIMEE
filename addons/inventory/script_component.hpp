@@ -1,6 +1,6 @@
 #define COMPONENT inventory
 #define COMPONENT_BEAUTIFIED Inventory
-#include "\x\AIME\addons\main\script_mod.hpp"
+#include "\x\AIMEE\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
@@ -15,4 +15,4 @@
     #define DEBUG_SETTINGS DEBUG_ENABLED_INVENTORY
 #endif
 
-#include "\x\AIME\addons\main\script_macros.hpp"
+#include "\x\AIMEE\addons\main\script_macros.hpp"
