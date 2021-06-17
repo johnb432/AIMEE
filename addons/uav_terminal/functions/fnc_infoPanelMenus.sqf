@@ -48,7 +48,7 @@ params ["_target", "_player", "_component"];
            	private _opened = _args call FUNC(panelOpened);
 
            	_menu set [1, [[TEXT_RIGHT, TEXT_LEFT] select (_id isEqualTo "left"), [TEXT_CLOSE_RIGHT, TEXT_CLOSE_LEFT] select (_id isEqualTo "left")] select _opened];
-           	_menu set [2, [ICON_OFF, ICON_ON] select _opened];
+           	_menu set [2, [ICON_ON, ICON_OFF] select _opened];
         }
    	] call ace_interact_menu_fnc_createAction, [], _target];
 };
