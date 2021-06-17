@@ -1,3 +1,3 @@
-PREPFNC(ignoreKeybindForInputAction);
-PREPFNC(keybindName);
-PREPFNC(operatingUAV);
+PREP(ignoreKeybindForInputAction);
+PREP(keybindName);
+PREP(operatingUAV);

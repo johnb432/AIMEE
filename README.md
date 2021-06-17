@@ -1,7 +1,7 @@
-# AIME - ACE interaction menu expansion fixed
+# AIME - ACE interaction menu expansion - enhanced
 
 [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2132195038)<br/>
-[GitHub](https://github.com/johnb432/AIME-fix)
+[GitHub](https://github.com/johnb432/AIMEE)
 
 ## Content
 

@@ -1,0 +1,13 @@
+name = "AIME-fix"
+prefix = "AIME"
+author = "johnb43"
+template = "cba"
+mainprefix = "x"
+files = [
+    "mod.cpp",
+    "CHANGELOG.md",
+    "LICENSE.txt",
+    "README.md"
+]
+folder_optionals = true
+sig_version = 3

@@ -1,3 +1,3 @@
-PREPFNC(ammoMenus);
-PREPFNC(findCompatMag);
-PREPFNC(loadMag);
+PREP(ammoMenus);
+PREP(findCompatMag);
+PREP(loadMag);

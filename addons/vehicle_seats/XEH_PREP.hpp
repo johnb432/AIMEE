@@ -1,6 +1,6 @@
-PREPFNCHELP(changeSubMenus);
-PREPFNCHELP(getInRun);
-PREPFNC(canEject);
-PREPFNC(canSwitch);
-PREPFNC(canTurnOut);
-PREPFNC(eject);
+PREPHELP(changeSubMenus);
+PREPHELP(getInRun);
+PREP(canEject);
+PREP(canSwitch);
+PREP(canTurnOut);
+PREP(eject);
