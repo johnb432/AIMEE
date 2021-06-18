@@ -4,9 +4,9 @@ author = "johnb43"
 template = "cba"
 mainprefix = "x"
 files = [
-    "mod.cpp",
     "CHANGELOG.md",
-    "LICENSE.txt",
+    "mod.cpp",
+    "LICENSE",
     "README.md"
 ]
 folder_optionals = true
