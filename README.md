@@ -1,4 +1,4 @@
-# AIMEE - ACE interaction menu expansion - enhanced
+# AIMEE - ACE interaction menu expansion - Enhanced
 
 This mod is a client side mod.
 
