@@ -1,5 +1,7 @@
 # AIMEE - ACE interaction menu expansion - enhanced
 
+This mod is a client side mod.
+
 [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2132195038)<br/>
 [GitHub](https://github.com/johnb432/AIMEE)
 
