@@ -24,4 +24,12 @@ This addon adds various ace interactions to various items.
 
 ## License
 
-Feel free to use and modify it. I have received permission from upsilon (steam: Michael al Bay) to upload this version to the workshop.
+I have received permission from upsilon (steam: Michael al Bay) to upload this version to the workshop.
+See LICENSE.
+
+## How to create PBOs
+
+* Download hemtt from [here](https://brettmayson.github.io/HEMTT/#/)
+* Place hemtt.exe inside the project folder (same level as addons)
+* Open commmand terminal, navigate to said folder (Windows: cd <insert path>)
+* Type "hemtt build --release"
