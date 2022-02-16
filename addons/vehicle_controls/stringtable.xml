@@ -2,9 +2,98 @@
 <Project name="AIMEE">
     <Package name="vehicle_controls">
         <Key ID="STR_AIMEE_vehicle_controls_Flaps">
+            <Original>Flaps</Original>
             <English>Flaps</English>
             <German>Luftfahrzeugklappen</German>
             <French>Volets</French>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingGearAction">
+            <Original>Enable landing gear toggle</Original>
+            <English>Enable landing gear toggle</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingGearAction_ToolTip">
+            <Original>Allows the player to toggle an aircraft's landing gear using the ACE interaction menu.</Original>
+            <English>Allows the player to toggle an aircraft's landing gear using the ACE interaction menu.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingCollisionAction">
+            <Original>Enable collision light toggle</Original>
+            <English>Enable collision light toggle</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingCollisionAction_ToolTip">
+            <Original>Allows the player to toggle collision lights using the ACE interaction menu.</Original>
+            <English>Allows the player to toggle collision lights using the ACE interaction menu.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingLightsAction">
+            <Original>Enable head light toggle</Original>
+            <English>Enable head light toggle</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingLightsAction_ToolTip">
+            <Original>Allows the player to toggle head lights using the ACE interaction menu.</Original>
+            <English>Allows the player to toggle head lights using the ACE interaction menu.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingHoverAction">
+            <Original>Enable auto-hover toggle</Original>
+            <English>Enable auto-hover toggle</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingHoverAction_ToolTip">
+            <Original>Allows the player to toggle auto-hover using the ACE interaction menu.</Original>
+            <English>Allows the player to toggle auto-hover using the ACE interaction menu.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingManualAction">
+            <Original>Enable manual fire toggle</Original>
+            <English>Enable manual fire toggle</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingManualAction_ToolTip">
+            <Original>Allows the player to toggle manual fire using the ACE interaction menu.</Original>
+            <English>Allows the player to toggle manual fire using the ACE interaction menu.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingEngineAction">
+            <Original>Enable engine on/off toggle</Original>
+            <English>Enable engine on/off toggle</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingEngineAction_ToolTip">
+            <Original>Allows the player to toggle engine state using the ACE interaction menu.</Original>
+            <English>Allows the player to toggle engine state using the ACE interaction menu.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingFlapsAction">
+            <Original>Enable flaps control</Original>
+            <English>Enable flaps control</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingFlapsAction_ToolTip">
+            <Original>Allows the player to control flaps using the ACE interaction menu.</Original>
+            <English>Allows the player to control flaps using the ACE interaction menu.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingUserActions">
+            <Original>Show custom component toggles</Original>
+            <English>Show custom component toggles</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingUserActions_ToolTip">
+            <Original>Such as helicopter doors, ramps etc.</Original>
+            <English>Such as helicopter doors, ramps etc.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingArtyComputerAction">
+            <Original>Add artillery computer to interaction menu</Original>
+            <English>Add artillery computer to interaction menu</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingArtyComputerAction_ToolTip">
+            <Original>Allows the player to access the artillery computer using the ACE interaction menu.</Original>
+            <English>Allows the player to access the artillery computer using the ACE interaction menu.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingLockControlsAction">
+            <Original>Enable locking controls for helicopters</Original>
+            <English>Enable locking controls for helicopters</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingLockControlsAction_ToolTip">
+            <Original>Allows the player to lock controls using the ACE interaction menu.</Original>
+            <English>Allows the player to lock controls using the ACE interaction menu.</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingTakeControlsAction">
+            <Original>Enable taking controls for helicopters</Original>
+            <English>Enable taking controls for helicopters</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingTakeControlsAction_ToolTip">
+            <Original>Allows the player to take controls using the ACE interaction menu.</Original>
+            <English>Allows the player to take controls using the ACE interaction menu.</English>
         </Key>
     </Package>
 </Project>

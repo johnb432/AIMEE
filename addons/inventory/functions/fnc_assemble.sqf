@@ -1,38 +1,38 @@
 #include "script_component.hpp"
+
 /*
  * Author: upsilon, johnb43
- *
+ * Assemble a static weapon. Tripod must be on back to mount using scripts.
  *
  * Arguments:
- * 0: Player <OBJECT>
- * 1: Weapon to be assembled <OBJECT> (Backpack)
+ * 0: Unit <OBJECT>
  *
  * Return Value:
  * None
  *
- * Tripod must be on back to mount using scripts.
+ * Example:
+ * [player, backpackContainer player] call AIMEE_inventory_fnc_assemble
  *
  * Public: No
  */
 
-params ["_player", "_backpack"];
-
-// If tripod on back (weapon on ground):
-([_player, _backpack] call FUNC(locateBackpack)) params ["_baseOnGround", "_base", "_weapon", "_weaponHolder"];
+(_this call FUNC(locateBackpack)) params ["_base", "_weapon", "_weaponHolder", "_baseOnGround"];
 
 // If the base is on the ground, switch it with the weapon on the player's back
-if (_baseOnGround) exitWith {
+if (_baseOnGround) then {
+    _weapon = backpackContainer _this;
+
     // Add base to player, which will automatically drop bag
-    _player addBackpack (typeOf _base);
+    _this addBackpack (typeOf _base);
 
     // Delete weapon in weaponholder
     deleteVehicle _weaponHolder;
 
+    // Look for switched backpacks in next frame and assemble then
     [{
-        ([_this, backpackContainer _this] call FUNC(locateBackpack)) params ["_baseOnGround", "_base", "_weapon", "_weaponHolder"];
-
-        _this action ["Assemble", _weapon];
-    }, _player] call CBA_fnc_execNextFrame;
+        (_this select 0) action ["Assemble", _this select 1];
+    }, [_this, _weapon]] call CBA_fnc_execNextFrame;
+} else {
+    // If tripod on back (weapon on ground)
+    _this action ["Assemble", _weapon];
 };
-
-_player action ["Assemble", _weapon];

@@ -1,28 +1,32 @@
 #include "script_component.hpp"
+
 /*
  * Author: johnb43
- *
+ * Returns what backpacks are where.
  *
  * Arguments:
- * 0: Player <OBJECT>
- * 1: Player backpack <OBJECT>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
  * Returns <ARRAY>
- * 0: If base is on ground or not <BOOLEAN>
- * 1: Base backpack <OBJECT>
- * 2: Weapon backpack <OBJECT>
- * 3: Weaponholder <OBJECT>
+ * 0: Base backpack <OBJECT>
+ * 1: Weapon backpack <OBJECT>
+ * 2: Weaponholder <OBJECT>
+ * 3: If base is on ground or not <BOOL>
+ *
+ * Example:
+ * player call AIMEE_inventory_fnc_locateBackpack
  *
  * Public: No
  */
 
-params ["_player", "_backpack"];
+private _backpack = backpackContainer _this;
 
-if (isNull _backpack) exitWith {[false, objNull, objNull, objNull]};
+if (isNull _backpack) exitWith {[objNull, objNull, objNull, false]};
 
 private _config = configOf _backpack >> "assembleInfo";
-if (isNull _config) exitWith {[false, objNull, objNull, objNull]};
+
+if (isNull _config) exitWith {[objNull, objNull, objNull, false]};
 
 // If tripod on back:
 if (getNumber (_config >> "primary") isEqualTo 0) then {
@@ -41,14 +45,14 @@ if (getNumber (_config >> "primary") isEqualTo 0) then {
         if (!isNull _weapon) exitWith {
             _weaponHolder = _x;
         };
-    } forEach nearestObjects [_player, ["GroundWeaponHolder"], 3];
+    } forEach nearestObjects [_this, ["GroundWeaponHolder"], 3];
 
-    [false, _backpack, _weapon, _weaponHolder];
+    [_backpack, _weapon, _weaponHolder, false];
 } else {
     // If weapon on back: Returns classnames of tripod backpacks that are compatible with a given weapon backpack
     private _bases = getArray (_config >> "base");
 
-    if (_bases isEqualTo [] || {_bases select 0 isEqualTo ""}) exitWith {[false, objNull, objNull, objNull]};
+    if (_bases isEqualTo [] || {_bases select 0 isEqualTo ""}) exitWith {[objNull, objNull, objNull, false]};
 
     private _type = "";
     private _weaponHolder = objNull;
@@ -57,6 +61,7 @@ if (getNumber (_config >> "primary") isEqualTo 0) then {
     {
         {
            _type = typeOf _x;
+
            if ((_bases findIf {_type isEqualTo _x}) isNotEqualTo -1) exitWith {
                _base = _x;
            };
@@ -65,7 +70,7 @@ if (getNumber (_config >> "primary") isEqualTo 0) then {
         if (!isNull _base) exitWith {
             _weaponHolder = _x;
         };
-    } forEach nearestObjects [_player, ["GroundWeaponHolder"], 3];
+    } forEach nearestObjects [_this, ["GroundWeaponHolder"], 3];
 
-    [true, _base, _backpack, _weaponHolder];
+    [_base, _backpack, _weaponHolder, true];
 };

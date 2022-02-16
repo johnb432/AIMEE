@@ -1,3 +1,3 @@
-PREP(ammoMenus);
-PREP(findCompatMag);
-PREP(loadMag);
+PREP(loadMagazine);
+PREP(magazinesUnitMenus);
+PREP(magazinesVehicleMenus);

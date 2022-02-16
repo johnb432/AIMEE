@@ -1,19 +1,21 @@
 #include "script_component.hpp"
+
 /*
  * Author: upsilon, johnb43
- *
+ * Returns if inventory is present.
  *
  * Arguments:
- * 0: Vehicle/Unit <OBJECT>
+ * 0: Object (Vehicle/Unit) <OBJECT>
  *
  * Return Value:
- * Returns if inventory is present <BOOL>
+ * If object has inventory <BOOL>
+ *
+ * Example:
+ * cursorObject call AIMEE_inventory_fnc_hasInventory
  *
  * Public: No
  */
 
-params ["_object"];
+private _config = configOf _this;
 
-private _config = configOf _object;
-
-getNumber (_config >> "maximumLoad") isNotEqualTo 0 && {getNumber (_config >> "disableInventory") isNotEqualTo 1};
+!lockedInventory _this && {getNumber (_config >> "disableInventory") isNotEqualTo 1} && {getNumber (_config >> "maximumLoad") isNotEqualTo 0};

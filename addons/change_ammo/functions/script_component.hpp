@@ -1,1 +1,1 @@
-#include "\x\AIMEE\addons\change_ammo\script_component.hpp"
+#include "..\script_component.hpp"

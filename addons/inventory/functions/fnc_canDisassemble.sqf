@@ -1,21 +1,21 @@
 #include "script_component.hpp"
+
 /*
  * Author: upsilon, johnb43
- *
+ * Returns if weapon can be disassembled.
  *
  * Arguments:
- * 0: Target (Static Weapon) <OBJECT>
+ * 0: Vehicle (Static Weapon) <OBJECT>
  *
  * Return Value:
- * Returns if weapon can be disassembled <BOOL>
+ * If weapon can be disassembled <BOOL>
+ *
+ * Example:
+ * cursorObject call AIMEE_inventory_fnc_canDisassemble
  *
  * Public: No
  */
 
-params ["_vehicle"];
+private _config = configOf _this >> "assembleInfo";
 
-private _config = configOf _vehicle >> "assembleInfo";
-
-if (isNull _config) exitWith {false};
-
-getArray (_config >> "dissasembleTo") isNotEqualTo [];
+!isNull _config && {getArray (_config >> "dissasembleTo") isNotEqualTo []};

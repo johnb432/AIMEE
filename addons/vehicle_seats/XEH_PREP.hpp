@@ -1,6 +1,7 @@
-PREPHELP(changeSubMenus);
-PREPHELP(getInRun);
 PREP(canEject);
 PREP(canSwitch);
-PREP(canTurnOut);
+PREP(canTurnInOrOut);
+PREP(changeMenus);
 PREP(eject);
+PREP(getInRun);
+PREP(turretMenus);

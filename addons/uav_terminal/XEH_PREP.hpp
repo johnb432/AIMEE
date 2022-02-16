@@ -1,7 +1,5 @@
-PREPHELP(GPSModify);
-PREPHELP(terminalModify);
-PREPHELP(UAVModify);
-PREP(assignedGPS);
+PREP(assignedTerminal);
 PREP(infoPanelMenus);
-PREP(panelOpened);
+PREP(terminalModify);
 PREP(UAVMenus);
+PREP(UAVModify);

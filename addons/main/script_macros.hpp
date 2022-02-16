@@ -1,19 +1,24 @@
 #include "\x\cba\addons\main\script_macros_common.hpp"
 
-#define FUNC_PATHTO_SYS(var1,var2,var3) \MAINPREFIX\var1\SUBPREFIX\var2\functions\var3.sqf
-#define FUNC_PATHTO_SYS_HELP(var1,var2,var3) \MAINPREFIX\var1\SUBPREFIX\var2\ace_action_helpers\var3.sqf
-
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
 
 #ifdef DISABLE_COMPILE_CACHE
     #undef PREP
     #define PREP(fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\DOUBLES(fnc,fncName).sqf)
-    #define PREPHELP(fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(ace_action_helpers\DOUBLES(fnc,fncName).sqf)
 #else
     #undef PREP
     #define PREP(fncName) [QPATHTOF(functions\DOUBLES(fnc,fncName).sqf), QFUNC(fncName)] call CBA_fnc_compileFunction
-    #define PREPHELP(fncName) [QPATHTOF(ace_action_helpers\DOUBLES(fnc,fncName).sqf), QFUNC(fncName)] call CBA_fnc_compileFunction
 #endif
+
+// CBA Setting
+#define SETTING(NAME,TYPE,VALUE)\
+[\
+    QGVAR(NAME),\
+    TYPE,\
+    [LLSTRING(NAME), LLSTRING(DOUBLES(NAME,ToolTip))],\
+    COMPONENT_NAME,\
+    VALUE\
+] call CBA_fnc_addSetting
 
 // Config string
 #define CQSTRING(var1) QUOTE($var1)
@@ -26,7 +31,9 @@
 #define QPACTION(var1,var2) QUOTE(PACTION(var1,var2))
 
 #define DEFAULT_TEXT "Standby..."
-#define DISTANCE_INTERACTION 10
+#define DISTANCE_INTERACTION_BACKPACK 3.96 //3////10 // DELETE IF NOT NEEDED
+#define DISTANCE_INTERACTION_BACKPACK_3D 3
+#define DISTANCE_INTERACTION_WEAPONHOLDER 4
 
 #define GEAR_ERROR 0
 #define GEAR_DOWN 1
@@ -35,7 +42,6 @@
 #define GEAR_RETRACTING 4
 #define GEAR_UNKNOWN 5
 #define FLAPS_MAX 2
-#define VECTORING_MAX 6
 
 #define EJECT_TYPE_CAR 0
 #define EJECT_TYPE_FORCE 1
@@ -54,11 +60,13 @@
 #define ICON_OFF "\A3\ui_f\data\igui\cfg\commandbar\unitcombatmode_ca.paa"
 #define ICON_ON ""
 
-#define ICON_DRIVER "\A3\ui_f\data\igui\cfg\actions\getindriver_ca.paa"
-#define ICON_PILOT "\A3\ui_f\data\igui\cfg\actions\getinpilot_ca.paa"
-#define ICON_GUNNER "\A3\ui_f\data\igui\cfg\actions\getingunner_ca.paa"
-#define ICON_COMMANDER "\A3\ui_f\data\igui\cfg\actions\getincommander_ca.paa"
-#define ICON_CARGO "\A3\ui_f\data\igui\cfg\actions\getincargo_ca.paa"
+#define ICON_DRIVER "A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_driver_ca.paa"
+#define ICON_PILOT "A3\ui_f\data\IGUI\Cfg\Actions\getinpilot_ca.paa"
+#define ICON_GUNNER "A3\ui_f\data\IGUI\Cfg\Actions\getingunner_ca.paa"
+#define ICON_COMMANDER "A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_commander_ca.paa"
+#define ICON_CARGO "A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_cargo_ca.paa"
+#define ICON_TURRET "A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_gunner_ca.paa"
+#define ICON_FFV "A3\ui_f\data\IGUI\Cfg\CrewAimIndicator\gunnerAuto_ca.paa"
 
 #define ICON_DISCONNECT "\A3\ui_f\data\gui\rsc\rscpendinginvitation\connectionqualitybad_ca.paa"
 #define ICON_RELEASE "\A3\ui_f\data\igui\cfg\actions\ico_off_ca.paa"
@@ -81,7 +89,7 @@
 #define ICON_ARROW_UP "\A3\ui_f\data\gui\rsc\rscdisplaymultiplayer\arrow_up_ca.paa"
 #define ICON_ARROW_DOWN "\A3\ui_f\data\gui\rsc\rscdisplaymultiplayer\arrow_down_ca.paa"
 
-#define ICON_CHANGE_SEAT "\a3\ui_f\data\igui\cfg\actions\obsolete\ui_action_getincargo.paa"
+#define ICON_CHANGE_SEAT "z\ace\addons\quickmount\UI\Seats_ca.paa"
 
 #define ICON_GEAR "\A3\ui_f\data\igui\cfg\vehicletoggles\landinggeariconon_ca.paa"
 

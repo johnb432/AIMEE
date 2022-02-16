@@ -1,3 +1,10 @@
+# Changelog for AIMEE 14.2.2022
+
+1.3.2.0
+- Major overhaul of mod: Countless fixes and improvements.
+- Removal of GPS ACE interactions as they were deemed unnecessary.
+- Removal of two CBA settings: One for range of inventory actions, other for GPS actions (see note above).
+
 # Changelog for AIMEE 17.6.2021
 
 1.3.1.0

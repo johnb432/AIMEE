@@ -1,22 +1,20 @@
-#include "script_component.hpp"
-
 #define VEHICLE_INVENTORY_ACTION \
-   	class GVAR(openAction) {\
+    class GVAR(openAction) {\
         condition = QUOTE(GVAR(settingOpenAction) && {alive _target} && {_target call FUNC(hasInventory)});\
         displayName = CQSTRING(STR_action_gear);\
         exceptions[] = {"isNotSwimming"};\
         icon = ICON_INVENTORY;\
         statement = QPACTION('Gear',_target);\
-   	}
+    }
 
 class CfgVehicles {
     class ReammoBox;
     class WeaponHolder: ReammoBox {
         class ACE_Actions {
             class GVAR(holderAction) {
-                condition = QUOTE(GVAR(settingHolderAction) && {_player distance _target < GVAR(settingOpenActionRange)});
+                condition = QUOTE(GVAR(settingHolderAction));
                 displayName = DEFAULT_TEXT;
-                distance = DISTANCE_INTERACTION;
+                distance = DISTANCE_INTERACTION_WEAPONHOLDER;
                 modifierFunction = QUOTE(call FUNC(holderModify));
                 position = QUOTE(_target worldToModel (getPosATL _target));
                 statement = QUOTE(if !(_target call FUNC(canPickup) && {[ARR_2(_player,_target)] call FUNC(playerPickup)}) then {PACTION('Gear',_target)});
@@ -35,9 +33,9 @@ class CfgVehicles {
     class WeaponHolderSimulated: ThingX {
         class ACE_Actions {
             class GVAR(holderAction) {
-                condition = QUOTE(GVAR(settingHolderAction) && {_player distance _target < GVAR(settingOpenActionRange)});
+                condition = QUOTE(GVAR(settingHolderAction));
                 displayName = DEFAULT_TEXT;
-                distance = DISTANCE_INTERACTION;
+                distance = DISTANCE_INTERACTION_WEAPONHOLDER;
                 modifierFunction = QUOTE(call FUNC(holderModify));
                 position = QUOTE(_target worldToModel (getPosATL _target));
                 statement = QUOTE(if !(_target call FUNC(canPickup) && {[ARR_2(_player,_target)] call FUNC(playerPickup)}) then {PACTION('Gear',_target)});
@@ -104,10 +102,10 @@ class CfgVehicles {
     class Man;
     class CAManBase: Man {
         class ACE_Actions {
-            class GVAR(backpackAction3d) {
-                condition = QUOTE(GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _player} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)} && {_player distance _target < GVAR(settingOpenActionRange)});
+            class GVAR(backpackAction3D) {
+                condition = QUOTE(GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)});
                 displayName = CSTRING(openBackpack);
-                distance = DISTANCE_INTERACTION;
+                distance = DISTANCE_INTERACTION_BACKPACK_3D;
                 exceptions[] = {"isNotSwimming"};
                 icon = ICON_INVENTORY;
                 position = QUOTE(_target call FUNC(backpackPos));
@@ -116,7 +114,7 @@ class CfgVehicles {
 
             class ACE_MainActions {
                 class GVAR(backpackAction) {
-                    condition = QUOTE(!GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _player} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)} && {_player distance _target < GVAR(settingOpenActionRange)});
+                    condition = QUOTE(!GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)}/* && {_player distance _target < DISTANCE_INTERACTION_BACKPACK}*/);
                     displayName = CSTRING(openBackpack);
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;
@@ -124,7 +122,7 @@ class CfgVehicles {
                 };
 
                 class GVAR(openAction) {
-                    condition = QUOTE(GVAR(settingOpenAction) && {!alive _target} && {isNull objectParent _player} && {_player distance _target < GVAR(settingOpenActionRange)});
+                    condition = QUOTE(GVAR(settingOpenAction) && {isNull objectParent _target} && {!alive _target || (_target getVariable [ARR_2('ACE_isUnconscious',false)])});
                     displayName = CQSTRING(STR_action_gear);
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;
@@ -135,7 +133,7 @@ class CfgVehicles {
 
         class ACE_SelfActions {
             class GVAR(assembleAction) {
-                condition = QUOTE(GVAR(settingAssembleAction) && {[ARR_2(_player,backpackContainer _player)] call FUNC(canAssemble)});
+                condition = QUOTE(GVAR(settingAssembleAction) && {_player call FUNC(canAssemble)});
                 displayName = DEFAULT_TEXT;
                 icon = ICON_REPAIR;
                 modifierFunction = QUOTE(call FUNC(assembleModify));

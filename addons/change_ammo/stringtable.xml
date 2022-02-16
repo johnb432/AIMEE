@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AIMEE">
     <Package name="change_ammo">
-        <Key ID="STR_AIMEE_change_ammo_EnableAmmoMenu">
+        <Key ID="STR_AIMEE_change_ammo_settingAmmoClass">
             <Original>Enable magazine switch menu</Original>
             <English>Enable magazine switch menu</English>
             <German>Magazinwechselinteraktion zulassen</German>
             <French>Permission du menu "changer magazines"</French>
         </Key>
-        <Key ID="STR_AIMEE_change_ammo_EnableAmmoMenuToolTip">
+        <Key ID="STR_AIMEE_change_ammo_settingAmmoClass_ToolTip">
             <Original>Allows the player to switch magazine types using the ACE interaction menu.</Original>
             <English>Allows the player to switch magazine types using the ACE interaction menu.</English>
             <German>Erlaubt den Spieler Magazine mit einer ACE-Selbstinteraktion auszuwechseln.</German>
             <French>Permet au joueur de changer de magazine avec une interaction ACE sur soi-même.</French>
         </Key>
-        <Key ID="STR_AIMEE_change_ammo_EnableAmmoMenuVehicle">
+        <Key ID="STR_AIMEE_change_ammo_settingVehicleAmmoClass">
             <Original>Enable vehicle gunner magazine switch menu</Original>
             <English>Enable vehicle gunner magazine switch menu</English>
             <German>Fahrzeugmagazinwechsel-Menu zulassen</German>
             <French>Permission du menu "changer magazines" véhicule</French>
         </Key>
-        <Key ID="STR_AIMEE_change_ammo_EnableAmmoMenuVehicleToolTip">
+        <Key ID="STR_AIMEE_change_ammo_settingVehicleAmmoClass_ToolTip">
             <Original>Allows the player to switch vehicle magazines using the ACE self-interaction menu.</Original>
             <English>Allows the player to switch vehicle magazines using the ACE self-interaction menu.</English>
             <German>Erlaubt den Spieler Fahrzeugmagazine mit einer ACE-Selbstinteraktion auszuwechseln.</German>
