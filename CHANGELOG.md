@@ -1,4 +1,4 @@
-# Changelog for AIMEE 14.2.2022
+# Changelog for AIMEE 16.2.2022
 
 1.3.2.0
 - Major overhaul of mod: Countless fixes and improvements.
