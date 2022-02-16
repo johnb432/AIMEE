@@ -1,10 +1,10 @@
-PREPHELP(assembleModify);
-PREPHELP(holderModify);
 PREP(assemble);
+PREP(assembleModify);
 PREP(backpackPos);
 PREP(canAssemble);
 PREP(canDisassemble);
 PREP(canPickup);
 PREP(hasInventory);
+PREP(holderModify);
 PREP(locateBackpack);
 PREP(playerPickup);

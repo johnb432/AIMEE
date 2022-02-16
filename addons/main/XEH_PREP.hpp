@@ -1,3 +1,2 @@
-PREP(ignoreKeybindForInputAction);
-PREP(keybindName);
+PREP(ignoreKeybind);
 PREP(operatingUAV);

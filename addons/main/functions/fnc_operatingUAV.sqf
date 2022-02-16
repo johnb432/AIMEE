@@ -1,17 +1,19 @@
 #include "script_component.hpp"
+
 /*
  * Author: upsilon, johnb43
- *
+ * Returns if unit is connected to a UAV.
  *
  * Arguments:
- * 0: Player <OBJECT>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * Returns if player is connected to a UAV <BOOL>
+ * Is controlling UAV <BOOL>
+ *
+ * Example:
+ * player call AIMEE_main_fnc_operatingUAV
  *
  * Public: No
  */
 
-params ["_player"];
-
-(UAVControl getConnectedUAV _player) select 1 isNotEqualTo "";
+((UAVControl getConnectedUAV _this) select 1) isNotEqualTo "";

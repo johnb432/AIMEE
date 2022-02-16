@@ -1,14 +1,10 @@
-PREPHELP(flapsSubMenus);
-PREPHELP(gearModify);
-PREP(animPhases);
 PREP(canManual);
+PREP(gearModify);
 PREP(flapsDown);
+PREP(flapsMenus);
 PREP(gearHandler);
 PREP(gearStatus);
-PREP(guessPhase);
-PREP(guessVectoring);
 PREP(initUserActions);
 PREP(isDriver);
 PREP(toggleGear);
 PREP(userActionMenus);
-PREP(vectoringUp);

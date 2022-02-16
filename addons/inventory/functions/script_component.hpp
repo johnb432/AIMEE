@@ -1,1 +1,1 @@
-#include "\x\AIMEE\addons\inventory\script_component.hpp"
+#include "..\script_component.hpp"

@@ -1,58 +1,66 @@
 #include "script_component.hpp"
+
 /*
  * Author: upsilon, johnb43
- *	Adds misc interactions from vehicles to the interaction list.
+ * Adds misc interactions from vehicles to the interaction list.
  *
  * Arguments:
- * None
+ * 0: Vehicle <OBJECT>
  *
  * Return Value:
  * None
  *
+ * Example:
+ * vehicle player call AIMEE_vehicle_controls_fnc_userActionMenus;
+ *
  * Public: No
  */
 
-params ["_target", "_player", "_args"];
+params ["_target"];
 
 private _config = configOf _target;
+private _actions = "true" configClasses (_config >> "UserActions");
 
+if (_actions isEqualTo []) exitWith {[]};
+
+// this is used instead of target in vanilla user actions
 private _run = {
-				params ["_target", "_player", "_args"];
+    params ["_target", "", "_args"];
 
-				private _savedthis = this;
+    private _savedThis = this;
 
-				this = _target;
-				call compileFinal (_args select 0);
-				this = _savedthis;
+    this = _target;
+    call compileFinal (_args select 0);
+    this = _savedThis;
 };
 
 private _condition = {
-				params ["_target", "_player", "_args"];
+    params ["_target", "", "_args"];
 
-				private _savedthis = this;
+    private _savedThis = this;
 
-				this = _target;
+    this = _target;
+    private _return = call compileFinal (_args select 1);
+    this = _savedThis;
 
-				private _return = call compileFinal (_args select 1);
-
-				this = _savedthis;
-				_return;
+    _return;
 };
 
 private _menus = [];
 
 {
-				if (getText (_x >> "shortcut") != "Eject" || {getText (_x >> "shortcut") == "Eject" && "FIR" in (typeOf _target)}) then {
-								_menus pushBack [[
-												str getNumber (_x >> "userActionID"),
-												getText (_x >> "displayName"),
-												"",
-												_run,
-												_condition,
-												nil,
-												[getText (_x >> "statement"), getText (_x >> "condition")]
-								] call ace_interact_menu_fnc_createAction, [], _target];
-				};
-} forEach ("true" configClasses (_config >> "UserActions"));
+    // Eject for Firewill plane ejection
+    if (getText (_x >> "shortcut") != "Eject" || "FIR" in (typeOf _target)) then {
+        _menus pushBack [[
+            format [QGVAR(userAction_%1), getNumber (_x >> "userActionID")],
+            getText (_x >> "displayName"),
+            "",
+            _run,
+            _condition,
+            nil,
+            [getText (_x >> "statement"), getText (_x >> "condition")]
+        ] call ace_interact_menu_fnc_createAction, [], _target];
+    };
+} forEach _actions;
 
 _menus;

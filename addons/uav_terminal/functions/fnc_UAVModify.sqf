@@ -1,11 +1,12 @@
 #include "script_component.hpp"
+
 /*
  * Author: upsilon, johnb43
- *
+ * Sets the icon and name of the interaction.
  *
  * Arguments:
  * 0: Object <OBJECT>
- * 1: Player <OBJECT>
+ * 1: Unit <OBJECT>
  * 2: Params <ARRAY>
  * 3: Interaction menu <ARRAY>
  *
@@ -15,9 +16,9 @@
  * Public: No
  */
 
-params ["_target", "_player", "_args", "_menu"];
+params ["", "_unit", "", "_menu"];
 
-private _config = configOf (getConnectedUAV _player);
+private _config = configOf (getConnectedUAV _unit);
 
 _menu set [1, getText (_config >> "displayName")];
 _menu set [2, getText (_config >> "icon")];

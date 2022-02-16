@@ -1,18 +1,19 @@
 #include "script_component.hpp"
 /*
  * Author: upsilon, johnb43
- *
+ * Returns the position of where the ACE interaction has to go.
  *
  * Arguments:
- * 0: Target unit <OBJECT>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * Position of where the ACE interaction has to go <ARRAY>
+ * Position <ARRAY>
+ *
+ * Example:
+ * cursorTarget call AIMEE_inventory_fnc_backpackPos
  *
  * Public: No
  */
 
-params ["_target"];
-
-private _spine = _target selectionPosition "spine3";
-(((_target selectionPosition "rightshoulder" vectorDiff _spine) vectorCrossProduct (_target selectionPosition "leftshoulder" vectorDiff _spine)) vectorMultiply 4) vectorAdd _spine;
+private _spine = _this selectionPosition "spine3";
+(((_this selectionPosition "rightshoulder" vectorDiff _spine) vectorCrossProduct (_this selectionPosition "leftshoulder" vectorDiff _spine)) vectorMultiply 4) vectorAdd _spine;

@@ -1,14 +1,18 @@
 #include "script_component.hpp"
+
 /*
- * Author: upsilon
- *
+ * Author: upsilon, johnb43
+ * Returns whether a gun can be manually fired by commander.
  *
  * Arguments:
- * 0: Vehicle <OBJECT>
- * 1: Name <STRING>
+ * 0: Unit <OBJECT>
+ * 1: Vehicle <OBJECT>
  *
  * Return Value:
- * Returns whether a gun can be manually fired by commander <BOOLEAN>
+ * Can manual fire <BOOL>
+ *
+ * Example:
+ * [player, vehicle player] call AIMEE_vehicle_controls_fnc_canManual
  *
  * Public: No
  */
@@ -18,11 +22,11 @@ params ["_unit", "_vehicle"];
 private _config = configOf _vehicle;
 
 if (getNumber (_config >> "enableManualFire") isEqualTo 0 || {isPlayer gunner _vehicle}) exitWith {
-				false
+    false;
 };
 
 if (_vehicle isKindOf "Air" || {unitIsUAV _vehicle}) then {
-				[_unit, _vehicle] call FUNC(isDriver) && {"true" configClasses (_config >> "Turrets") isNotEqualTo []};
+    _this call FUNC(isDriver) && {"true" configClasses (_config >> "Turrets") isNotEqualTo []};
 } else {
-				_unit isEqualTo commander _vehicle;
+    _unit isEqualTo commander _vehicle;
 };

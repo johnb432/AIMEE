@@ -1,25 +1,23 @@
 #include "script_component.hpp"
+
 /*
  * Author: upsilon, johnb43
- *
+ * Returns whether a static weapon can be assembled.
  *
  * Arguments:
- * 0: Player <OBJECT>
- * 1: Backpack <OBJECT>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * Returns  whether a static weapon can be assembled <BOOL>
+ * If weapon can be assembled <BOOL>
+ *
+ * Example:
+ * player call AIMEE_inventory_fnc_canAssemble
  *
  * Public: No
  */
 
-params ["_player", "_backpack"];
+if (isNull (configOf backpackContainer _this >> "assembleInfo")) exitWith {false};
 
-private _config = configOf _backpack >> "assembleInfo";
-if (isNull _config) exitWith {false};
+(_this call FUNC(locateBackpack)) params ["_base", "_weapon"];
 
-([_player, _backpack] call FUNC(locateBackpack)) params ["_baseOnGround", "_base", "_weapon", "_weaponHolder"];
-
-if (isNull _base || isNull _weapon) exitWith {false};
-
-true;
+!isNull _base && {!isNull _weapon};

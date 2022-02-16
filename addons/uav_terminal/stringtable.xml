@@ -1,41 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AIMEE">
     <Package name="uav_terminal">
-        <Key ID="STR_AIMEE_uav_terminal_EnableUAVTerminalMenu">
+        <Key ID="STR_AIMEE_uav_terminal_termAction">
             <Original>Add UAV terminal to Equipment menu</Original>
             <English>Add UAV terminal to Equipment menu</English>
             <German>Füge UAV Terminal zum Ausrüstungsmenu</German>
             <French>Ajouter l'interaction "terminal UAV" au menu équipement</French>
         </Key>
-        <Key ID="STR_AIMEE_uav_terminal_EnableUAVTerminalMenuToolTip">
+        <Key ID="STR_AIMEE_uav_terminal_termAction_ToolTip">
             <Original>Allows the player to open the UAV terminal using the ACE interaction menu.</Original>
             <English>Allows the player to open the UAV terminal using the ACE interaction menu.</English>
             <German>Erlaubt den Spieler das UAV Terminal mit einer ACE-Selbstinteraktion auszuwechseln.</German>
             <French>Permet au joueur d'ouvrir le terminal UAV avec une interaction ACE sur soi-même.</French>
         </Key>
-        <Key ID="STR_AIMEE_uav_terminal_EnableUAVControl">
+        <Key ID="STR_AIMEE_uav_terminal_UAVAction">
             <Original>Take/release control using self-interaction</Original>
             <English>Take/release control using self-interaction</English>
             <German>Bedienung nehmen/abgeben Interaktionen zulassen</German>
             <French>Permission des menus prendre/rendre contrôle</French>
         </Key>
-        <Key ID="STR_AIMEE_uav_terminal_EnableUAVControlToolTip">
+        <Key ID="STR_AIMEE_uav_terminal_UAVAction_ToolTip">
             <Original>Allows the player to take control of UAVs using the ACE self-interaction menu.</Original>
             <English>Allows the player to take control of UAVs using the ACE self-interaction menu.</English>
             <German>Erlaubt den Spieler die Kontrolle eines UAV mit einer ACE-Selbstinteraktion aufzugreifen.</German>
             <French>Permet au joueur de prendre le contrôle d'un UAV avec une interaction ACE sur soi-même.</French>
-        </Key>
-        <Key ID="STR_AIMEE_uav_terminal_EnableGPSMenu">
-            <Original>Add GPS to Equipment menu</Original>
-            <English>Add GPS to Equipment menu</English>
-            <German>GPS zum Ausrüstungsmenu hinzufügen</German>
-            <French>Ajouter une interaction GPS au menu équipement</French>
-        </Key>
-        <Key ID="STR_AIMEE_uav_terminal_EnableGPSMenuToolTip">
-            <Original>Allows the player to open the GPS using the ACE self-interaction menu.</Original>
-            <English>Allows the player to open the GPS using the ACE self-interaction menu.</English>
-            <German>Erlaubt den Spieler die GPS mit einer ACE-Selbstinteraktion zu öffnen.</German>
-            <French>Permet au joueur d'ouvrir le GPS avec une interaction ACE sur soi-même.</French>
         </Key>
     </Package>
 </Project>
