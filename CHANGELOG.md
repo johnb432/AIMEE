@@ -1,3 +1,8 @@
+# Changelog for AIMEE 8.3.2022
+
+1.3.2.1
+- Added support for 2.08.
+
 # Changelog for AIMEE 16.2.2022
 
 1.3.2.0

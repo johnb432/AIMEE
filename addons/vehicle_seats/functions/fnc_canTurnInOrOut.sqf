@@ -18,7 +18,6 @@
  * Public: No
  */
 
-//AIMEE_vehicle_seats_fnc_canTurnInOrOut = {
 params ["_unit", "_vehicle", "_type"];
 
 _type = toLower _type;
@@ -46,5 +45,3 @@ if (_index isNotEqualTo -1 && {(_fullCrew select _index) select 4}) then {
 };
 
 _condition && {_unit call ace_common_fnc_hasHatch};
-
-//};
