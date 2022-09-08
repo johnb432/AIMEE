@@ -2,7 +2,7 @@
 
 /*
  * Author: upsilon, johnb43
- * Returns if a unit can switch to given seat .
+ * Returns if a unit can switch to given seat.
  *
  * Arguments:
  * 0: Unit <OBJECT>
@@ -34,12 +34,12 @@ if (!isNull _occupant && {alive _occupant} && {
 // Various other restrictions
 switch (_role) do {
     case "driver": {
-        !(lockedDriver _vehicle) && {getNumber (configOf _vehicle >> "hasDriver") isEqualTo 1};
+        !(lockedDriver _vehicle) && {getNumber (configOf _vehicle >> "hasDriver") == 1};
     };
     case "gunner";
     case "commander";
     case "turret": {
-        !(_vehicle lockedTurret _turretPath) && {getNumber ([_vehicle, _turretPath] call CBA_fnc_getTurret >> "hasGunner") isEqualTo 1};
+        !(_vehicle lockedTurret _turretPath) && {getNumber ([_vehicle, _turretPath] call CBA_fnc_getTurret >> "hasGunner") == 1};
     };
     case "cargo": {
         !(_vehicle lockedCargo _cargoIndex);

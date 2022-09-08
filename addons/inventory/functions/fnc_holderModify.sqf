@@ -18,12 +18,13 @@
 
 params ["_target", "", "", "_menu"];
 
-private _content = ["CfgWeapons"] + weaponCargo _target + ["CfgMagazines"] + magazineCargo _target + ["CfgVehicles"] + backpackCargo _target;
+private _content = weaponCargo _target;
+_content append (itemCargo _target);
+_content append (magazineCargo _target);
+_content append (backpackCargo _target);
 
-if (count _content isEqualTo 4) then {
-    private _index = _content findIf {_x find "Cfg" isNotEqualTo 0};
-
-    _menu set [1, getText (configFile >> _content select (_index - 1) >> _content select _index >> "displayName")];
+if (count _content == 1) then {
+    _menu set [1, getText (((_content select 0) call CBA_fnc_getItemConfig) >> "displayName")];
     _menu set [2, ICON_TAKE];
 } else {
     _menu set [1, LQSTRING(str_action_gear)];

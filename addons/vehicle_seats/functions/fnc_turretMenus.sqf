@@ -24,7 +24,7 @@ params ["_vehicle", "_prefix", "_seat", "_icon"];
 private _turretPath = _seat select 3;
 private _turretConfig = [_vehicle, _turretPath] call CBA_fnc_getTurret;
 
-if (getNumber (_turretConfig >> "isCopilot") isNotEqualTo 0) then {
+if (getNumber (_turretConfig >> "isCopilot") != 0) then {
     _icon = ICON_PILOT;
 };
 

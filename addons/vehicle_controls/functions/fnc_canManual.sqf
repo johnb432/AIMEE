@@ -21,7 +21,7 @@ params ["_unit", "_vehicle"];
 
 private _config = configOf _vehicle;
 
-if (getNumber (_config >> "enableManualFire") isEqualTo 0 || {isPlayer gunner _vehicle}) exitWith {
+if (getNumber (_config >> "enableManualFire") == 0 || {isPlayer gunner _vehicle}) exitWith {
     false;
 };
 

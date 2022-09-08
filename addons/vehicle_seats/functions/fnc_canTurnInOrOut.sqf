@@ -40,7 +40,7 @@ private _fullCrew = fullCrew _vehicle;
 private _index = _fullCrew findIf {(_x select 0) isEqualTo _unit};
 
 // If unit is in a FFV turret, check if can turn in/out
-if (_index isNotEqualTo -1 && {(_fullCrew select _index) select 4}) then {
+if (_index != -1 && {(_fullCrew select _index) select 4}) then {
     _condition = getText ([_vehicle, _vehicle unitTurret _unit] call CBA_fnc_getTurret >> "personTurretAction") isNotEqualTo "";
 };
 

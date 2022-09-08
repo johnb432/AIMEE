@@ -14,7 +14,7 @@ class CfgVehicles {
             class ACE_Equipment {
                 class GVAR(terminalActionMenu) {
                     displayName = DEFAULT_TEXT;
-                    condition = QUOTE(GVAR(termAction) && {(_player call FUNC(assignedTerminal)) isNotEqualTo -1} && {isNull getConnectedUAV _player || {!GVAR(UAVAction) && {!(_player call EFUNC(main,operatingUAV))}}});
+                    condition = QUOTE(GVAR(termAction) && {(_player call FUNC(assignedTerminal)) != -1} && {isNull getConnectedUAV _player || {!GVAR(UAVAction) && {!(_player call EFUNC(main,operatingUAV))}}});
                     modifierFunction = QUOTE(call FUNC(terminalModify));
                     statement = QPACTION('UAVTerminalOpen',_player);
                 };

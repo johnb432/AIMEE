@@ -20,7 +20,7 @@ params ["", "_unit", "", "_menu"];
 
 private _index = _unit call FUNC(assignedTerminal);
 
-if (_index isEqualTo -1) exitWith {};
+if (_index == -1) exitWith {};
 
 private _config = configFile >> "CfgWeapons" >> (assignedItems _unit) select _index;
 

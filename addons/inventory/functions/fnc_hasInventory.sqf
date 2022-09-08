@@ -18,4 +18,4 @@
 
 private _config = configOf _this;
 
-!lockedInventory _this && {getNumber (_config >> "disableInventory") isNotEqualTo 1} && {getNumber (_config >> "maximumLoad") isNotEqualTo 0};
+!lockedInventory _this && {maxLoad _this > 0} && {getNumber (_config >> "disableInventory") != 1};

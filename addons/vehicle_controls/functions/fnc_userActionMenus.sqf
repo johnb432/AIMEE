@@ -50,7 +50,7 @@ private _menus = [];
 
 {
     // Eject for Firewill plane ejection
-    if (getText (_x >> "shortcut") != "Eject" || "FIR" in (typeOf _target)) then {
+    if (getText (_x >> "shortcut") != "Eject" || {"FIR" in (typeOf _target)}) then {
         _menus pushBack [[
             format [QGVAR(userAction_%1), getNumber (_x >> "userActionID")],
             getText (_x >> "displayName"),

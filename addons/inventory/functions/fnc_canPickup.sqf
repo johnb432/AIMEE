@@ -16,12 +16,9 @@
  * Public: No
  */
 
-private _total = count weaponCargo _this;
+private _content = weaponCargo _target;
+_content append (itemCargo _target);
+_content append (magazineCargo _target);
+_content append (backpackCargo _target);
 
-if (_total > 1) exitWith {false};
-
-_total = _total + count magazineCargo _this;
-
-if (_total > 1) exitWith {false};
-
-(_total + count backpackCargo _this) isEqualTo 1
+count _content == 1;

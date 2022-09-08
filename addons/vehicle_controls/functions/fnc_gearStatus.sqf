@@ -19,17 +19,13 @@ params ["_vehicle", ["_set", nil]];
 
 private _old = _vehicle getVariable [QGVAR(gearStatus), GEAR_UNKNOWN];
 
-if (_old isEqualTo GEAR_UNKNOWN) then {
+if (_old == GEAR_UNKNOWN) then {
     // Guess where the animation is at
-    private _last = 0;
-    private _count = 0;
-    private _highest = 0;
-    private _highestV = 0;
     private _phases = [];
     private _phase = -1;
 
     {
-        if (_x find "gear" isNotEqualTo -1) then {
+        if ("gear" in _x) then {
             _phase = _vehicle animationPhase _x;
 
             if (_phase >= 0) then {
@@ -42,8 +38,13 @@ if (_old isEqualTo GEAR_UNKNOWN) then {
 
     _phases sort true;
 
+    private _last = 0;
+    private _count = 0;
+    private _highest = 0;
+    private _highestV = 0;
+
     {
-        if (_last isNotEqualTo _x) then {
+        if (_last != _x) then {
             _count = 0;
         };
 
@@ -56,7 +57,7 @@ if (_old isEqualTo GEAR_UNKNOWN) then {
         };
     } forEach _phases;
 
-    if (_highestV isEqualTo 0) exitWith {
+    if (_highestV == 0) exitWith {
         _old = GEAR_DOWN;
     };
 

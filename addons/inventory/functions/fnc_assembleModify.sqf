@@ -18,10 +18,6 @@
 
 params ["", "_unit", "", "_menu"];
 
-private _backpack = backpackContainer _unit;
-
-if (isNull _backpack) exitWith {};
-
 (_unit call FUNC(locateBackpack)) params ["_base", "_weapon"];
 
 if (isNull _base || {isNull _weapon}) exitWith {};
