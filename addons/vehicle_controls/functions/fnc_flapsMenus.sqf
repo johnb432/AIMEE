@@ -35,4 +35,4 @@ for "_i" from 0 to FLAPS_MAX do {
     ] call ace_interact_menu_fnc_createAction, [], _this];
 };
 
-_menus;
+_menus

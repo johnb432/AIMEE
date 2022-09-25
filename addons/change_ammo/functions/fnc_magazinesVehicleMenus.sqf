@@ -22,7 +22,7 @@ params ["_unit", "_target"];
 private _turret = _target unitTurret _unit;
 (weaponState [_target, _turret]) params ["_weapon", "_muzzle", "", "_magazine"];
 
-// Do not allow menu creation for vanilla autocannons that use different firemodes to switch ammunition types instead of magazines.
+// Do not allow menu creation for vanilla autocannons that use different firemodes to switch ammunition types instead of magazines
 if (_weapon in ["autocannon_40mm_CTWS", "autocannon_30mm_CTWS", "autocannon_30mm", "ACE_cannon_20mm_Rh202"]) exitWith {[]};
 
 // Returns case correct magazines
@@ -33,10 +33,10 @@ private _class = "";
 private _config = "";
 private _cfgMagazines = configFile >> "CfgMagazines";
 
-for "_i" from 0 to count _allAvailableMags - 2 step 2 do {
+for "_i" from 0 to (count _allAvailableMags) - 2 step 2 do {
     _class = _allAvailableMags select _i;
 
-    // Find magazines that are available (magazines are case sensitive!) and see if the the magazine isn't the same as the current magazine
+    // Find compatible magazines
     if (_class in _compatibleMags) then {
         _config = _cfgMagazines >> _class;
 
@@ -52,4 +52,4 @@ for "_i" from 0 to count _allAvailableMags - 2 step 2 do {
     };
 };
 
-_menus;
+_menus

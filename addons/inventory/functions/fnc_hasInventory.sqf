@@ -16,6 +16,4 @@
  * Public: No
  */
 
-private _config = configOf _this;
-
-!lockedInventory _this && {maxLoad _this > 0} && {getNumber (_config >> "disableInventory") != 1};
+!lockedInventory _this && {maxLoad _this > 0} && {getNumber (configOf _this >> "disableInventory") != 1}

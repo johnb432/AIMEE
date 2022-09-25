@@ -32,7 +32,7 @@ if (_old == GEAR_UNKNOWN) then {
                 _phases pushBack _phase;
             };
         };
-    } forEach animationNames _vehicle;
+    } forEach (animationNames _vehicle);
 
     if (_phases isEqualTo []) exitWith {-1};
 

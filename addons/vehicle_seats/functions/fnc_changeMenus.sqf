@@ -26,7 +26,7 @@ private _menus = [];
 
 // Gets all seats of the various types below
 (["driver", "commander", "gunner", "turret", "cargo"] apply {
-   fullCrew [_vehicle, _x, true];
+    fullCrew [_vehicle, _x, true];
 }) params ["_drivers", "_commanders", "_gunners", "_turrets", "_cargos"];
 
 if (_drivers isNotEqualTo [] && {[_unit, _vehicle, _drivers select 0] call FUNC(canSwitch)}) then {
@@ -69,4 +69,4 @@ if (_gunners isNotEqualTo [] && {[_unit, _vehicle, _gunners select 0] call FUNC(
     };
 } forEach _cargos;
 
-_menus;
+_menus

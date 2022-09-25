@@ -19,12 +19,12 @@
 
 params ["_unit", "_vehicle"];
 
-if (_unit isEqualTo (currentPilot _vehicle)) exitWith {
-    true;
+if (_unit == (currentPilot _vehicle)) exitWith {
+    true
 };
 
-if ((getConnectedUAV _unit) isEqualTo _vehicle) exitWith {
-    ((UAVControl _vehicle) select 1) isEqualTo "DRIVER";
+if (_vehicle == (getConnectedUAV _unit)) exitWith {
+    ((UAVControl _vehicle) select 1) == "DRIVER"
 };
 
-false;
+false

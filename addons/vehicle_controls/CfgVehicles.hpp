@@ -1,6 +1,6 @@
 #define ARTY_COMP_ACTION \
     class GVAR(artyCompAction) {\
-        condition = QUOTE(GVAR(settingArtyComputerAction) && {_player isEqualTo gunner _target} && {getNumber (configOf _target >> 'artilleryScanner') == 1});\
+        condition = QUOTE(GVAR(settingArtyComputerAction) && {_player == gunner _target} && {getNumber (configOf _target >> 'artilleryScanner') == 1});\
         displayName = CQSTRING(STR_artillery_computer);\
         icon = ICON_ARTY_COMP;\
         statement = QPACTION('ArtilleryComputer',_target);\

@@ -14,6 +14,7 @@ class CfgVehicles {
             class ACE_Equipment {
                 class GVAR(terminalActionMenu) {
                     displayName = DEFAULT_TEXT;
+                    exceptions[] = {"isNotInside", "isNotSwimming", "isNotSitting"};
                     condition = QUOTE(GVAR(termAction) && {(_player call FUNC(assignedTerminal)) != -1} && {isNull getConnectedUAV _player || {!GVAR(UAVAction) && {!(_player call EFUNC(main,operatingUAV))}}});
                     modifierFunction = QUOTE(call FUNC(terminalModify));
                     statement = QPACTION('UAVTerminalOpen',_player);
@@ -22,6 +23,7 @@ class CfgVehicles {
                 class GVAR(UAVActionMenu) {
                     condition = QUOTE(GVAR(UAVAction) && {alive getConnectedUAV _player} && {!(_player call EFUNC(main,operatingUAV))});
                     displayName = DEFAULT_TEXT;
+                    exceptions[] = {"isNotInside", "isNotSwimming", "isNotSitting"};
                     insertChildren = QUOTE(_player call FUNC(UAVMenus));
                     modifierFunction = QUOTE(call FUNC(UAVModify));
                     statement = QPACTION('UAVTerminalOpen',_player);

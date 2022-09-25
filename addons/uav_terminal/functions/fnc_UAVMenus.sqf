@@ -19,12 +19,12 @@
 private _uav = getConnectedUAV _this;
 (UAVControl _uav) params ["_controller", "_role"];
 
-if (_controller isNotEqualTo _this) exitWith {[]};
+if (_controller != _this) exitWith {[]};
 
 private _config = configOf _uav;
 private _menus = [];
 
-if (_role isNotEqualTo "") then {
+if (_role != "") then {
     _menus pushBack [[
         QGVAR(releaseUAV),
         LQSTRING(STR_useract_uav_releasecontrols),
@@ -35,7 +35,7 @@ if (_role isNotEqualTo "") then {
             // "BackFromUAV" action doesn't work when controlling gunner. ticket: https://feedback.bistudio.com/T128594
             _unit remoteControl objNull;
 
-            if (cameraView isEqualTo "GUNNER") then {
+            if (cameraView == "GUNNER") then {
                 _unit switchCamera "INTERNAL";
             } else {
                 switchCamera _unit;
@@ -64,7 +64,7 @@ if (_role isNotEqualTo "") then {
     ] call ace_interact_menu_fnc_createAction, [], _this];
 };
 
-if (!isNull (_config >> "uavCameraGunnerPos") && {_role isNotEqualTo "GUNNER"}) then {
+if (!isNull (_config >> "uavCameraGunnerPos") && {_role != "GUNNER"}) then {
     _menus pushBack [[
         QGVAR(gunnerUAV),
         LQSTRING(STR_useract_uav_takegunnercontrols),
@@ -76,7 +76,7 @@ if (!isNull (_config >> "uavCameraGunnerPos") && {_role isNotEqualTo "GUNNER"}) 
     ] call ace_interact_menu_fnc_createAction, [], _uav];
 };
 
-if (!isNull (_config >> "uavCameraDriverPos") && {_role isNotEqualTo "DRIVER"}) then {
+if (!isNull (_config >> "uavCameraDriverPos") && {_role != "DRIVER"}) then {
     _menus pushBack [[
         QGVAR(driverUAV),
         LQSTRING(STR_useract_uav_takecontrols),
@@ -92,4 +92,4 @@ if (!isNull (_config >> "uavCameraDriverPos") && {_role isNotEqualTo "DRIVER"}) 
     ] call ace_interact_menu_fnc_createAction, [], _uav];
 };
 
-_menus;
+_menus
