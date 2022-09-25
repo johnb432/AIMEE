@@ -1,6 +1,6 @@
 #define ARTY_COMP_ACTION \
     class GVAR(artyCompAction) {\
-        condition = QUOTE(GVAR(settingArtyComputerAction) && {_player isEqualTo gunner _target} && {getNumber (configOf _target >> 'artilleryScanner') isEqualTo 1});\
+        condition = QUOTE(GVAR(settingArtyComputerAction) && {_player == gunner _target} && {getNumber (configOf _target >> 'artilleryScanner') == 1});\
         displayName = CQSTRING(STR_artillery_computer);\
         icon = ICON_ARTY_COMP;\
         statement = QPACTION('ArtilleryComputer',_target);\
@@ -50,7 +50,7 @@
 
 #define GEAR_ACTION \
     class GVAR(gearAction) {\
-        condition = QUOTE(GVAR(settingGearAction) && {'LandGear' call EFUNC(main,ignoreKeybind)} && {getNumber (configOf _target >> 'gearRetracting') isEqualTo 1} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
+        condition = QUOTE(GVAR(settingGearAction) && {'LandGear' call EFUNC(main,ignoreKeybind)} && {getNumber (configOf _target >> 'gearRetracting') == 1} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
         displayName = DEFAULT_TEXT;\
         icon = ICON_GEAR;\
         modifierFunction = QUOTE(call FUNC(gearModify));\
@@ -87,7 +87,7 @@
 
 #define FLAPS_ACTION \
     class GVAR(flapsAction) {\
-        condition = QUOTE(GVAR(settingFlapsAction) && {'FlapsDown' call EFUNC(main,ignoreKeybind)} && {getNumber (configOf _target >> 'flaps') isNotEqualTo 0} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
+        condition = QUOTE(GVAR(settingFlapsAction) && {'FlapsDown' call EFUNC(main,ignoreKeybind)} && {getNumber (configOf _target >> 'flaps') != 0} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
         displayName = CSTRING(Flaps);\
         icon = ICON_FLAPS;\
         insertChildren = QUOTE(_target call FUNC(flapsMenus));\

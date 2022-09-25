@@ -16,4 +16,4 @@
  * Public: No
  */
 
-((UAVControl getConnectedUAV _this) select 1) isNotEqualTo "";
+((UAVControl getConnectedUAV _this) select 1) != ""

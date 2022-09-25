@@ -13,16 +13,28 @@ SETTING(settingAssembleAction,"CHECKBOX",true);
 
 // Add various stats to arsenal
 if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_arsenal")}) then {
-    [[[8, 9], []], QGVAR(hasNightVision), [], "Night vision", [false, true], [{}, {
+    [[[8, 9], []], QGVAR(hasNightVision), [], "Has night vision", [false, true], [{}, {
         params ["", "_itemCfg"];
 
-        ["No", "Yes"] select (getArray (_itemCfg >> "visionMode") findIf {"NVG" == _x} isNotEqualTo -1);
+        private _visionModes = if (isClass (_itemCfg >> "OpticsModes")) then {
+            flatten (("true" configClasses (_itemCfg >> "OpticsModes")) apply {getArray (_x >> "visionMode")})
+        } else {
+            getArray (_itemCfg >> "visionMode")
+        };
+
+        ["No", "Yes"] select (_visionModes findIf {"NVG" == _x} != -1)
     }, {true}]] call ace_arsenal_fnc_addStat;
 
-    [[[8, 9], []], QGVAR(hasThermalVision), [], "Thermal vision", [false, true], [{}, {
+    [[[8, 9], []], QGVAR(hasThermalVision), [], "Has thermal vision", [false, true], [{}, {
         params ["", "_itemCfg"];
 
-        ["No", "Yes"] select (getArray (_itemCfg >> "visionMode") findIf {"TI" == _x} isNotEqualTo -1);
+        private _visionModes = if (isClass (_itemCfg >> "OpticsModes")) then {
+            flatten (("true" configClasses (_itemCfg >> "OpticsModes")) apply {getArray (_x >> "visionMode")})
+        } else {
+            getArray (_itemCfg >> "visionMode")
+        };
+
+        ["No", "Yes"] select (_visionModes findIf {"TI" == _x} != -1)
     }, {true}]] call ace_arsenal_fnc_addStat;
 
     [[[2], []], QGVAR(canBuddyReload), [], "Special functionality", [false, true], [{}, {
@@ -30,7 +42,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_arsenal")}) the
     }, {
         params ["", "_itemCfg"];
 
-        getNumber (_itemCfg >> "ACE_reloadlaunchers_enabled") isEqualTo 1;
+        getNumber (_itemCfg >> "ACE_reloadlaunchers_enabled") == 1
     }]] call ace_arsenal_fnc_addStat;
 
     [[[5], []], QGVAR(hasWireCutter), [], "Special functionality", [false, true], [{}, {
@@ -38,7 +50,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_arsenal")}) the
     }, {
         params ["", "_itemCfg"];
 
-        getNumber (_itemCfg >> "ace_logistics_wirecutter_hasWirecutter") isEqualTo 1;
+        getNumber (_itemCfg >> "ace_logistics_wirecutter_hasWirecutter") == 1
     }]] call ace_arsenal_fnc_addStat;
 
     [[[], [2]], QGVAR(isSuppressor), [], "Is suppressor", [false, true], [{}, {
@@ -52,7 +64,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_arsenal")}) the
 
         private _num = getNumber (_itemCfg >> "AmmoCoef" >> "audibleFire");
 
-         _num isNotEqualTo 0 && {_num isNotEqualTo 1} && {getNumber (_itemCfg >> "soundTypeIndex") isEqualTo 1};
+         _num != 0 && {_num != 1} && {getNumber (_itemCfg >> "soundTypeIndex") == 1}
     }]] call ace_arsenal_fnc_addStat;
 
     [[[], [2]], QGVAR(isFlashHider), [], "Is flash hider", [false, true], [{}, {
@@ -66,7 +78,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_arsenal")}) the
 
         private _num = getNumber (_itemCfg >> "AmmoCoef" >> "visibleFire");
 
-        _num isNotEqualTo 0 && {_num isNotEqualTo 1};
+        _num != 0 && {_num != 1}
     }]] call ace_arsenal_fnc_addStat;
 };
 

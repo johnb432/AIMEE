@@ -17,12 +17,12 @@
  * Public: No
  */
 
-params ["_vehicle"];
+params ["_vehicle", "_flapChanges"];
 
 for "_i" from 1 to FLAPS_MAX do {
     _vehicle action ["FlapsUp", _vehicle];
 };
 
-for "_i" from 1 to (_this select 1) do {
+for "_i" from 1 to _flapChanges do {
     _vehicle action ["FlapsDown", _vehicle];
 };

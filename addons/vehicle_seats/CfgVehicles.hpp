@@ -1,6 +1,6 @@
 #define GETIN_ACTION \
 class GVAR(getInAction) {\
-    condition = QUOTE(GVAR(settingGetInAction) && {alive _target} && {locked _target < 2} && {!([ARR_2(side _player,side _target)] call BIS_fnc_sideIsEnemy)} && {((fullCrew [ARR_3(_target,'',true)]) findIf {[ARR_3(_player,_target,_x)] call FUNC(canSwitch)}) isNotEqualTo -1});\
+    condition = QUOTE(GVAR(settingGetInAction) && {alive _target} && {!(_player call EFUNC(main,operatingUAV))} && {locked _target < 2} && {!([ARR_2(side _player,side _target)] call BIS_fnc_sideIsEnemy)} && {((fullCrew [ARR_3(_target,'',true)]) findIf {[ARR_3(_player,_target,_x)] call FUNC(canSwitch)}) != -1});\
     displayName = CQSTRING(STR_rscMenu.hppRscGroupRootMenu_Items_GetIn1);\
     icon = ICON_GET_IN;\
     insertChildren = QUOTE([ARR_2(_target,_player)] call FUNC(changeMenus));\
@@ -71,7 +71,7 @@ class CfgVehicles {
     class CAManBase: Man {
         class ACE_SelfActions {
             class GVAR(changeAction) {
-                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingChangeAction) && {!isNull _vehicle} && {locked _vehicle < 2} && {isMultiplayer || {(effectiveCommander _vehicle) isEqualTo _player}} && {!([ARR_3(_player,_vehicle,'TurnIn')] call FUNC(canTurnInOrOut))});
+                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingChangeAction) && {!isNull _vehicle} && {!(_player call EFUNC(main,operatingUAV))} && {locked _vehicle < 2} && {isMultiplayer || {(effectiveCommander _vehicle) == _player}} && {!([ARR_3(_player,_vehicle,'turnIn')] call FUNC(canTurnInOrOut))});
                 displayName = CSTRING(ChangeSeat);
                 exceptions[] = {"isNotInside"};
                 icon = ICON_CHANGE_SEAT;
@@ -79,7 +79,7 @@ class CfgVehicles {
             };
 
             class GVAR(turnOutAction) {
-                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingTurnOutAction) && {!isNull _vehicle} && {'TurnOut' call EFUNC(main,ignoreKeybind)} && {[ARR_3(_player,_vehicle,'TurnOut')] call FUNC(canTurnInOrOut)});
+                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingTurnOutAction) && {!isNull _vehicle} && {!(_player call EFUNC(main,operatingUAV))} && {'TurnOut' call EFUNC(main,ignoreKeybind)} && {[ARR_3(_player,_vehicle,'turnOut')] call FUNC(canTurnInOrOut)});
                 displayName = CQSTRING(STR_action_turnout);
                 exceptions[] = {"isNotInside"};
                 icon = ICON_ARROW_UP;
@@ -87,7 +87,7 @@ class CfgVehicles {
             };
 
             class GVAR(turnInAction) {
-                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingTurnOutAction) && {!isNull _vehicle} && {'TurnIn' call EFUNC(main,ignoreKeybind)} && {[ARR_3(_player,_vehicle,'TurnIn')] call FUNC(canTurnInOrOut)});
+                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingTurnOutAction) && {!isNull _vehicle} && {!(_player call EFUNC(main,operatingUAV))} && {'TurnIn' call EFUNC(main,ignoreKeybind)} && {[ARR_3(_player,_vehicle,'turnIn')] call FUNC(canTurnInOrOut)});
                 displayName = CQSTRING(STR_action_turnin);
                 exceptions[] = {"isNotInside"};
                 icon = ICON_ARROW_DOWN;
@@ -95,7 +95,7 @@ class CfgVehicles {
             };
 
             class GVAR(ejectActionMoving) {
-                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingGetOutAction) && {!isNull _vehicle} && {'Eject' call EFUNC(main,ignoreKeybind)} && {!(abs speed _vehicle < 2 && {(getPos _vehicle) select 2 < 2})} && {[ARR_2(_player,_vehicle)] call FUNC(canEject) isNotEqualTo EJECT_TYPE_NONE});
+                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingGetOutAction) && {!isNull _vehicle} && {!(_player call EFUNC(main,operatingUAV))} && {'Eject' call EFUNC(main,ignoreKeybind)} && {!(abs speed _vehicle < 2 && {(getPos _vehicle) select 2 < 2})} && {[ARR_2(_player,_vehicle)] call FUNC(canEject) != EJECT_TYPE_NONE});
                 displayName = CQSTRING(STR_action_eject);
                 exceptions[] = {"isNotInside"};
                 icon = ICON_EJECT;
@@ -110,7 +110,7 @@ class CfgVehicles {
             };
 
             class GVAR(getOutAction) {
-                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingGetOutAction) && {!isNull _vehicle} && {'GetOut' call EFUNC(main,ignoreKeybind)} && {abs speed _vehicle < 2} && {(getPos _vehicle) select 2 < 2});
+                condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingGetOutAction) && {!isNull _vehicle} && {!(_player call EFUNC(main,operatingUAV))} && {'GetOut' call EFUNC(main,ignoreKeybind)} && {abs speed _vehicle < 2} && {(getPos _vehicle) select 2 < 2});
                 displayName = CQSTRING(STR_action_getout);
                 exceptions[] = {"isNotInside"};
                 icon = ICON_GET_OUT;

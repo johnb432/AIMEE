@@ -18,4 +18,4 @@
 
 private _config = configOf _this >> "assembleInfo";
 
-!isNull _config && {getArray (_config >> "dissasembleTo") isNotEqualTo []};
+!isNull _config && {getArray (_config >> "dissasembleTo") isNotEqualTo []}

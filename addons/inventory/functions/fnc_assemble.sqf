@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player, backpackContainer player] call AIMEE_inventory_fnc_assemble
+ * player call AIMEE_inventory_fnc_assemble
  *
  * Public: No
  */

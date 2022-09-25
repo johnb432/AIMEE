@@ -2,7 +2,7 @@
 
 if (!hasInterface) exitWith {};
 
-GVAR(changeAmmoNamespace) = call CBA_fnc_createNamespace;
+GVAR(changeAmmoNamespace) = createHashMap;
 GVAR(loadoutChanged) = true;
 
 ["loadout", {

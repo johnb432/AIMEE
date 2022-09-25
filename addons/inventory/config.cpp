@@ -6,7 +6,10 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"AIMEE_main"};
+        requiredAddons[] = {
+            "AIMEE_main",
+            "ace_arsenal"
+        };
         author = "johnb43";
         authors[] = {"upsilon", "johnb43"};
         url = "https://github.com/johnb432/AIMEE";

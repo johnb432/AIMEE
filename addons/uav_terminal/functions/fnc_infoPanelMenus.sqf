@@ -28,7 +28,7 @@
                 if ("UAVFeedDisplayComponent" in (infoPanel _x)) then {
                     setInfoPanel [_x, "EmptyDisplayComponent"];
                 } else {
-                    if (_id isEqualTo _x) then {
+                    if (_id == _x) then {
                         setInfoPanel [_id, "UAVFeedDisplayComponent"];
                     };
                 };
@@ -45,7 +45,7 @@
 
             private _opened = "UAVFeedDisplayComponent" in (infoPanel _id);
 
-            _menu set [1, [[TEXT_RIGHT, TEXT_LEFT] select (_id isEqualTo "left"), [TEXT_CLOSE_RIGHT, TEXT_CLOSE_LEFT] select (_id isEqualTo "left")] select _opened];
+            _menu set [1, [[TEXT_RIGHT, TEXT_LEFT] select (_id == "left"), [TEXT_CLOSE_RIGHT, TEXT_CLOSE_LEFT] select (_id == "left")] select _opened];
             _menu set [2, [ICON_ON, ICON_OFF] select _opened];
         }
     ] call ace_interact_menu_fnc_createAction, [], _this];

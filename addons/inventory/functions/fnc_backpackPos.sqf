@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+
 /*
  * Author: upsilon, johnb43
  * Returns the position of where the ACE interaction has to go.

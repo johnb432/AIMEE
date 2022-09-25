@@ -29,9 +29,22 @@ class CfgVehicles {
         };
     };
 
-    class ThingX;
-    class WeaponHolderSimulated: ThingX {
+    class Thing;
+    class ThingX: Thing {
         class ACE_Actions {
+            class ACE_MainActions {
+                condition = "true";
+                displayName = CQSTRING(STR_ACE_Interaction_MainAction);
+                distance = 2;
+                selection = "";
+
+                VEHICLE_INVENTORY_ACTION;
+            };
+        };
+    };
+    class WeaponHolderSimulated: ThingX {
+        class ACE_Actions: ACE_Actions {
+            delete GVAR(openAction);
             class GVAR(holderAction) {
                 condition = QUOTE(GVAR(settingHolderAction));
                 displayName = DEFAULT_TEXT;
@@ -114,7 +127,7 @@ class CfgVehicles {
 
             class ACE_MainActions {
                 class GVAR(backpackAction) {
-                    condition = QUOTE(!GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)}/* && {_player distance _target < DISTANCE_INTERACTION_BACKPACK}*/);
+                    condition = QUOTE(!GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)});
                     displayName = CSTRING(openBackpack);
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;
@@ -122,7 +135,7 @@ class CfgVehicles {
                 };
 
                 class GVAR(openAction) {
-                    condition = QUOTE(GVAR(settingOpenAction) && {isNull objectParent _target} && {!alive _target || (_target getVariable [ARR_2('ACE_isUnconscious',false)])});
+                    condition = QUOTE(GVAR(settingOpenAction) && {isNull objectParent _target} && {!alive _target || {_target getVariable [ARR_2('ACE_isUnconscious',false)]}});
                     displayName = CQSTRING(STR_action_gear);
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;

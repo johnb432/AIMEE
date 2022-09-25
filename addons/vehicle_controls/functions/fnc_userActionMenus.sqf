@@ -2,7 +2,7 @@
 
 /*
  * Author: upsilon, johnb43
- * Adds misc interactions from vehicles to the interaction list.
+ * Adds misc. interactions from vehicles to the interaction list.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -18,8 +18,7 @@
 
 params ["_target"];
 
-private _config = configOf _target;
-private _actions = "true" configClasses (_config >> "UserActions");
+private _actions = "true" configClasses (configOf _target >> "UserActions");
 
 if (_actions isEqualTo []) exitWith {[]};
 
@@ -27,33 +26,36 @@ if (_actions isEqualTo []) exitWith {[]};
 private _run = {
     params ["_target", "", "_args"];
 
-    private _savedThis = this;
+    private _tempThis = this;
 
     this = _target;
     call compileFinal (_args select 0);
-    this = _savedThis;
+    this = _tempThis;
 };
 
 private _condition = {
     params ["_target", "", "_args"];
 
-    private _savedThis = this;
+    private _tempThis = this;
 
     this = _target;
     private _return = call compileFinal (_args select 1);
-    this = _savedThis;
+    this = _tempThis;
 
-    _return;
+    _return
 };
 
 private _menus = [];
+private _displayName = "";
 
 {
+    _displayName = getText (_x >> "displayName");
+
     // Eject for Firewill plane ejection
-    if (getText (_x >> "shortcut") != "Eject" || "FIR" in (typeOf _target)) then {
+    if (_displayName != "" && {getText (_x >> "shortcut") != "Eject" || {(typeOf _target) select [0, 4] == "FIR_"}}) then {
         _menus pushBack [[
-            format [QGVAR(userAction_%1), getNumber (_x >> "userActionID")],
-            getText (_x >> "displayName"),
+            format [QGVAR(userAction_%1_%2), configName _x, getNumber (_x >> "userActionID")],
+            _displayName,
             "",
             _run,
             _condition,
@@ -63,4 +65,4 @@ private _menus = [];
     };
 } forEach _actions;
 
-_menus;
+_menus
