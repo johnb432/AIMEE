@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 /*
- * Author: upsilon, johnb43
+ * Author: johnb43, upsilon
  * Take one item from a container. Requires 1 (no more, no less) of an item to be able to be picked up.
  *
  * Arguments:
@@ -31,14 +31,14 @@ switch (true) do {
 
         true
     };
-    // Item
-    case (count _items == 1): {
+    // Item (this includes uniforms and vests: Don't pick those up if they have items inside them)
+    case (count _items == 1 && {load ((everyContainer _container) param [0, []] param [1, objNull]) == 0}): {
         scopeName "main";
 
         _items params ["_item"];
 
         private _loadout = getUnitLoadout _unit;
-        private _arsenalItems = uiNamespace getVariable ["ace_arsenal_configItems", []];
+        private _arsenalItems = GETUVAR("ace_arsenal_configItems",[]);
 
         // Check if the assignedItems slot for item is empty
         {

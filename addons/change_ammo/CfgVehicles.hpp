@@ -7,6 +7,9 @@ class GVAR(vehicleAmmoClass) {\
     insertChildren = QUOTE([ARR_2(_player,_target)] call FUNC(magazinesVehicleMenus));\
 }
 
+// `[player, cursorObject, []] call ace_common_fnc_canInteractWith` returns false when swimming, but true on land
+// `[player, cursorObject, ["isNotSwimming"]] call ace_common_fnc_canInteractWith` returns true when swimming and on land
+
 class CfgVehicles {
     class Man;
     class CAManBase: Man {

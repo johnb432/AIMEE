@@ -20,7 +20,7 @@
 
 params ["_unit", "_vehicle", "_type"];
 
-if !((toLowerANSI _type) in ["turnin", "turnout"]) exitWith {
+if (_type != "turnOut" && {_type != "turnIn"}) exitWith {
     false
 };
 
