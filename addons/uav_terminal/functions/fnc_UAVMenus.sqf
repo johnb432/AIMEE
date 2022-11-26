@@ -24,26 +24,20 @@ if (_controller != _this) exitWith {[]};
 private _config = configOf _uav;
 private _menus = [];
 
+// If in a turret, give option to release controls of turret
 if (_role != "") then {
     _menus pushBack [[
         QGVAR(releaseUAV),
         LQSTRING(STR_useract_uav_releasecontrols),
         ICON_RELEASE,
         {
-            params ["", "_unit"];
-
-            // "BackFromUAV" action doesn't work when controlling gunner. ticket: https://feedback.bistudio.com/T128594
-            _unit remoteControl objNull;
-
-            if (cameraView == "GUNNER") then {
-                _unit switchCamera "INTERNAL";
-            } else {
-                switchCamera _unit;
-            };
+            // Ticket: https://feedback.bistudio.com/T128594 -> Now workaround
+            (getConnectedUAVUnit (_this select 1)) action ["BackFromUAV"];
         },
         {true}
     ] call ace_interact_menu_fnc_createAction, [], _uav];
 } else {
+    // If in no turret, give options to disconnect and see camera feed from drone
     _menus pushBack [[
         QGVAR(disconnectUAV),
         LQSTRING(STR_useract_uav_uavterminalreleaseconnection),
@@ -60,10 +54,13 @@ if (_role != "") then {
         ICON_FEED,
         {},
         {true},
-        {(_this select 1) call FUNC(infoPanelMenus)}
+        {
+            (_this select 1) call FUNC(infoPanelMenus)
+        }
     ] call ace_interact_menu_fnc_createAction, [], _this];
 };
 
+// Give option to take gunner turret if existent and player isn't a gunner already
 if (!isNull (_config >> "uavCameraGunnerPos") && {_role != "GUNNER"}) then {
     _menus pushBack [[
         QGVAR(gunnerUAV),
@@ -76,6 +73,7 @@ if (!isNull (_config >> "uavCameraGunnerPos") && {_role != "GUNNER"}) then {
     ] call ace_interact_menu_fnc_createAction, [], _uav];
 };
 
+// Give option to take driver turret if existent and player isn't a driver already
 if (!isNull (_config >> "uavCameraDriverPos") && {_role != "DRIVER"}) then {
     _menus pushBack [[
         QGVAR(driverUAV),

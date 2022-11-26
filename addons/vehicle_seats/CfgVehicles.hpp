@@ -2,6 +2,7 @@
 class GVAR(getInAction) {\
     condition = QUOTE(GVAR(settingGetInAction) && {alive _target} && {!(_player call EFUNC(main,operatingUAV))} && {locked _target < 2} && {!([ARR_2(side _player,side _target)] call BIS_fnc_sideIsEnemy)} && {((fullCrew [ARR_3(_target,'',true)]) findIf {[ARR_3(_player,_target,_x)] call FUNC(canSwitch)}) != -1});\
     displayName = CQSTRING(STR_rscMenu.hppRscGroupRootMenu_Items_GetIn1);\
+    exceptions[] = {"isNotInside", "isNotSwimming"};\
     icon = ICON_GET_IN;\
     insertChildren = QUOTE([ARR_2(_target,_player)] call FUNC(changeMenus));\
     statement = QUOTE([ARR_2(_target,_player)] call FUNC(getInRun));\

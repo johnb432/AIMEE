@@ -1,3 +1,8 @@
+# Changelog for AIMEE 26.11.2022
+
+1.3.2.3
+- Minor improvements and fixes.
+
 # Changelog for AIMEE 25.9.2022
 
 1.3.2.2

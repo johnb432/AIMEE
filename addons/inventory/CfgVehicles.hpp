@@ -2,7 +2,6 @@
     class GVAR(openAction) {\
         condition = QUOTE(GVAR(settingOpenAction) && {alive _target} && {_target call FUNC(hasInventory)});\
         displayName = CQSTRING(STR_action_gear);\
-        exceptions[] = {"isNotSwimming"};\
         icon = ICON_INVENTORY;\
         statement = QPACTION('Gear',_target);\
     }
@@ -116,7 +115,7 @@ class CfgVehicles {
     class CAManBase: Man {
         class ACE_Actions {
             class GVAR(backpackAction3D) {
-                condition = QUOTE(GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)});
+                condition = QUOTE(GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {alive _target} && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
                 displayName = CSTRING(openBackpack);
                 distance = DISTANCE_INTERACTION_BACKPACK_3D;
                 exceptions[] = {"isNotSwimming"};
@@ -127,7 +126,7 @@ class CfgVehicles {
 
             class ACE_MainActions {
                 class GVAR(backpackAction) {
-                    condition = QUOTE(!GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {!isNull unitBackpack _target} && {alive _target} && {(unitBackpack _target) call FUNC(hasInventory)});
+                    condition = QUOTE(!GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {alive _target} && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
                     displayName = CSTRING(openBackpack);
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;
