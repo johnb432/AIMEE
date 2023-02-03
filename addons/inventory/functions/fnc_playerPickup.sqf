@@ -23,6 +23,7 @@ private _weapons = weaponCargo _container;
 private _items = itemCargo _container;
 private _magazines = magazinesAmmo _container;
 private _backpacks = backpackCargo _container;
+(everyContainer _container) param [0, ["", objNull]] params ["_firstContainerClassname", "_firstContainer"];
 
 switch (true) do {
     // Weapon
@@ -31,8 +32,163 @@ switch (true) do {
 
         true
     };
-    // Item (this includes uniforms and vests: Don't pick those up if they have items inside them)
-    case (count _items == 1 && {load ((everyContainer _container) param [0, []] param [1, objNull]) == 0}): {
+    // Equip face wear, head gear, uniform and vest if possible
+    case (count _items == 1 && {!isNull _firstContainer || {headgear _unit == ""} || {goggles _unit == ""}}): {
+        private _arsenalItems = GETUVAR("ace_arsenal_configItems",[]);
+
+        switch (true) do {
+            // Head gear
+            case ((_items select 0) in (_arsenalItems select 3) && {headgear _unit == ""}): {
+                _unit playAction "PutDown";
+
+                [{
+                    params ["_unit", "_headgear", "_container"];
+
+                    // If item couldn't be removed, it means it was deleted before; Don't continue
+                    if !([_container, _headgear] call CBA_fnc_removeItemCargo) exitWith {};
+
+                    // Add head gear
+                    _unit addHeadgear _headgear;
+                }, [_unit, _items select 0, _container], 1] call CBA_fnc_waitAndExecute;
+
+                true
+            };
+            // Face wear
+            case ((_items select 0) in (_arsenalItems select 7) && {goggles _unit == ""}): {
+                _unit playAction "PutDown";
+
+                [{
+                    params ["_unit", "_headgear", "_container"];
+
+                    // If item couldn't be removed, it means it was deleted before; Don't continue
+                    if !([_container, _headgear] call CBA_fnc_removeItemCargo) exitWith {};
+
+                    // Add head gear
+                    _unit addGoggles _headgear;
+                }, [_unit, _items select 0, _container], 1] call CBA_fnc_waitAndExecute;
+
+                true
+            };
+            // Uniform
+            case (_firstContainerClassname in (_arsenalItems select 4)): {
+                if (uniform _unit == "") then {
+                    _unit playAction "PutDown";
+
+                    [{
+                        params ["_unit", "_firstContainerClassname", "_container", "_weaponItemsCargo", "_magazinesAmmoCargo", "_itemCargo"];
+                        _itemCargo params ["_items", "_itemsCount"];
+
+                        // If item couldn't be removed, it means it was deleted before; Don't continue
+                        if !([_container, _firstContainerClassname] call CBA_fnc_removeItemCargo) exitWith {};
+
+                        // Add uniform
+                        _unit forceAddUniform _firstContainerClassname;
+
+                        // Remove any linked items
+                        {
+                            _unit removeItemFromUniform _x;
+                        } forEach uniformItems _unit;
+
+                        _container = uniformContainer _unit;
+
+                        // Add previous container content
+                        {
+                            _container addWeaponWithAttachmentsCargoGlobal [_x, 1];
+                        } forEach _weaponItemsCargo;
+
+                        {
+                            _container addMagazineAmmoCargo [_x select 0, 1, _x select 1];
+                        } forEach _magazinesAmmoCargo;
+
+                        {
+                            _container addItemCargoGlobal [_x, _itemsCount select _forEachIndex];
+                        } forEach _items;
+                    }, [_unit, _firstContainerClassname, _container, weaponsItemsCargo _firstContainer, magazinesAmmoCargo _firstContainer, getItemCargo _firstContainer], 1] call CBA_fnc_waitAndExecute;
+
+                    true
+                } else {
+                    // Add to inventory if possible
+                    if (_unit canAdd _firstContainerClassname && {load _firstContainer == 0}) exitWith {
+                        _unit playAction "PutDown";
+
+                        [{
+                            params ["_unit", "_firstContainerClassname", "_container"];
+
+                            // If item couldn't be removed, it means it was deleted before; Don't continue
+                            if !([_container, _firstContainerClassname] call CBA_fnc_removeItemCargo) exitWith {};
+
+                            _unit addItem _firstContainerClassname;
+                        }, [_unit, _firstContainerClassname, _container], 1] call CBA_fnc_waitAndExecute;
+
+                        true
+                    };
+
+                    false
+                };
+            };
+            // Vest
+            case (_firstContainerClassname in (_arsenalItems select 5)): {
+                if (vest _unit == "") then {
+                    _unit playAction "PutDown";
+
+                    [{
+                        params ["_unit", "_firstContainerClassname", "_container", "_weaponItemsCargo", "_magazinesAmmoCargo", "_itemCargo"];
+                        _itemCargo params ["_items", "_itemsCount"];
+
+                        // If item couldn't be removed, it means it was deleted before; Don't continue
+                        if !([_container, _firstContainerClassname] call CBA_fnc_removeItemCargo) exitWith {};
+
+                        // Add vest
+                        _unit addVest _firstContainerClassname;
+
+                        // Remove any linked items
+                        {
+                            _unit removeItemFromVest _x;
+                        } forEach vestItems _unit;
+
+                        _container = vestContainer _unit;
+
+                        // Add previous container content
+                        {
+                            _container addWeaponWithAttachmentsCargoGlobal [_x, 1];
+                        } forEach _weaponItemsCargo;
+
+                        {
+                            _container addMagazineAmmoCargo [_x select 0, 1, _x select 1];
+                        } forEach _magazinesAmmoCargo;
+
+                        {
+                            _container addItemCargoGlobal [_x, _itemsCount select _forEachIndex];
+                        } forEach _items;
+                    }, [_unit, _firstContainerClassname, _container, weaponsItemsCargo _firstContainer, magazinesAmmoCargo _firstContainer, getItemCargo _firstContainer], 1] call CBA_fnc_waitAndExecute;
+
+                    true
+                } else {
+                    // Add to inventory if possible
+                    if (_unit canAdd _firstContainerClassname && {load _firstContainer == 0}) exitWith {
+                        _unit playAction "PutDown";
+
+                        [{
+                            params ["_unit", "_firstContainerClassname", "_container"];
+
+                            // If item couldn't be removed, it means it was deleted before; Don't continue
+                            if !([_container, _firstContainerClassname] call CBA_fnc_removeItemCargo) exitWith {};
+
+                            _unit addItem _firstContainerClassname;
+                        }, [_unit, _firstContainerClassname, _container], 1] call CBA_fnc_waitAndExecute;
+
+                        true
+                    };
+
+                    false
+                };
+            };
+            // If not possible, try to open container
+            default {false};
+        };
+    };
+    // Item
+    case (count _items == 1 && {load _firstContainer == 0}): {
         scopeName "main";
 
         _items params ["_item"];
@@ -63,12 +219,10 @@ switch (true) do {
         } forEach [_arsenalItems select 10, _arsenalItems select 14, _arsenalItems select 12, _arsenalItems select 11, _arsenalItems select 13, _arsenalItems select 8];
 
         // Check if weapons have space for item
-        private _attachmentIndex = -1;
-
         {
-            _attachmentIndex = _forEachIndex;
-
             if (_item in _x) exitWith {
+                private _attachmentIndex = _forEachIndex;
+
                 {
                     _x params [["_weapon", ""], ["_muzzle", ""], ["_flashlight", ""], ["_optics", ""], "", "", ["_bipod", ""]];
 
@@ -87,11 +241,9 @@ switch (true) do {
 
                         true breakOut "main"
                     };
-                // Primary, secondary, handgun weapons, binoculars
-                } forEach [_loadout select 0, _loadout select 1, _loadout select 2, _loadout select 8];
+                } forEach [_loadout select 0, _loadout select 1, _loadout select 2, _loadout select 8]; // Primary, secondary, handgun weapons, binoculars
             };
-        // Optics, Flashlights, Muzzle attachments, Bipods
-        } forEach [_arsenalItems select 1 select 0, _arsenalItems select 1 select 1, _arsenalItems select 1 select 2, _arsenalItems select 1 select 3];
+        } forEach [_arsenalItems select 1 select 0, _arsenalItems select 1 select 1, _arsenalItems select 1 select 2, _arsenalItems select 1 select 3]; // Optics, Flashlights, Muzzle attachments, Bipods
 
         // Add to inventory if possible
         if (_unit canAdd _item) exitWith {
@@ -132,7 +284,7 @@ switch (true) do {
                 _unit playAction "PutDown";
 
                 [{
-                    params ["_unit", "_magazine", "_ammo", "_container", "_weapon", "_isSecondaryMagazine"];
+                    params ["_unit", "_magazine", "_ammo", "_container", "_weapon", "_muzzles", "_isSecondaryMagazine"];
 
                     // If magazine couldn't be removed, it means it was deleted before; Don't continue
                     if !([_container, _magazine, 1, _ammo] call CBA_fnc_removeMagazineCargo) exitWith {};
@@ -176,12 +328,11 @@ switch (true) do {
 
                         _unit addWeaponItem [_weapon, [_magazine, _ammo]];
                     }, [_unit, _magazine, _ammo, _weapon], _duration] call CBA_fnc_waitAndExecute;
-                }, [_unit, _magazine, _ammo, _container, _weapon, _index == 1], 1] call CBA_fnc_waitAndExecute;
+                }, [_unit, _magazine, _ammo, _container, _weapon, _muzzles, _index == 1], 1] call CBA_fnc_waitAndExecute;
 
                 true breakOut "main"
             };
-        // Primary, secondary, handgun weapons, binoculars
-        } forEach [_loadout select 0, _loadout select 1, _loadout select 2, _loadout select 8];
+        } forEach [_loadout select 0, _loadout select 1, _loadout select 2, _loadout select 8]; // Primary, secondary, handgun weapons, binoculars
 
         // Add to inventory if possible
         if (_unit canAdd _magazine) exitWith {
