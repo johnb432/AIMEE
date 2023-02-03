@@ -19,10 +19,10 @@ class CfgVehicles {
                 statement = QUOTE(if !(_target call FUNC(canPickup) && {[ARR_2(_player,_target)] call FUNC(playerPickup)}) then {PACTION('Gear',_target)});
 
                 class GVAR(holderOpenAction) {
-                    condition = QUOTE(GVAR(settingOpenAction) && {!isNull firstBackpack _target} && {(firstBackpack _target) call FUNC(hasInventory)} && {_target call FUNC(canPickup)});
+                    condition = QUOTE(private _firstContainer = ((everyContainer _target) param [ARR_2(0,[ARR_2('',objNull)])]) select 1; GVAR(settingOpenAction) && {!isNull _firstContainer} && {_firstContainer call FUNC(hasInventory)} && {_target call FUNC(canPickup)});
                     displayName = CQSTRING(STR_single_open);
                     icon = ICON_INVENTORY;
-                    statement = QPACTION('Gear',firstBackpack _target);
+                    statement = QPACTION('Gear',((everyContainer _target) param [ARR_2(0,[ARR_2('',objNull)])]) select 1);
                 };
             };
         };
@@ -149,7 +149,7 @@ class CfgVehicles {
                 displayName = DEFAULT_TEXT;
                 icon = ICON_REPAIR;
                 modifierFunction = QUOTE(call FUNC(assembleModify));
-                statement = QUOTE([ARR_2(_player,backpackContainer _player)] call FUNC(assemble));
+                statement = QUOTE(_player call FUNC(assemble));
             };
         };
     };

@@ -1,3 +1,9 @@
+# Changelog for AIMEE 3.2.2023
+
+1.3.2.4
+- Fixed minor bug with static weapon assembly.
+- Fixed minor bugs with picking up various items.
+
 # Changelog for AIMEE 26.11.2022
 
 1.3.2.3

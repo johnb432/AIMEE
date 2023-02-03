@@ -47,7 +47,7 @@ if (getNumber (_config >> "primary") == 0) then {
         };
     } forEach (nearestObjects [_this, ["GroundWeaponHolder"], 3]);
 
-    [_backpack, _weapon, _weaponHolder, false];
+    [_backpack, _weapon, _weaponHolder, false]
 } else {
     // If weapon on back: Returns classnames of tripod backpacks that are compatible with a given weapon backpack
     private _bases = getArray (_config >> "base");
@@ -72,5 +72,5 @@ if (getNumber (_config >> "primary") == 0) then {
         };
     } forEach (nearestObjects [_this, ["GroundWeaponHolder"], 3]);
 
-    [_base, _backpack, _weaponHolder, true];
+    [_base, _backpack, _weaponHolder, true]
 };

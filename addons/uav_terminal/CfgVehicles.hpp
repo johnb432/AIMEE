@@ -11,6 +11,13 @@ class CfgVehicles {
                 statement = QUOTE(if (!(_player call EFUNC(main,operatingUAV))) then {PACTION('UAVTerminalOpen',_player)});
             };
 
+            // For stopping remote controlling when Zeus
+            class GVAR(remoteControllingUnit) {
+                condition = QUOTE(alive GETMVAR('bis_fnc_moduleRemoteControl_unit',objNull) && {!isPlayer GETMVAR('bis_fnc_moduleRemoteControl_unit',objNull)});
+                displayName = CQSTRING(STR_useract_uav_releasecontrols);
+                statement = QUOTE(call FUNC(stopRemoteControllingUnit));
+            };
+
             class ACE_Equipment {
                 class GVAR(terminalActionMenu) {
                     displayName = DEFAULT_TEXT;
