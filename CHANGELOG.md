@@ -1,3 +1,9 @@
+# Changelog for AIMEE 2.7.2023
+
+1.3.2.5
+- Updated to use HEMTT 1.2.0.
+- Minor improvements and fixes.
+
 # Changelog for AIMEE 3.2.2023
 
 1.3.2.4

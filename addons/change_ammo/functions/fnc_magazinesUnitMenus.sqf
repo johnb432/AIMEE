@@ -45,7 +45,7 @@ for "_i" from 0 to (count _allAvailableMags) - 2 step 2 do {
 
         _menus pushBack [[
             format [QGVAR(magazine_%1), _class], // Action name
-            format ["%1 (%2 %3)", getText (_config >> "displayName"), _allAvailableMags select (_i + 1), LLSTRING(AmmoMenuLeft)], // Name of action shown in menu,
+            format [GVAR(numMagazines), getText (_config >> "displayName"), _allAvailableMags select (_i + 1)], // Name of action shown in menu
             getText (_config >> "picture"), // Icon
             {_player reload (_this select 2)}, // Statement
             {true}, // Condition

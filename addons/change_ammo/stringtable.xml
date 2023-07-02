@@ -25,11 +25,5 @@
             <German>Erlaubt den Spieler Fahrzeugmagazine mit einer ACE-Selbstinteraktion auszuwechseln.</German>
             <French>Permet au joueur de changer les magazines d'un véhicule avec une interaction ACE sur soi-même.</French>
         </Key>
-        <Key ID="STR_AIMEE_change_ammo_AmmoMenuLeft">
-            <Original>left</Original>
-            <English>left</English>
-            <German>übrig</German>
-            <French>restants</French>
-        </Key>
     </Package>
 </Project>

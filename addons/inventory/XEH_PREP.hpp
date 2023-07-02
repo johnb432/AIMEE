@@ -8,3 +8,5 @@ PREP(hasInventory);
 PREP(holderModify);
 PREP(locateBackpack);
 PREP(playerPickup);
+PREP(playerPickupMagazine);
+PREP(playerPickupItem);
