@@ -1,4 +1,5 @@
-[b]AIMEE - ACE interaction menu expansion - Enhanced[/b] is a client side mod which adds various ACE interactions for various interactions:
+[b]AIMEE - ACE interaction menu expansion - Enhanced[/b] is a client side mod which adds various ACE interactions for various interactions. This is not an official ACE mod.
+These are the interactions that are added:
 
 [list]
 [*] Turning engine on & off

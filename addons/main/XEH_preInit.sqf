@@ -2,10 +2,9 @@
 
 ADDON = false;
 
-PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
-PREP_RECOMPILE_END;
 
+// CBA Settings
 SETTING(settingHide,"CHECKBOX",true);
 
 ADDON = true;

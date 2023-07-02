@@ -2,10 +2,9 @@
 
 ADDON = false;
 
-PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
-PREP_RECOMPILE_END;
 
+// CBA Settings
 SETTING(settingOpenAction,"CHECKBOX",true);
 SETTING(settingBackpackAction,"CHECKBOX",true);
 SETTING(settingHolderAction,"CHECKBOX",true);
@@ -38,7 +37,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_arsenal")}) the
     }, {true}]] call ace_arsenal_fnc_addStat;
 
     [[[2], []], QGVAR(canBuddyReload), [], "Special functionality", [false, true], [{}, {
-        "Can be reloaded by a buddy";
+        "Can be reloaded by a buddy"
     }, {
         params ["", "_itemCfg"];
 
@@ -46,7 +45,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_arsenal")}) the
     }]] call ace_arsenal_fnc_addStat;
 
     [[[5], []], QGVAR(hasWireCutter), [], "Special functionality", [false, true], [{}, {
-        "Has wirecutters built in";
+        "Has wirecutters built in"
     }, {
         params ["", "_itemCfg"];
 
@@ -54,7 +53,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_arsenal")}) the
     }]] call ace_arsenal_fnc_addStat;
 
     [[[], [2]], QGVAR(isSuppressor), [], "Is suppressor", [false, true], [{}, {
-        "Yes";
+        "Yes"
     }, {
         params ["", "_itemCfg"];
 
@@ -68,7 +67,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_arsenal")}) the
     }]] call ace_arsenal_fnc_addStat;
 
     [[[], [2]], QGVAR(isFlashHider), [], "Is flash hider", [false, true], [{}, {
-        "Yes";
+        "Yes"
     }, {
         params ["", "_itemCfg"];
 

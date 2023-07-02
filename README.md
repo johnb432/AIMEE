@@ -1,4 +1,5 @@
-**AIMEE - ACE interaction menu expansion - Enhanced** is a client side mod which adds various ACE interactions for various interactions:
+**AIMEE - ACE interaction menu expansion - Enhanced** is a client side mod which adds various ACE interactions for various interactions. This is not an official ACE mod.
+These are the interactions that are added:
 
 * Turning engine on & off
 * Ejecting
@@ -26,9 +27,3 @@ Each added interaction has a CBA Setting that allows it to be toggled off if wan
 <h2>License</h2>
 
 See LICENSE.
-
-<h2>How to create PBOs</h2>
-
-* Download and install hemtt from [here](https://github.com/BrettMayson/HEMTT)
-* Open command terminal, navigate to said folder (Windows: cd 'insert path')
-* Type "hemtt build" for pbo, "hemtt build --release" for entire release

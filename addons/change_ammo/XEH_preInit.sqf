@@ -2,11 +2,12 @@
 
 ADDON = false;
 
-PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
-PREP_RECOMPILE_END;
 
+// CBA Settings
 SETTING(settingAmmoClass,"CHECKBOX",true);
 SETTING(settingVehicleAmmoClass,"CHECKBOX",true);
+
+GVAR(numMagazines) = (localize "str_num_magazines") regexReplace ["%s", "%1"] regexReplace ["%d", "%2"];
 
 ADDON = true;

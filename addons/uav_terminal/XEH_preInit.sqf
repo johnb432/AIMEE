@@ -2,10 +2,9 @@
 
 ADDON = false;
 
-PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
-PREP_RECOMPILE_END;
 
+// CBA Settings
 SETTING(termAction,"CHECKBOX",true);
 SETTING(UAVAction,"CHECKBOX",true);
 

@@ -15,7 +15,7 @@ class CfgVehicles {
     class CAManBase: Man {
         class ACE_SelfActions {
             class GVAR(ammoClass) {
-                condition = QUOTE(GVAR(settingAmmoClass) && {!ace_common_isReloading} && {!(_player call EFUNC(main,operatingUAV))} && {_player call CBA_fnc_canUseWeapon});
+                condition = QUOTE(GVAR(settingAmmoClass) && {private _weaponState = weaponState _player; _weaponState select 5 <= 0 && {_weaponState select 6 <= 0}} && {!(_player call EFUNC(main,operatingUAV))} && {_player call CBA_fnc_canUseWeapon});
                 displayName = CQSTRING(STR_usract_reload_magazine);
                 icon = ICON_RELOAD_MAN;
                 insertChildren = QUOTE(_player call FUNC(magazinesUnitMenus));
