@@ -8,7 +8,8 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "AIMEE_main",
-            "ace_arsenal"
+            "ace_logistics_wirecutter",
+            "ace_spectator"
         };
         author = "johnb43";
         authors[] = {"upsilon", "johnb43"};
@@ -19,3 +20,4 @@ class CfgPatches {
 
 #include "CfgVehicles.hpp"
 #include "CfgEventHandlers.hpp"
+#include "ACE_Arsenal_Stats.hpp"

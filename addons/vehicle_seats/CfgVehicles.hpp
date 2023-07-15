@@ -73,7 +73,7 @@ class CfgVehicles {
         class ACE_SelfActions {
             class GVAR(changeAction) {
                 condition = QUOTE(private _vehicle = objectParent _player; GVAR(settingChangeAction) && {!isNull _vehicle} && {!(_player call EFUNC(main,operatingUAV))} && {locked _vehicle < 2} && {isMultiplayer || {(effectiveCommander _vehicle) == _player}} && {!([ARR_3(_player,_vehicle,'turnIn')] call FUNC(canTurnInOrOut))});
-                displayName = CSTRING(ChangeSeat);
+                displayName = CQSTRING(STR_3den_display3den_entitymenu_changeseat_text);
                 exceptions[] = {"isNotInside"};
                 icon = ICON_CHANGE_SEAT;
                 insertChildren = QUOTE([ARR_2(_target,_player)] call FUNC(changeMenus));
@@ -124,6 +124,13 @@ class CfgVehicles {
                     icon = ICON_EJECT;
                     statement = QUOTE([ARR_2(_player,objectParent _player)] call FUNC(eject));
                 };
+            };
+
+            class GVAR(parachuteAction) {
+                condition = QUOTE((getUnitFreefallInfo _player) select 1 && {getText (configOf backpackContainer _player >> 'parachuteClass') != ''});
+                displayName = CQSTRING(STR_A3_action_deploy_parachute);
+                icon = ICON_PARACHUTE;
+                statement = QPACTION('OpenParachute',_player);
             };
         };
     };

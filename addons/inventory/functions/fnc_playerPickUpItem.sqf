@@ -22,11 +22,11 @@ scopeName "main";
 
 params ["_unit", "_container", "_item"];
 
-private _arsenalItems = GETUVAR("ace_arsenal_configItems",[]);
+private _description = (_item call ace_common_fnc_getItemType) select 1;
 
 // Equip face wear, head gear, uniform and vest if possible
 // Head gear
-if (headgear _unit == "" && {_item in (_arsenalItems select 3)}) exitWith {
+if (headgear _unit == "" && {_description == "headgear"}) exitWith {
     _unit playAction "PutDown";
 
     [{
@@ -42,7 +42,7 @@ if (headgear _unit == "" && {_item in (_arsenalItems select 3)}) exitWith {
     true
 };
 // Face wear
-if (goggles _unit == "" && {_item in (_arsenalItems select 7)}) exitWith {
+if (goggles _unit == "" && {_description == "goggles"}) exitWith {
     _unit playAction "PutDown";
 
     [{
@@ -58,7 +58,7 @@ if (goggles _unit == "" && {_item in (_arsenalItems select 7)}) exitWith {
     true
 };
 
-private _containerIndex = [_arsenalItems select 4, _arsenalItems select 5] findIf {_firstContainerClassname in _x};
+private _containerIndex = ["uniform", "vest"] findIf {_description == _x};
 
 // Uniform & vest
 if (_containerIndex != -1) exitWith {
@@ -132,9 +132,17 @@ if (_containerIndex != -1) exitWith {
 if (load _firstContainer == 0) exitWith {
     private _loadout = getUnitLoadout _unit;
 
+    if (_description == "gps") then {
+        _description = "uav_terminal"
+    };
+
+    if (_description == "hmd") then {
+        _description = "nvgoggles"
+    };
+
     // Check if the assignedItems slot for item is empty
     {
-        if (_item in _x) exitWith {
+        if (_x == _description) exitWith {
             // If the item can't be added to the assignedItems, check if it fits in the inventory further below
             if (((_loadout select 9) select _forEachIndex) != "") exitWith {};
 
@@ -151,12 +159,11 @@ if (load _firstContainer == 0) exitWith {
 
             true breakOut "main"
         };
-    // Map, Terminal, Radio, Compass, Watch, NVG
-    } forEach [_arsenalItems select 10, _arsenalItems select 14, _arsenalItems select 12, _arsenalItems select 11, _arsenalItems select 13, _arsenalItems select 8];
+    } forEach ["map", "uav_terminal", "radio", "compass", "watch", "nvgoggles"];
 
     // Check if weapons have space for item
     {
-        if (_item in _x) exitWith {
+        if (_x == _description) exitWith {
             private _attachmentIndex = _forEachIndex;
 
             {
@@ -179,7 +186,7 @@ if (load _firstContainer == 0) exitWith {
                 };
             } forEach [_loadout select 0, _loadout select 1, _loadout select 2, _loadout select 8]; // Primary, secondary, handgun weapons, binoculars
         };
-    } forEach [_arsenalItems select 1 select 0, _arsenalItems select 1 select 1, _arsenalItems select 1 select 2, _arsenalItems select 1 select 3]; // Optics, Flashlights, Muzzle attachments, Bipods
+    } forEach ["optics", "flashlight", "muzzle", "under"];
 
     // Add to inventory if possible
     if (_unit canAdd _item) exitWith {

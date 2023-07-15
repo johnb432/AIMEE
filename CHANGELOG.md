@@ -1,3 +1,9 @@
+# Changelog for AIMEE 15.7.2023
+
+1.3.2.6
+- Added parachute action.
+- Minor improvements and fixes.
+
 # Changelog for AIMEE 2.7.2023
 
 1.3.2.5

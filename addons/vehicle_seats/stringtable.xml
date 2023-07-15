@@ -61,12 +61,6 @@
             <German>Erlaubt den Spieler die Luke mit einer ACE-Selbstinteraktion zu öffnen oder schliessen.</German>
             <French>Permet au joueur de rentrer ou s'exposer son haut du corps avec une interaction ACE sur soi-même.</French>
         </Key>
-        <Key ID="STR_AIMEE_vehicle_seats_ChangeSeat">
-            <Original>Change Seat</Original>
-            <English>Change Seat</English>
-            <German>Platz wechseln</German>
-            <French>Changer de siège</French>
-        </Key>
         <Key ID="STR_AIMEE_vehicle_seats_ConfirmEject">
             <Original>Confirm eject</Original>
             <English>Confirm eject</English>

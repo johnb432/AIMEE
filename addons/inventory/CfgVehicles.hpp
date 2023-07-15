@@ -103,7 +103,7 @@ class CfgVehicles {
             class ACE_MainActions {
                 class GVAR(disassembleAction) {
                     condition = QUOTE(GVAR(settingAssembleAction) && {alive _target} && {_target call FUNC(canDisassemble)});
-                    displayName = CSTRING(disassemble);
+                    displayName = CQSTRING(STR_a3_disassemble);
                     icon = ICON_REPAIR;
                     statement = QPACTION('Disassemble', _target);
                 };
@@ -116,20 +116,22 @@ class CfgVehicles {
         class ACE_Actions {
             class GVAR(backpackAction3D) {
                 condition = QUOTE(GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {alive _target} && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
-                displayName = CSTRING(openBackpack);
+                displayName = DEFAULT_TEXT;
                 distance = DISTANCE_INTERACTION_BACKPACK_3D;
                 exceptions[] = {"isNotSwimming"};
                 icon = ICON_INVENTORY;
                 position = QUOTE(_target call FUNC(backpackPos));
+                modifierFunction = QUOTE((_this select 3) set [ARR_2(1, FORMAT_1(localize 'STR_ACTION_OPEN_BAG',localize 'STR_BACKPACK_CONTAINER_NAME'))]);
                 statement = QPACTION('OpenBag',_target);
             };
 
             class ACE_MainActions {
                 class GVAR(backpackAction) {
                     condition = QUOTE(!GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {alive _target} && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
-                    displayName = CSTRING(openBackpack);
+                    displayName = DEFAULT_TEXT;
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;
+                    modifierFunction = QUOTE((_this select 3) set [ARR_2(1, FORMAT_1(localize 'STR_ACTION_OPEN_BAG',localize 'STR_BACKPACK_CONTAINER_NAME'))]);
                     statement = QPACTION('OpenBag',_target);
                 };
 
