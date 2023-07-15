@@ -89,6 +89,8 @@
 
 #define ICON_CHANGE_SEAT "z\ace\addons\quickmount\UI\Seats_ca.paa"
 
+#define ICON_PARACHUTE "\A3\Air_F_Beta\Parachute_01\Data\UI\Portrait_Parachute_01_CA.paa"
+
 #define ICON_GEAR "\A3\ui_f\data\igui\cfg\vehicletoggles\landinggeariconon_ca.paa"
 
 #define ICON_LIGHTS_ON "A3\ui_f\data\igui\cfg\actions\ico_cpt_land_ON_ca"

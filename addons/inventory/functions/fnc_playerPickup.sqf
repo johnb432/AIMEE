@@ -34,11 +34,11 @@ switch (true) do {
     };
     // Item
     case (count _items == 1): {
-        [_unit, _container, _items select 0] call FUNC(playerPickupItem);
+        [_unit, _container, _items select 0] call FUNC(playerPickupItem)
     };
     // Magazine
     case (count _magazines == 1): {
-        [_unit, _container, _magazines select 0] call FUNC(playerPickupMagazine);
+        [_unit, _container, _magazines select 0] call FUNC(playerPickupMagazine)
     };
     // Backpack
     case (count _backpacks == 1): {

@@ -19,22 +19,22 @@
 (_this select 3) set [1,
     switch ((_this select 0) call FUNC(gearStatus)) do {
         case GEAR_ERROR: {
-            LQSTRING(str_lib_info_retract_gear) + " ERROR";
+            LQSTRING(str_lib_info_retract_gear) + " " + toUpper LQSTRING(str_mis_state_error)
         };
         case GEAR_DOWN: {
-            LQSTRING(str_action_gear_up);
+            LQSTRING(str_action_gear_up)
         };
         case GEAR_EXTENDING: {
-            LQSTRING(str_lib_info_retract_gear) + " " + LQSTRING(STR_DISP_OPT_OPEN);
+            LQSTRING(str_lib_info_retract_gear) + " " + LQSTRING(STR_DISP_OPT_OPEN)
         };
         case GEAR_UP: {
-            LQSTRING(str_action_gear_down);
+            LQSTRING(str_action_gear_down)
         };
         case GEAR_RETRACTING: {
-            LQSTRING(str_lib_info_retract_gear) + " " + LQSTRING(STR_DISP_OPT_CLOSE);
+            LQSTRING(str_lib_info_retract_gear) + " " + LQSTRING(STR_DISP_OPT_CLOSE)
         };
         default {
-            DEFAULT_TEXT;
+            DEFAULT_TEXT
         };
     }
 ];
