@@ -1,14 +1,14 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
  * Author: johnb43
- * Returns index of terminal in assignedItems (command).
+ * Returns if unit has compatible UAV terminal.
  *
  * Arguments:
  * 0: Unit <OBJECT>
  *
  * Return Value:
- * Returns index of terminal in assignedItems <NUMBER>
+ * Returns if terminal is present <BOOL>
  *
  * Example:
  * player call AIMEE_uav_terminal_fnc_assignedTerminal
@@ -17,5 +17,6 @@
  */
 
 private _cfgWeapons = configFile >> "CfgWeapons";
+private _terminal = _this getSlotItemName 612;
 
-(assignedItems _this) findIf {_x isKindOf ["UavTerminal_base", _cfgWeapons]}
+_terminal isKindOf ["UavTerminal_base", _cfgWeapons] && {[_cfgWeapons >> _terminal >> "ItemInfo" >> "side", "NUMBER", -1] call CBA_fnc_getConfigEntry == (side _this) call BIS_fnc_sideID}

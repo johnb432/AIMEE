@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
  * Author: johnb43
@@ -8,6 +8,8 @@
  * 0: Unit <OBJECT>
  * 1: Container <OBJECT>
  * 2: Item <STRING>
+ * 3: Container classname <STRING>
+ * 4: Container <OBJECT>
  *
  * Return Value:
  * Returns if the item was picked up or not  <BOOL>
@@ -20,7 +22,7 @@
 
 scopeName "main";
 
-params ["_unit", "_container", "_item"];
+params ["_unit", "_container", "_item", "_firstContainerClassname", "_firstContainer"];
 
 private _description = (_item call ace_common_fnc_getItemType) select 1;
 

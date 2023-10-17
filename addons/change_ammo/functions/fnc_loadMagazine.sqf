@@ -1,17 +1,17 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
- * Author: upsilon, johnb43
+ * Author: upsilon, johnb43, PabstMirror
  * Loads the least fullest magazine of a given type into the provided muzzle. For vehicle usage only.
  *
  * Arguments:
  * 0: Unit <OBJECT>
  * 1: Target <OBJECT>
  * 2: Params <ARRAY>
- *  2.0: Weapon <STRING>
- *  2.1: Muzzle <STRING>
- *  2.2: Magazine <STRING>
- *  2.3: Turret <ARRAY>
+ * - 0: Weapon <STRING>
+ * - 1: Muzzle <STRING>
+ * - 2: Magazine <STRING>
+ * - 3: Turret <ARRAY>
  *
  * Return Value:
  * None
@@ -28,11 +28,19 @@ _args params ["_weapon", "_muzzle", "_magazine", "_turret"];
 // Don't change mags for currently unselected weapons
 if (((weaponState [_target, _turret]) select 1) != _muzzle) exitWith {};
 
+private _magazinesAllTurrets = [];
+
 // Get magazines that are of the correct type; Exclude empty mags
-private _magazinesAmmoFull = (magazinesAmmoFull [_target, false]) select {(_x select 0) == _magazine};
+{
+    _x params ["_xMag", "_xTurret", "_xAmmo"];
 
-// Get count of rounds in magazines, then select minimum
-private _magazinesCount = _magazinesAmmoFull apply {_x select 1};
-private _mag = _magazinesAmmoFull select (_magazinesCount find (selectMin _magazinesCount));
+    if ((_xMag == _magazine) && {_xTurret isEqualTo _turret} && {_xAmmo > 0}) then {
+        _magazinesAllTurrets pushBack _x;
+    };
+} forEach (magazinesAllTurrets _target);
 
-_unit action ["loadMagazine", _target, _unit, _mag select 6, _mag select 5, _weapon, _muzzle];
+// Get count of rounds in magazines, then select maximum
+private _magazinesCount = _magazinesAllTurrets apply {_x select 2};
+private _mag = _magazinesAllTurrets select (_magazinesCount find (selectMax _magazinesCount));
+
+_unit action ["loadMagazine", _target, _unit, _mag select 4, _mag select 3, _weapon, _muzzle];

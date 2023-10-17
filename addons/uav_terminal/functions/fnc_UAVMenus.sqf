@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
  * Author: upsilon, johnb43
@@ -61,7 +61,7 @@ if (_role != "") then {
 };
 
 // Give option to take gunner turret if existent and player isn't a gunner already
-if (!isNull (_config >> "uavCameraGunnerPos") && {_role != "GUNNER"}) then {
+if (getText (_config >> "uavCameraGunnerPos") != "" && {_role != "GUNNER"}) then {
     _menus pushBack [[
         QGVAR(gunnerUAV),
         LQSTRING(STR_useract_uav_takegunnercontrols),
@@ -74,7 +74,7 @@ if (!isNull (_config >> "uavCameraGunnerPos") && {_role != "GUNNER"}) then {
 };
 
 // Give option to take driver turret if existent and player isn't a driver already
-if (!isNull (_config >> "uavCameraDriverPos") && {_role != "DRIVER"}) then {
+if (getText (_config >> "uavCameraDriverPos") != "" && {_role != "DRIVER"}) then {
     _menus pushBack [[
         QGVAR(driverUAV),
         LQSTRING(STR_useract_uav_takecontrols),

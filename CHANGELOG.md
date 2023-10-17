@@ -1,3 +1,11 @@
+# Changelog for AIMEE 17.10.2023
+
+1.3.3.0
+- Updated to work with ACE 3.16.0.
+- Added actions for assembling and disassembling UAVs.
+- Added ability to change ammo in every turret.
+- Minor improvements and fixes.
+
 # Changelog for AIMEE 15.7.2023
 
 1.3.2.6

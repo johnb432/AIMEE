@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
  * Author: upsilon, johnb43
@@ -27,4 +27,4 @@
     } else {
         (actionKeysNamesArray [_this, 1]) select 0
     };
-}});
+}})
