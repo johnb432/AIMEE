@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AIMEE">
     <Package name="uav_terminal">
+        <Key ID="STR_AIMEE_uav_terminal_remoteControlAction">
+            <Original>Release remote control of units using self-interaction</Original>
+            <English>Release remote control of units using self-interaction</English>
+            <German>Einheitenbedienung abgeben Interaktionen zulassen</German>
+            <French>Permission des menus rendre contrôle des unités</French>
+        </Key>
+        <Key ID="STR_AIMEE_uav_terminal_remoteControlAction_ToolTip">
+            <Original>Allows the player to release control of units using the ACE self-interaction menu.</Original>
+            <English>Allows the player to release control of units using the ACE self-interaction menu.</English>
+            <German>Erlaubt den Spieler die Kontrolle einer Einheit mit einer ACE-Selbstinteraktion abzugeben.</German>
+            <French>Permet au joueur de rendre le contrôle d'une unité avec une interaction ACE sur soi-même.</French>
+        </Key>
         <Key ID="STR_AIMEE_uav_terminal_termAction">
             <Original>Add UAV terminal to Equipment menu</Original>
             <English>Add UAV terminal to Equipment menu</English>

@@ -14,7 +14,7 @@
 [\
     QGVAR(NAME),\
     TYPE,\
-    [LLSTRING(NAME), LLSTRING(DOUBLES(NAME,ToolTip))],\
+    [LSTRING(NAME), LSTRING(DOUBLES(NAME,ToolTip))],\
     COMPONENT_NAME,\
     VALUE\
 ] call CBA_fnc_addSetting

@@ -18,9 +18,13 @@
 
 params ["", "_unit", "", "_menu"];
 
-if !(_unit call FUNC(assignedTerminal)) exitWith {};
+private _uavType = _unit call FUNC(UAVtype);
 
-private _config = configFile >> "CfgWeapons" >> _unit getSlotItemName 612;
+if (_uavType == "") exitWith {};
 
-_menu set [1, getText (_config >> "displayName")];
-_menu set [2, getText (_config >> "picture")];
+private _uavConfig = configFile >> "CfgVehicles" >> _uavType;
+
+if (isNull _uavConfig) exitWith {};
+
+_menu set [1, format [LQSTRING(STR_ACTION_ASSEMBLE), getText (_uavConfig >> "displayName")]];
+_menu set [2, getText (_uavConfig >> "icon")];

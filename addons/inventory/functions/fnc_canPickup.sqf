@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
  * Author: johnb43
@@ -16,8 +16,7 @@
  * Public: No
  */
 
-private _content = weaponCargo _this;
-_content append (itemCargo _this);
+private _content = itemCargo _this;
 _content append (magazineCargo _this);
 _content append (backpackCargo _this);
 

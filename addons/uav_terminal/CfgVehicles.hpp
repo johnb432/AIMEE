@@ -13,17 +13,17 @@ class CfgVehicles {
 
             // For stopping remote controlling when Zeus
             class GVAR(remoteControllingUnit) {
-                condition = QUOTE(alive GETMVAR('bis_fnc_moduleRemoteControl_unit',objNull) && {!isPlayer GETMVAR('bis_fnc_moduleRemoteControl_unit',objNull)});
-                exceptions[] = {"isNotInside", "isNotSwimming", "isNotSitting"};
+                condition = QUOTE(GVAR(remoteControlAction) && {private _unit = GETMVAR('bis_fnc_moduleRemoteControl_unit',objNull); alive _unit && {!isPlayer _unit}});
                 displayName = CQSTRING(STR_useract_uav_releasecontrols);
+                exceptions[] = {"isNotInside", "isNotSwimming", "isNotSitting"};
                 statement = QUOTE(call FUNC(stopRemoteControllingUnit));
             };
 
             class ACE_Equipment {
                 class GVAR(terminalActionMenu) {
+                    condition = QUOTE(GVAR(termAction) && {_player call FUNC(assignedTerminal)} && {isNull getConnectedUAV _player || {!GVAR(UAVAction) && {!(_player call EFUNC(main,operatingUAV))}}});
                     displayName = DEFAULT_TEXT;
                     exceptions[] = {"isNotInside", "isNotSwimming", "isNotSitting"};
-                    condition = QUOTE(GVAR(termAction) && {(_player call FUNC(assignedTerminal)) != -1} && {isNull getConnectedUAV _player || {!GVAR(UAVAction) && {!(_player call EFUNC(main,operatingUAV))}}});
                     modifierFunction = QUOTE(call FUNC(terminalModify));
                     statement = QPACTION('UAVTerminalOpen',_player);
                 };

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
  * Author: upsilon, johnb43
@@ -18,15 +18,9 @@
 
 params ["_target", "", "", "_menu"];
 
-private _content = weaponCargo _target;
-_content append (itemCargo _target);
+private _content = itemCargo _target;
 _content append (magazineCargo _target);
 _content append (backpackCargo _target);
 
-if (count _content == 1) then {
-    _menu set [1, getText (((_content select 0) call CBA_fnc_getItemConfig) >> "displayName")];
-    _menu set [2, ICON_TAKE];
-} else {
-    _menu set [1, LQSTRING(str_action_gear)];
-    _menu set [2, ICON_INVENTORY];
-};
+_menu set [1, getText (((_content select 0) call CBA_fnc_getItemConfig) >> "displayName")];
+_menu set [2, ICON_TAKE];

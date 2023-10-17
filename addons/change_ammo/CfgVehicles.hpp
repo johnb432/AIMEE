@@ -1,6 +1,6 @@
 #define VEHICLE_AMMO_ACTION \
 class GVAR(vehicleAmmoClass) {\
-    condition = QUOTE(GVAR(settingVehicleAmmoClass) && {!isTurnedOut _player} && {_player == gunner _target});\
+    condition = QUOTE(GVAR(settingVehicleAmmoClass) && {!isTurnedOut _player});\
     displayName = CQSTRING(STR_usract_reload_magazine);\
     exceptions[] = {"isNotInside"};\
     icon = ICON_RELOAD_VEHICLE;\

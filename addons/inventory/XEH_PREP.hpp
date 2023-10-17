@@ -1,6 +1,8 @@
 PREP(assemble);
 PREP(assembleModify);
 PREP(backpackPos);
+PREP(backpackType);
+PREP(backpackUAVModify);
 PREP(canAssemble);
 PREP(canDisassemble);
 PREP(canPickup);
@@ -10,3 +12,5 @@ PREP(locateBackpack);
 PREP(playerPickup);
 PREP(playerPickupMagazine);
 PREP(playerPickupItem);
+PREP(UAVAssemble);
+PREP(UAVType);

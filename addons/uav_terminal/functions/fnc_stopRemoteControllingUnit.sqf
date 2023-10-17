@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
  * Author: johnb43
@@ -23,8 +23,6 @@ objNull remoteControl bis_fnc_moduleRemoteControl_unit;
 bis_fnc_moduleRemoteControl_unit = nil;
 
 // Open curator interface, with a delay
-{
-    {
-        openCuratorInterface;
-    } call CBA_fnc_execNextFrame;
-} call CBA_fnc_execNextFrame;
+[{
+    openCuratorInterface;
+}, [], 2] call CBA_fnc_execAfterNFrames;
