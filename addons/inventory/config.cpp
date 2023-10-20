@@ -12,7 +12,10 @@ class CfgPatches {
             "ace_spectator"
         };
         author = "johnb43";
-        authors[] = {"upsilon", "johnb43"};
+        authors[] = {
+            "upsilon",
+            "johnb43"
+        };
         url = "https://github.com/johnb432/AIMEE";
         VERSION_CONFIG;
     };
