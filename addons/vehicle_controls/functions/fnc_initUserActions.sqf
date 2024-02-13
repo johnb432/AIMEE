@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: upsilon, johnb43
  * Gets scroll wheel actions from vehicle configs and makes them into ACE interactions.

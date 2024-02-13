@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: upsilon, johnb43
  * Assumes all aircraft in Arma 3 have 3-position flaps.

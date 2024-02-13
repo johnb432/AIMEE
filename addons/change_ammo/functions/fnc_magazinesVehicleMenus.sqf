@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: upsilon, johnb43
  * Makes all interaction menus for all ammo types for a given class of vehicle.

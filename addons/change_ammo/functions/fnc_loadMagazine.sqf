@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: upsilon, johnb43, PabstMirror
  * Loads the least fullest magazine of a given type into the provided muzzle. For vehicle usage only.

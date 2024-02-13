@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: johnb43
  * Returns the types of backpack that a UAV can be disassembled into.

@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: johnb43, upsilon
  * Take one item from a container. Requires 1 (no more, no less) of an item to be able to be picked up.
