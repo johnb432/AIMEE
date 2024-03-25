@@ -8,7 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "AIMEE_main",
-            "ace_quickmount"
+            "ace_interaction"
         };
         author = "johnb43";
         authors[] = {
@@ -16,6 +16,7 @@ class CfgPatches {
             "johnb43"
         };
         url = "https://github.com/johnb432/AIMEE";
+        skipWhenMissingDependencies = 1;
         VERSION_CONFIG;
     };
 };

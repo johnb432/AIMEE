@@ -1,3 +1,8 @@
+# Changelog for AIMEE 25.3.2024
+
+1.3.5.0
+- Minor improvements.
+
 # Changelog for AIMEE 20.10.2023
 
 1.3.4.0

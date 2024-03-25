@@ -4,6 +4,7 @@ class ace_arsenal_stats {
         scope = 2;
         displayName = "Is flash hider";
         showText = 1;
+        #pragma hemtt suppress pw3_padded_arg
         textStatement = QUOTE(\
             private _itemCfg = (_this select 1) >> 'ItemInfo';\
             if (!isClass _itemCfg) exitWith {localize 'STR_ACE_Common_No'};\
@@ -17,6 +18,7 @@ class ace_arsenal_stats {
         scope = 2;
         displayName = "Is suppressor";
         showText = 1;
+        #pragma hemtt suppress pw3_padded_arg
         textStatement = QUOTE(\
             private _itemCfg = (_this select 1) >> 'ItemInfo';\
             if (!isClass _itemCfg) exitWith {localize 'STR_ACE_Common_No'};\

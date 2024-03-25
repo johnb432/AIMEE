@@ -12,7 +12,7 @@ class CfgVehicles {
         class ACE_Actions {
             class ACE_MainActions {
                 class GVAR(holderAction) {
-                    condition = QUOTE(GVAR(settingHolderAction) && {_target call FUNC(canPickup)});
+                    condition = QUOTE(GVAR(settingHolderAction) && {[ARR_2(_player,_target)] call FUNC(canPickup)});
                     displayName = DEFAULT_TEXT;
                     distance = DISTANCE_INTERACTION_WEAPONHOLDER;
                     modifierFunction = QUOTE(call FUNC(holderModify));
@@ -20,7 +20,7 @@ class CfgVehicles {
                     statement = QUOTE(if !([ARR_2(_player,_target)] call FUNC(playerPickup)) then {PACTION('Gear',_target)});
 
                     class GVAR(holderOpenAction) {
-                        condition = QUOTE(private _firstContainer = ((everyContainer _target) param [ARR_2(0,[ARR_2('',objNull)])]) select 1; GVAR(settingOpenAction) && {!isNull _firstContainer} && {_firstContainer call FUNC(hasInventory)} && {_target call FUNC(canPickup)});
+                        condition = QUOTE(private _firstContainer = ((everyContainer _target) param [ARR_2(0,[ARR_2('',objNull)])]) select 1; GVAR(settingOpenAction) && {!isNull _firstContainer} && {_firstContainer call FUNC(hasInventory)} && {[ARR_2(_player,_target)] call FUNC(canPickup)});
                         displayName = CQSTRING(STR_single_open);
                         icon = ICON_INVENTORY;
                         statement = QPACTION('Gear',((everyContainer _target) param [ARR_2(0,[ARR_2('',objNull)])]) select 1);
@@ -35,7 +35,7 @@ class CfgVehicles {
         class ACE_Actions {
             class ACE_MainActions {
                 class GVAR(holderAction) {
-                    condition = QUOTE(GVAR(settingHolderAction) && {_target call FUNC(canPickup)});
+                    condition = QUOTE(GVAR(settingHolderAction) && {[ARR_2(_player,_target)] call FUNC(canPickup)});
                     displayName = DEFAULT_TEXT;
                     distance = DISTANCE_INTERACTION_WEAPONHOLDER;
                     modifierFunction = QUOTE(call FUNC(holderModify));
@@ -93,7 +93,7 @@ class CfgVehicles {
         class ACE_Actions {
             class ACE_MainActions {
                 class GVAR(disassembleAction) {
-                    condition = QUOTE(GVAR(settingAssembleAction) && {alive _target} && {_target call FUNC(canDisassemble)});
+                    condition = QUOTE(GVAR(settingAssembleAction) && {alive _target} && {[ARR_2(_player,_target)] call FUNC(canDisassemble)});
                     displayName = CQSTRING(STR_A3_disassemble);
                     icon = ICON_REPAIR;
                     statement = QPACTION('Disassemble',_target);
@@ -112,7 +112,7 @@ class CfgVehicles {
                 exceptions[] = {"isNotSwimming"};
                 icon = ICON_INVENTORY;
                 position = QUOTE(_target call FUNC(backpackPos));
-                modifierFunction = QUOTE((_this select 3) set [ARR_2(1, FORMAT_1(localize 'STR_ACTION_OPEN_BAG',localize 'STR_BACKPACK_CONTAINER_NAME'))]);
+                modifierFunction = QUOTE((_this select 3) set [ARR_2(1,FORMAT_1(localize 'STR_ACTION_OPEN_BAG',localize 'STR_BACKPACK_CONTAINER_NAME'))]);
                 statement = QPACTION('OpenBag',_target);
             };
 
@@ -122,7 +122,7 @@ class CfgVehicles {
                     displayName = DEFAULT_TEXT;
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;
-                    modifierFunction = QUOTE((_this select 3) set [ARR_2(1, FORMAT_1(localize 'STR_ACTION_OPEN_BAG',localize 'STR_BACKPACK_CONTAINER_NAME'))]);
+                    modifierFunction = QUOTE((_this select 3) set [ARR_2(1,FORMAT_1(localize 'STR_ACTION_OPEN_BAG',localize 'STR_BACKPACK_CONTAINER_NAME'))]);
                     statement = QPACTION('OpenBag',_target);
                 };
             };

@@ -7,9 +7,6 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "cba_common",
-            "cba_xeh",
-            "ace_interact_menu",
             "ace_interaction"
         };
         author = "johnb43, upsilon";
@@ -18,6 +15,7 @@ class CfgPatches {
             "johnb43"
         };
         url = "https://github.com/johnb432/AIMEE";
+        skipWhenMissingDependencies = 1;
         VERSION_CONFIG;
     };
 };
