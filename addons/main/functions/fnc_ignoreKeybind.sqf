@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: upsilon, johnb43
  * Returns to show action or not.
@@ -16,15 +15,24 @@
  * Public: No
  */
 
-!(GVAR(settingHide) && {!isNil {
-    // Gets rid of the Engine off/on interaction if ACE Keybinds for turning engine off and on are bound.
+!GVAR(settingHide) || {
+    // Show Engine off/on interaction if ACE Keybinds for turning engine off and on are unbound
     if (_this == "engineControlACE") then {
-        if (((["ACE3 Vehicles", "ace_weaponselect_EngineOn"] call CBA_fnc_getKeybind) select 5 select 0) == -1 || {((["ACE3 Vehicles", "ace_weaponselect_EngineOff"] call CBA_fnc_getKeybind) select 5 select 0) == -1}) then {
-            nil
-        } else {
-            "aceEngineKeybinds"
+        private _engineOff = ["ACE3 Vehicles", "ace_weaponselect_EngineOff"] call CBA_fnc_getKeybind;
+        private _engineOn = ["ACE3 Vehicles", "ace_weaponselect_EngineOn"] call CBA_fnc_getKeybind;
+
+        // If both keybinds don't exist, show
+        if (isNil "_engineOff" && isNil "_engineOn") exitWith {
+            true
         };
+
+        if (!isNil "_engineOff") then {
+            (_engineOff select 8) isEqualTo []
+        } else {
+            (_engineOn select 8) isEqualTo []
+        }
     } else {
-        (actionKeysNamesArray [_this, 1]) select 0
+        // Vanilla keybinds
+        (actionKeysNamesArray [_this, 1]) isEqualTo []
     };
-}})
+}

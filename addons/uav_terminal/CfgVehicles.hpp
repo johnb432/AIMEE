@@ -13,9 +13,10 @@ class CfgVehicles {
 
             // For stopping remote controlling when Zeus
             class GVAR(remoteControllingUnit) {
-                condition = QUOTE(GVAR(remoteControlAction) && {private _unit = GETMVAR('bis_fnc_moduleRemoteControl_unit',objNull); alive _unit && {!isPlayer _unit}});
+                condition = QUOTE(GVAR(remoteControlAction) && {private _unit = GETMVAR('BIS_fnc_moduleRemoteControl_unit',objNull); alive _unit && {!isPlayer _unit}});
                 displayName = CQSTRING(STR_useract_uav_releasecontrols);
                 exceptions[] = {"isNotInside", "isNotSwimming", "isNotSitting"};
+                icon = ICON_REMOTE_CONTOL;
                 statement = QUOTE(call FUNC(stopRemoteControllingUnit));
             };
 

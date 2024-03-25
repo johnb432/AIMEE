@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: upsilon, johnb43
  * Makes menus for given panel types.

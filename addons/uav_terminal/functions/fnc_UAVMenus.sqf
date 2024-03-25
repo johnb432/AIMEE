@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: upsilon, johnb43
  * Makes menus for UAVs.
@@ -78,11 +77,7 @@ if (getText (_config >> "uavCameraDriverPos") != "" && {_role != "DRIVER"}) then
     _menus pushBack [[
         QGVAR(driverUAV),
         LQSTRING(STR_useract_uav_takecontrols),
-        if (_uav isKindOf "Air") then {
-            ICON_PILOT
-        } else {
-            ICON_DRIVER
-        },
+        [ICON_DRIVER, ICON_PILOT] select (_uav isKindOf "Air"),
         {
             (_this select 1) action ["SwitchToUAVDriver", _this select 0];
         },

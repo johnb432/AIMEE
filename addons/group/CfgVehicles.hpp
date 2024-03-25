@@ -8,7 +8,7 @@ class CfgVehicles {
                     displayName = CSTRING(StepDown);
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_STEP_DOWN_LEADER;
-                    statement = QUOTE(private _group = group _player; [_player] joinSilent grpNull; [_player] joinSilent _group);
+                    statement = QUOTE(private _group = group _player; private _assignedTeam = assignedTeam _player; _assignedTeam = [ARR_2(_assignedTeam,'MAIN')] select (_assignedTeam == ''); [_player] joinSilent grpNull; [_player] joinSilent _group; _player assignTeam _assignedTeam;);
                 };
             };
         };

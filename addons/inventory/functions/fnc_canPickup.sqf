@@ -1,23 +1,25 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: johnb43
- * Returns if a weapon holder contains 1 item only.
+ * Returns if a weapon holder can be interacted with.
  *
  * Arguments:
- * 0: Container <OBJECT>
+ * 0: Unit <OBJECT>
+ * 1: Container <OBJECT>
  *
  * Return Value:
  * If object can be picked up <BOOL>
  *
  * Example:
- * cursorObject call AIMEE_inventory_fnc_canPickup
+ * [player, cursorObject] call AIMEE_inventory_fnc_canPickup
  *
  * Public: No
  */
 
-private _content = itemCargo _this;
-_content append (magazineCargo _this);
-_content append (backpackCargo _this);
+params ["_unit", "_target"];
 
-count _content == 1
+private _content = itemCargo _target;
+_content append (magazineCargo _target);
+_content append (backpackCargo _target);
+
+count _content == 1 && {[_unit, _target, []] call ace_common_fnc_canInteractWith}

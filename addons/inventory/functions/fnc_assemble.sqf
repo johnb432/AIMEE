@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: upsilon, johnb43
  * Assemble a static weapon. Tripod must be on back to mount using scripts.

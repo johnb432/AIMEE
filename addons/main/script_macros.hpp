@@ -1,3 +1,5 @@
+#pragma hemtt flag pe23_ignore_has_include
+
 #include "\x\cba\addons\main\script_macros_common.hpp"
 
 // This part includes parts of the CBA and ACE3 macro libraries
@@ -75,19 +77,25 @@
 
 #define ICON_STEP_DOWN_LEADER "\A3\ui_f\data\gui\cfg\ranks\private_gs.paa"
 
+#define ICON_REMOTE_CONTOL "\A3\Modules_F_Curator\Data\portraitRemoteControl_ca.paa"
+
 #define ICON_TAKE "\A3\ui_f\data\igui\cfg\actions\take_ca.paa"
 #define ICON_INVENTORY "\A3\ui_f\data\igui\cfg\actions\gear_ca.paa"
 #define ICON_REPAIR "\A3\ui_f\data\igui\cfg\actions\repair_ca.paa"
 
-#define ICON_GET_IN "\a3\ui_f\data\igui\cfg\actions\obsolete\ui_action_getin_ca.paa"
-#define ICON_GET_OUT "\a3\ui_f\data\igui\cfg\actions\getout_ca.paa"
-#define ICON_EJECT "\a3\ui_f\data\igui\cfg\actions\eject_ca.paa"
-#define ICON_CONFIRM "\a3\ui_f\data\igui\cfg\actions\ico_on_ca.paa"
+#define ICON_GET_IN "\A3\ui_f\data\igui\cfg\actions\obsolete\ui_action_getin_ca.paa"
+#define ICON_GET_OUT "\A3\ui_f\data\igui\cfg\actions\getout_ca.paa"
+#define ICON_EJECT "\A3\ui_f\data\igui\cfg\actions\eject_ca.paa"
+#define ICON_CONFIRM "\A3\ui_f\data\igui\cfg\actions\ico_on_ca.paa"
 
 #define ICON_ARROW_UP "\A3\ui_f\data\gui\rsc\rscdisplaymultiplayer\arrow_up_ca.paa"
 #define ICON_ARROW_DOWN "\A3\ui_f\data\gui\rsc\rscdisplaymultiplayer\arrow_down_ca.paa"
 
-#define ICON_CHANGE_SEAT "z\ace\addons\quickmount\UI\Seats_ca.paa"
+#if __has_include("\z\ace\addons\quickmount\script_component.hpp")
+    #define ICON_CHANGE_SEAT "\z\ace\addons\quickmount\UI\Seats_ca.paa"
+#else
+    #define ICON_CHANGE_SEAT "\A3\ui_f\data\igui\cfg\actions\obsolete\ui_action_getincargo.paa"
+#endif
 
 #define ICON_PARACHUTE "\A3\Air_F_Beta\Parachute_01\Data\UI\Portrait_Parachute_01_CA.paa"
 

@@ -8,12 +8,15 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "AIMEE_main",
-            "ace_logistics_wirecutter",
-            "ace_spectator"
+            "ace_interaction"
         };
         author = "johnb43";
-        authors[] = {"upsilon", "johnb43"};
+        authors[] = {
+            "upsilon",
+            "johnb43"
+        };
         url = "https://github.com/johnb432/AIMEE";
+        skipWhenMissingDependencies = 1;
         VERSION_CONFIG;
     };
 };

@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-
 /*
  * Author: upsilon, johnb43
  * Gets or sets landing gear status; Sets a new value for gear status if _set is not nil, old value is returned.
