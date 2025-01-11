@@ -1,3 +1,8 @@
+# Changelog for AIMEE 11.1.2025
+
+1.3.6.0
+- Added ability to place explosives via very simple ACE interaction if `ace_explosives` isn't loaded.
+
 # Changelog for AIMEE 25.3.2024
 
 1.3.5.0

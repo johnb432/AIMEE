@@ -31,12 +31,16 @@ if (_turretPath in (_vehicle call ace_common_fnc_getTurretsFFV)) then {
     _icon = ICON_FFV;
 };
 
-[[
-    format [QGVAR(turretAction_%1), _turretPath],
-    getText (_turretConfig >> "gunnerName"),
-    _icon,
-    {_player action (_this select 2)},
-    {true},
-    nil,
-    [_prefix + "Turret", _vehicle, _turretPath]
-] call ace_interact_menu_fnc_createAction, [], _vehicle];
+[
+    [
+        format [QGVAR(turretAction_%1), _turretPath],
+        getText (_turretConfig >> "gunnerName"),
+        _icon,
+        {_player action (_this select 2)},
+        {true},
+        nil,
+        [_prefix + "Turret", _vehicle, _turretPath]
+    ] call ace_interact_menu_fnc_createAction,
+    [],
+    _vehicle
+]

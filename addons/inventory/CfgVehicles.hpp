@@ -106,7 +106,7 @@ class CfgVehicles {
     class CAManBase: Man {
         class ACE_Actions {
             class GVAR(backpackAction3D) {
-                condition = QUOTE(GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target} && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
+                condition = QUOTE(GVAR(settingBackpackAction) && GVAR(settingOpenAction) && {isNull objectParent _target} && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
                 displayName = DEFAULT_TEXT;
                 distance = DISTANCE_INTERACTION_BACKPACK_3D;
                 exceptions[] = {"isNotSwimming"};
@@ -118,7 +118,7 @@ class CfgVehicles {
 
             class ACE_MainActions {
                 class GVAR(backpackAction) {
-                    condition = QUOTE(!GVAR(settingBackpackAction) && {GVAR(settingOpenAction)} && {isNull objectParent _target}  && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
+                    condition = QUOTE(!GVAR(settingBackpackAction) && GVAR(settingOpenAction) && {isNull objectParent _target} && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
                     displayName = DEFAULT_TEXT;
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;
@@ -138,11 +138,26 @@ class CfgVehicles {
             };
 
             class GVAR(assembleActionUAV) {
-                condition = QUOTE(GVAR(settingAssembleAction) && {_player call FUNC(UAVType) != ''} && {!(_player call EFUNC(main,operatingUAV))});
+                condition = QUOTE(GVAR(settingAssembleUavAction) && {_player call FUNC(UAVType) != ''} && {!(_player call EFUNC(main,operatingUAV))});
                 displayName = DEFAULT_TEXT;
                 icon = ICON_REPAIR;
                 modifierFunction = QUOTE(call FUNC(backpackUAVModify));
                 statement = QUOTE(_player call FUNC(UAVAssemble));
+            };
+
+            class GVAR(explosives) {
+                condition = QUOTE(GVAR(settingExplosivesAction) && {isNil 'ace_explosives'});
+                displayName = CQSTRING(STR_A3_RscDisplayArsenal_tab_CargoPut);
+                icon = ICON_EXPLOSION;
+                insertChildren = QUOTE(_player call FUNC(explosiveMenus));
+
+                class GVAR(explosivesDetonateAll) {
+                    condition = QUOTE(getAllOwnedMines _player isNotEqualTo []);
+                    displayName = DEFAULT_TEXT;
+                    icon = ICON_EXPLOSION;
+                    modifierFunction = QUOTE((_this select 3) set [ARR_2(1,FORMAT_1(localize 'str_action_touch_off',count getAllOwnedMines _player))]);
+                    statement = QPACTION('TouchOff',_player);
+                };
             };
         };
     };

@@ -39,15 +39,19 @@ for "_i" from 0 to (count _allAvailableMags) - 2 step 2 do {
     if (_class in _compatibleMags) then {
         _config = _cfgMagazines >> _class;
 
-        _menus pushBack [[
-            format [QGVAR(magazineVehicle_%1), _class], // Action name
-            getText (_config >> "displayName"), // Name of action shown in menu
-            getText (_config >> "picture"), // Icon
-            {[_player, _target, _this select 2] call FUNC(loadMagazine)}, // Statement
-            {true}, // Condition
-            nil,
-            [_weapon, _muzzle, _class, _turret] // Action parameters
-        ] call ace_interact_menu_fnc_createAction, [], _target];
+        _menus pushBack [
+            [
+                format [QGVAR(magazineVehicle_%1), _class], // Action name
+                getText (_config >> "displayName"), // Name of action shown in menu
+                getText (_config >> "picture"), // Icon
+                {[_player, _target, _this select 2] call FUNC(loadMagazine)}, // Statement
+                {true}, // Condition
+                nil,
+                [_weapon, _muzzle, _class, _turret] // Action parameters
+            ] call ace_interact_menu_fnc_createAction,
+            [],
+            _target
+        ];
     };
 };
 

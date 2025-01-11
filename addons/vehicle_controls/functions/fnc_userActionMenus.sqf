@@ -52,15 +52,19 @@ private _displayName = "";
 
     // Eject for Firewill plane ejection
     if (_displayName != "" && {getText (_x >> "shortcut") != "Eject" || {(typeOf _target) select [0, 4] == "FIR_"}}) then {
-        _menus pushBack [[
-            format [QGVAR(userAction_%1_%2), configName _x, getNumber (_x >> "userActionID")],
-            _displayName,
-            "",
-            _run,
-            _condition,
-            nil,
-            [getText (_x >> "statement"), getText (_x >> "condition")]
-        ] call ace_interact_menu_fnc_createAction, [], _target];
+        _menus pushBack [
+            [
+                format [QGVAR(userAction_%1_%2), configName _x, getNumber (_x >> "userActionID")],
+                _displayName,
+                "",
+                _run,
+                _condition,
+                nil,
+                [getText (_x >> "statement"), getText (_x >> "condition")]
+            ] call ace_interact_menu_fnc_createAction,
+            [],
+            _target
+        ];
     };
 } forEach _actions;
 

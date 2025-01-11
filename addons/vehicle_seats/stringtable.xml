@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AIMEE">
     <Package name="vehicle_seats">
-        <Key ID="STR_AIMEE_vehicle_seats_settingGetInAction">
-            <Original>Enable vehicle mount actions</Original>
-            <English>Enable vehicle mount actions</English>
-            <German>Fahrzeugbestieginteraktionen zulassen</German>
-            <French>Permission d'interaction pour entrer un véhicule</French>
-        </Key>
-        <Key ID="STR_AIMEE_vehicle_seats_settingGetInAction_ToolTip">
-            <Original>Allows the player to mount vehicles using the ACE interaction menu.</Original>
-            <English>Allows the player to mount vehicles using the ACE interaction menu.</English>
-            <German>Erlaubt den Spieler in Fahrzeuge mit einer ACE-Selbstinteraktion einzusteigen.</German>
-            <French>Permet au joueur d'entrer dans un véhicule avec une interaction ACE sur soi-même.</French>
+        <Key ID="STR_AIMEE_vehicle_seats_ConfirmEject">
+            <Original>Confirm eject</Original>
+            <English>Confirm eject</English>
+            <French>Confirmer éjection</French>
+            <German>Abspringen bestätigen</German>
         </Key>
         <Key ID="STR_AIMEE_vehicle_seats_settingChangeAction">
             <Original>Enable seat change actions</Original>
             <English>Enable seat change actions</English>
-            <German>Platzwechselinteraktionen zulassen</German>
             <French>Permission du menu pour changer de siège</French>
+            <German>Platzwechselinteraktionen zulassen</German>
         </Key>
         <Key ID="STR_AIMEE_vehicle_seats_settingChangeAction_ToolTip">
             <Original>Allows the player to change seats in a vehicle using the ACE self-interaction menu.</Original>
             <English>Allows the player to change seats in a vehicle using the ACE self-interaction menu.</English>
-            <German>Erlaubt den Spieler Platz in einem Fahrzeug mit einer ACE-Selbstinteraktion zu wechseln.</German>
             <French>Permet au joueur de changer de siège dans un véhicule avec une interaction ACE sur soi-même.</French>
-        </Key>
-        <Key ID="STR_AIMEE_vehicle_seats_settingGetOutAction">
-            <Original>Enable vehicle dismount/eject actions</Original>
-            <English>Enable vehicle dismount/eject actions</English>
-            <German>Fahrzeugaustieg-/Auswurfinteraktionen zulassen</German>
-            <French>Permission des menus de descente et d'éjection</French>
-        </Key>
-        <Key ID="STR_AIMEE_vehicle_seats_settingGetOutAction_ToolTip">
-            <Original>Allows the player to dismount a vehicle and eject from a vehicle using the ACE self-interaction menu.</Original>
-            <English>Allows the player to dismount a vehicle and eject from a vehicle using the ACE self-interaction menu.</English>
-            <German>Erlaubt den Spieler von einem Fahrzeug mit einer ACE-Selbstinteraktion auszusteigen oder ausgeworfen zu werden.</German>
-            <French>Permet au joueur de descendre et d'éjecter d'un véhicule avec une interaction ACE sur soi-même.</French>
+            <German>Erlaubt den Spieler Platz in einem Fahrzeug mit einer ACE-Selbstinteraktion zu wechseln.</German>
         </Key>
         <Key ID="STR_AIMEE_vehicle_seats_settingForceEject">
             <Original>Allow helicopter crew to force eject</Original>
             <English>Allow helicopter crew to force eject</English>
-            <German>Helikopterbesatzung Notauswurf zulassen</German>
             <French>Permission d'éjection forcée pour équipe d'héli</French>
+            <German>Helikopterbesatzung Notauswurf zulassen</German>
         </Key>
         <Key ID="STR_AIMEE_vehicle_seats_settingForceEject_ToolTip">
             <Original>Allows the player to be force ejected when in a helicopter.</Original>
             <English>Allows the player to be force ejected when in a helicopter.</English>
-            <German>Erlaubt den Spieler gezwungen zu werden, in einem Helikopter ausgeworfen zu werden.</German>
             <French>Permet au joueur d'éjection forcée si dans un hélicoptère.</French>
+            <German>Erlaubt den Spieler gezwungen zu werden, in einem Helikopter ausgeworfen zu werden.</German>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_seats_settingGetInAction">
+            <Original>Enable vehicle mount actions</Original>
+            <English>Enable vehicle mount actions</English>
+            <French>Permission d'interaction pour entrer un véhicule</French>
+            <German>Fahrzeugbestieginteraktionen zulassen</German>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_seats_settingGetInAction_ToolTip">
+            <Original>Allows the player to mount vehicles using the ACE interaction menu.</Original>
+            <English>Allows the player to mount vehicles using the ACE interaction menu.</English>
+            <French>Permet au joueur d'entrer dans un véhicule avec une interaction ACE sur soi-même.</French>
+            <German>Erlaubt den Spieler in Fahrzeuge mit einer ACE-Selbstinteraktion einzusteigen.</German>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_seats_settingGetOutAction">
+            <Original>Enable vehicle dismount/eject actions</Original>
+            <English>Enable vehicle dismount/eject actions</English>
+            <French>Permission des menus de descente et d'éjection</French>
+            <German>Fahrzeugaustieg-/Auswurfinteraktionen zulassen</German>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_seats_settingGetOutAction_ToolTip">
+            <Original>Allows the player to dismount a vehicle and eject from a vehicle using the ACE self-interaction menu.</Original>
+            <English>Allows the player to dismount a vehicle and eject from a vehicle using the ACE self-interaction menu.</English>
+            <French>Permet au joueur de descendre et d'éjecter d'un véhicule avec une interaction ACE sur soi-même.</French>
+            <German>Erlaubt den Spieler von einem Fahrzeug mit einer ACE-Selbstinteraktion auszusteigen oder ausgeworfen zu werden.</German>
         </Key>
         <Key ID="STR_AIMEE_vehicle_seats_settingTurnOutAction">
             <Original>Add turn in/out to self-interaction menu</Original>
             <English>Add turn in/out to self-interaction menu</English>
-            <German>Lukeninteraktion zulassen</German>
             <French>Permission de rentrer/s'exposer</French>
+            <German>Lukeninteraktion zulassen</German>
         </Key>
         <Key ID="STR_AIMEE_vehicle_seats_settingTurnOutAction_ToolTip">
             <Original>Allows the player to turn in/out using the ACE self-interaction menu.</Original>
             <English>Allows the player to turn in/out using the ACE self-interaction menu.</English>
-            <German>Erlaubt den Spieler die Luke mit einer ACE-Selbstinteraktion zu öffnen oder schliessen.</German>
             <French>Permet au joueur de rentrer ou s'exposer son haut du corps avec une interaction ACE sur soi-même.</French>
-        </Key>
-        <Key ID="STR_AIMEE_vehicle_seats_ConfirmEject">
-            <Original>Confirm eject</Original>
-            <English>Confirm eject</English>
-            <German>Abspringen bestätigen</German>
-            <French>Confirmer éjection</French>
+            <German>Erlaubt den Spieler die Luke mit einer ACE-Selbstinteraktion zu öffnen oder schliessen.</German>
         </Key>
     </Package>
 </Project>
