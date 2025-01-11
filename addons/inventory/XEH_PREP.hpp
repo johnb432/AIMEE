@@ -6,6 +6,7 @@ PREP(backpackUAVModify);
 PREP(canAssemble);
 PREP(canDisassemble);
 PREP(canPickup);
+PREP(explosiveMenus);
 PREP(hasInventory);
 PREP(holderModify);
 PREP(locateBackpack);

@@ -12,13 +12,13 @@
 #define SETMVAR(var1,var2,var3) (missionNamespace setVariable [ARR_3(var1,var2,var3)])
 
 // CBA Setting
-#define SETTING(NAME,TYPE,VALUE)\
+#define SETTING(name,type,value)\
 [\
-    QGVAR(NAME),\
-    TYPE,\
-    [LSTRING(NAME), LSTRING(DOUBLES(NAME,ToolTip))],\
+    QGVAR(name),\
+    type,\
+    [LSTRING(name), LSTRING(DOUBLES(name,ToolTip))],\
     COMPONENT_NAME,\
-    VALUE\
+    value\
 ] call CBA_fnc_addSetting
 
 // Config string
@@ -82,6 +82,7 @@
 #define ICON_TAKE "\A3\ui_f\data\igui\cfg\actions\take_ca.paa"
 #define ICON_INVENTORY "\A3\ui_f\data\igui\cfg\actions\gear_ca.paa"
 #define ICON_REPAIR "\A3\ui_f\data\igui\cfg\actions\repair_ca.paa"
+#define ICON_EXPLOSION "\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa"
 
 #define ICON_GET_IN "\A3\ui_f\data\igui\cfg\actions\obsolete\ui_action_getin_ca.paa"
 #define ICON_GET_OUT "\A3\ui_f\data\igui\cfg\actions\getout_ca.paa"

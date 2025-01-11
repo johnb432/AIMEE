@@ -23,15 +23,19 @@ private _text = "";
 for "_i" from 0 to FLAPS_MAX do {
     _text = _texts select _i;
 
-    _menus pushBack [[
-        format [QGVAR(flapsAction_%1), _text],
-        _text,
-        _icons select _i,
-        {[_this select 0, _this select 2] call FUNC(flapsDown)},
-        {true},
-        nil,
-        _i
-    ] call ace_interact_menu_fnc_createAction, [], _this];
+    _menus pushBack [
+        [
+            format [QGVAR(flapsAction_%1), _text],
+            _text,
+            _icons select _i,
+            {[_this select 0, _this select 2] call FUNC(flapsDown)},
+            {true},
+            nil,
+            _i
+        ] call ace_interact_menu_fnc_createAction,
+        [],
+        _this
+    ];
 };
 
 _menus

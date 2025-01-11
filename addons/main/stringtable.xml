@@ -3,13 +3,13 @@
     <Package name="main">
         <Key ID="STR_AIMEE_main_settingHide">
             <English>Hide actions if associated keybinds exist</English>
-            <German>Interaktionen verstecken falls zugewiesene Keybinds existieren</German>
             <French>Cacher interactions si keybinds correspondant existent</French>
+            <German>Interaktionen verstecken falls zugewiesene Keybinds existieren</German>
         </Key>
         <Key ID="STR_AIMEE_main_settingHide_ToolTip">
             <English>Hides interactions if keybinds are present.</English>
-            <German>Versteckt Interaktionen falls Keybinds vorhanden sind.</German>
             <French>Cache des interactions si les keybinds sont présents.</French>
+            <German>Versteckt Interaktionen falls Keybinds vorhanden sind.</German>
         </Key>
     </Package>
 </Project>

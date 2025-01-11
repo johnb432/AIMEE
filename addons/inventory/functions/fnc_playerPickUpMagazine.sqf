@@ -56,11 +56,11 @@ private _index = -1;
             // If an item doesn't have a reload animation, add it instantly
             if (_gesture != "") then {
                 if (_weapon isKindOf ["Launcher", configFile >> "CfgWeapons"]) then {
-                    _duration = getNumber (configfile >> "CfgMovesMaleSdr" >> "States" >> _gesture >> "speed");
+                    _duration = getNumber (configFile >> "CfgMovesMaleSdr" >> "States" >> _gesture >> "speed");
                 };
 
                 if (_duration == 0) then {
-                    _duration = getNumber (configfile >> "CfgGesturesMale" >> "States" >> _gesture >> "speed");
+                    _duration = getNumber (configFile >> "CfgGesturesMale" >> "States" >> _gesture >> "speed");
                 };
 
                 _duration = if (_duration != 0) then {
