@@ -105,24 +105,17 @@ class CfgVehicles {
     class Man;
     class CAManBase: Man {
         class ACE_Actions {
-            class GVAR(backpackAction3D) {
-                condition = QUOTE(GVAR(settingBackpackAction) && GVAR(settingOpenAction) && {isNull objectParent _target} && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
-                displayName = DEFAULT_TEXT;
-                distance = DISTANCE_INTERACTION_BACKPACK_3D;
-                exceptions[] = {"isNotSwimming"};
-                icon = ICON_INVENTORY;
-                position = QUOTE(_target call FUNC(backpackPos));
-                modifierFunction = QUOTE((_this select 3) set [ARR_2(1,FORMAT_1(localize 'STR_ACTION_OPEN_BAG',localize 'STR_BACKPACK_CONTAINER_NAME'))]);
-                statement = QPACTION('OpenBag',_target);
+            class ACE_OpenBackpack {
+                condition = QUOTE(GVAR(settingBackpackAction) && {call ace_interaction_fnc_canOpenBackpack});
             };
 
             class ACE_MainActions {
                 class GVAR(backpackAction) {
-                    condition = QUOTE(!GVAR(settingBackpackAction) && GVAR(settingOpenAction) && {isNull objectParent _target} && {!isNull unitBackpack _target} && {(unitBackpack _target) call FUNC(hasInventory)});
-                    displayName = DEFAULT_TEXT;
+                    condition = QUOTE(!GVAR(settingBackpackAction) && GVAR(settingOpenAction) && {call ace_interaction_fnc_canOpenBackpack});
+                    displayName = "$STR_ACTION_OPEN_BAG";
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;
-                    modifierFunction = QUOTE((_this select 3) set [ARR_2(1,FORMAT_1(localize 'STR_ACTION_OPEN_BAG',localize 'STR_BACKPACK_CONTAINER_NAME'))]);
+                    modifierFunction = QUOTE(call ace_interaction_fnc_modifyOpenBackpackAction);
                     statement = QPACTION('OpenBag',_target);
                 };
             };

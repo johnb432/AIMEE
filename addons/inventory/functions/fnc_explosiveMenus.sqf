@@ -15,7 +15,6 @@
  * Public: No
  */
 
-
 // Returns case correct magazines
 private _magazines = (magazines [_this, false]) call CBA_fnc_getArrayElements;
 

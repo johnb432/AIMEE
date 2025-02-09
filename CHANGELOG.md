@@ -1,3 +1,8 @@
+# Changelog for AIMEE 9.2.2025
+
+1.3.7.0
+- Updated to work with ACE 3.19.0.
+
 # Changelog for AIMEE 11.1.2025
 
 1.3.6.0

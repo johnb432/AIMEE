@@ -12,4 +12,10 @@ SETTING(settingAssembleAction,"CHECKBOX",true);
 SETTING(settingAssembleUavAction,"CHECKBOX",true);
 SETTING(settingExplosivesAction,"CHECKBOX",true);
 
+// Get all mines/explosives if ACE explosives and ACE arsenal aren't loaded
+// https://github.com/acemod/ACE3/pull/10660#issuecomment-2599466880
+if (uiNamespace isNil "ace_arsenal_putCache" && {!("ace_explosives" call ace_common_fnc_isModLoaded)}) then {
+    uiNamespace setVariable ["ace_arsenal_putCache", (compatibleMagazines "Put") createHashMapFromArray []];
+};
+
 ADDON = true;
