@@ -32,7 +32,6 @@
 #define QPACTION(var1,var2) QUOTE(PACTION(var1,var2))
 
 #define DEFAULT_TEXT "Standby..."
-#define DISTANCE_INTERACTION_BACKPACK_3D 3
 #define DISTANCE_INTERACTION_WEAPONHOLDER 4
 
 #define GEAR_ERROR 0
@@ -102,11 +101,11 @@
 
 #define ICON_GEAR "\A3\ui_f\data\igui\cfg\vehicletoggles\landinggeariconon_ca.paa"
 
-#define ICON_LIGHTS_ON "A3\ui_f\data\igui\cfg\actions\ico_cpt_land_ON_ca"
-#define ICON_LIGHTS_OFF "A3\ui_f\data\igui\cfg\actions\ico_cpt_land_OFF_ca"
+#define ICON_LIGHTS_ON "A3\ui_f\data\igui\cfg\actions\ico_cpt_land_ON_ca.paa"
+#define ICON_LIGHTS_OFF "A3\ui_f\data\igui\cfg\actions\ico_cpt_land_OFF_ca.paa"
 
-#define ICON_COLLISION_LIGHTS_ON "A3\ui_f\data\igui\cfg\actions\ico_cpt_col_ON_ca"
-#define ICON_COLLISION_LIGHTS_OFF "A3\ui_f\data\igui\cfg\actions\ico_cpt_col_OFF_ca"
+#define ICON_COLLISION_LIGHTS_ON "A3\ui_f\data\igui\cfg\actions\ico_cpt_col_ON_ca.paa"
+#define ICON_COLLISION_LIGHTS_OFF "A3\ui_f\data\igui\cfg\actions\ico_cpt_col_OFF_ca.paa"
 
 #define ICON_HOVER "\A3\ui_f\data\igui\cfg\actions\autohover_ca.paa"
 #define ICON_HOVER_CANCEL "\A3\ui_f\data\igui\cfg\actions\cancelhover_ca.paa"
