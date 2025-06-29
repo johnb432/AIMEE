@@ -15,7 +15,7 @@
  * Public: No
  */
 
-(_this call FUNC(locateBackpack)) params ["_base", "_weapon", "_weaponHolder", "_baseOnGround"];
+(call FUNC(locateBackpack)) params ["_base", "_weapon", "_weaponHolder", "_baseOnGround"];
 
 // If the base is on the ground, switch it with the weapon on the player's back
 if (_baseOnGround) then {

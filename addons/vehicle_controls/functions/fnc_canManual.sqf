@@ -25,7 +25,7 @@ if (getNumber (_config >> "enableManualFire") == 0 || {isPlayer gunner _vehicle}
 };
 
 if (_vehicle isKindOf "Air" || {unitIsUAV _vehicle}) then {
-    _this call FUNC(isDriver) && {"true" configClasses (_config >> "Turrets") isNotEqualTo []}
+    call FUNC(isDriver) && {"true" configClasses (_config >> "Turrets") isNotEqualTo []}
 } else {
     _unit == commander _vehicle
 };

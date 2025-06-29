@@ -111,7 +111,7 @@ class CfgVehicles {
 
             class ACE_MainActions {
                 class GVAR(backpackAction) {
-                    condition = QUOTE(!GVAR(settingBackpackAction) && GVAR(settingOpenAction) && {call ace_interaction_fnc_canOpenBackpack});
+                    condition = QUOTE(!GVAR(settingBackpackAction) && GVAR(settingOpenAction) && {isNull objectParent _target} && {call ace_interaction_fnc_canOpenBackpack});
                     displayName = "$STR_ACTION_OPEN_BAG";
                     exceptions[] = {"isNotSwimming"};
                     icon = ICON_INVENTORY;
