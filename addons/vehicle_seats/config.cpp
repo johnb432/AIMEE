@@ -8,6 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             "AIMEE_main",
+            "AIMEE_vehicle_controls",
             "ace_interaction"
         };
         author = "johnb43";

@@ -18,7 +18,7 @@
 
 params ["_unit", "_vehicle"];
 
-switch (_this call FUNC(canEject)) do {
+switch (call FUNC(canEject)) do {
     case EJECT_TYPE_JET: {
         [_vehicle] call BIS_fnc_PlaneEjection;
     };
@@ -26,7 +26,7 @@ switch (_this call FUNC(canEject)) do {
         _unit action ["Eject", _vehicle];
     };
     case EJECT_TYPE_FORCE: {
-        private _engineOn = _this call EFUNC(vehicle_controls,isDriver) && {isEngineOn _vehicle};
+        private _engineOn = call EFUNC(vehicle_controls,isDriver) && {isEngineOn _vehicle};
 
         moveOut _unit;
 

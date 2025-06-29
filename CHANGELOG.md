@@ -1,3 +1,8 @@
+# Changelog for AIMEE 29.6.2025
+
+1.3.8.0
+- Fixed some infantry reloading conditions.
+
 # Changelog for AIMEE 9.2.2025
 
 1.3.7.0
