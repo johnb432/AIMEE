@@ -1,3 +1,8 @@
+# Changelog for AIMEE 27.9.2025
+
+1.3.9.0
+- Added search light interactions.
+
 # Changelog for AIMEE 29.6.2025
 
 1.3.8.0

@@ -7,6 +7,7 @@ ADDON = false;
 // CBA Settings
 SETTING(settingGearAction,"CHECKBOX",true);
 SETTING(settingCollisionAction,"CHECKBOX",true);
+SETTING(settingSearchAction,"CHECKBOX",true);
 SETTING(settingLightsAction,"CHECKBOX",true);
 SETTING(settingHoverAction,"CHECKBOX",true);
 SETTING(settingManualAction,"CHECKBOX",true);
