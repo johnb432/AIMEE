@@ -79,6 +79,14 @@
             <Original>Allows the player to toggle manual fire using the ACE interaction menu.</Original>
             <English>Allows the player to toggle manual fire using the ACE interaction menu.</English>
         </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingSearchAction">
+            <Original>Enable search light toggle</Original>
+            <English>Enable search light toggle</English>
+        </Key>
+        <Key ID="STR_AIMEE_vehicle_controls_settingSearchAction_ToolTip">
+            <Original>Allows the player to toggle search lights using the ACE interaction menu.</Original>
+            <English>Allows the player to toggle search lights using the ACE interaction menu.</English>
+        </Key>
         <Key ID="STR_AIMEE_vehicle_controls_settingTakeControlsAction">
             <Original>Enable taking controls for helicopters</Original>
             <English>Enable taking controls for helicopters</English>

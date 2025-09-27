@@ -71,6 +71,20 @@
         statement = QUOTE(_target setCollisionLight false);\
     }
 
+#define SEARCH_LIGHT_ACTION \
+    class GVAR(searchLightOnAction) {\
+        condition = QUOTE(GVAR(settingSearchAction) && {(_target unitTurret _player) isEqualTo [0]} && {!isLightOn [ARR_2(_target,[0])]});\
+        displayName = CQSTRING(STR_action_searchlights_on);\
+        icon = ICON_LIGHTS_ON;\
+        statement = QPACTION('SearchLightOn',_target);\
+    };\
+    class GVAR(searchLightOffAction) {\
+        condition = QUOTE(GVAR(settingSearchAction) && {(_target unitTurret _player) isEqualTo [0]} && {isLightOn [ARR_2(_target,[0])]});\
+        displayName = CQSTRING(STR_action_searchlights_off);\
+        icon = ICON_LIGHTS_OFF;\
+        statement = QPACTION('SearchLightOff',_target);\
+    }
+
 #define HOVER_ACTION \
     class GVAR(hoverAction) {\
         condition = QUOTE(GVAR(settingHoverAction) && {'AutoHover' call EFUNC(main,ignoreKeybind)} && {!isAutoHoverOn _target} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
@@ -134,6 +148,12 @@ class CfgVehicles {
             COLLISION_LIGHTS_ACTION;
             GEAR_ACTION;
             HOVER_ACTION;
+        };
+    };
+	class Helicopter_Base_F: Helicopter {};
+	class Heli_light_03_base_F: Helicopter_Base_F {
+        class ACE_SelfActions: ACE_SelfActions {
+            SEARCH_LIGHT_ACTION;
         };
     };
 
