@@ -16,4 +16,6 @@
  * Public: No
  */
 
-[_this select 0, [GEAR_UP, GEAR_DOWN] select (_this select 1)] call FUNC(gearStatus);
+params ["_vehicle", "_gearDown"];
+
+[_vehicle, [GEAR_UP, GEAR_DOWN] select _gearDown] call FUNC(gearStatus);

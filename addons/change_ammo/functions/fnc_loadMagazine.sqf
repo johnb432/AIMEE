@@ -16,7 +16,7 @@
  * None
  *
  * Example:
- * [vehicle player, vehicle player, [_weapon, _muzzle, _magazine, _turret]] call AIMEE_change_ammo_fnc_loadMagazine
+ * [vehicle player, vehicle player, [currentWeapon vehicle player, currentMuzzle vehicle player, currentMagazine vehicle player, vehicle player unitTurret player]] call AIMEE_change_ammo_fnc_loadMagazine
  *
  * Public: No
  */
@@ -27,16 +27,8 @@ _args params ["_weapon", "_muzzle", "_magazine", "_turret"];
 // Don't change mags for currently unselected weapons
 if (((weaponState [_target, _turret]) select 1) != _muzzle) exitWith {};
 
-private _magazinesAllTurrets = [];
-
 // Get magazines that are of the correct type; Exclude empty mags
-{
-    _x params ["_xMag", "_xTurret", "_xAmmo"];
-
-    if ((_xMag == _magazine) && {_xTurret isEqualTo _turret} && {_xAmmo > 0}) then {
-        _magazinesAllTurrets pushBack _x;
-    };
-} forEach (magazinesAllTurrets _target);
+private _magazinesAllTurrets = (magazinesAllTurrets _target) select {_x params ["_xMag", "_xTurret", "_xAmmo"]; (_xMag == _magazine) && {_xTurret isEqualTo _turret} && {_xAmmo > 0}};
 
 // Get count of rounds in magazines, then select maximum
 private _magazinesCount = _magazinesAllTurrets apply {_x select 2};

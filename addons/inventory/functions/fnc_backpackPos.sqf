@@ -15,5 +15,7 @@
  * Public: No
  */
 
-private _spine = _this selectionPosition "spine3";
-(((_this selectionPosition "rightshoulder" vectorDiff _spine) vectorCrossProduct (_this selectionPosition "leftshoulder" vectorDiff _spine)) vectorMultiply 4) vectorAdd _spine;
+params ["_unit"];
+
+private _spine = _unit selectionPosition "spine3";
+(((_unit selectionPosition "rightshoulder" vectorDiff _spine) vectorCrossProduct (_unit selectionPosition "leftshoulder" vectorDiff _spine)) vectorMultiply 4) vectorAdd _spine // return

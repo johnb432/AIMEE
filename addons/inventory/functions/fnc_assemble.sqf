@@ -15,14 +15,16 @@
  * Public: No
  */
 
-(call FUNC(locateBackpack)) params ["_base", "_weapon", "_weaponHolder", "_baseOnGround"];
+params ["_unit"];
+
+(_unit call FUNC(locateBackpack)) params ["_base", "_weapon", "_weaponHolder", "_baseOnGround"];
 
 // If the base is on the ground, switch it with the weapon on the player's back
 if (_baseOnGround) then {
-    _weapon = backpackContainer _this;
+    _weapon = backpackContainer _unit;
 
     // Add base to player, which will automatically drop bag
-    _this addBackpack (typeOf _base);
+    _unit addBackpack (typeOf _base);
 
     // Delete weapon in weaponholder
     deleteVehicle _weaponHolder;
@@ -30,8 +32,8 @@ if (_baseOnGround) then {
     // Look for switched backpacks in next frame and assemble then
     [{
         (_this select 0) action ["Assemble", _this select 1];
-    }, [_this, _weapon]] call CBA_fnc_execNextFrame;
+    }, [_unit, _weapon]] call CBA_fnc_execNextFrame;
 } else {
     // If tripod on back (weapon on ground)
-    _this action ["Assemble", _weapon];
+    _unit action ["Assemble", _weapon];
 };

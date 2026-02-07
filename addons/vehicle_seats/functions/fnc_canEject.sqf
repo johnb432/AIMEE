@@ -20,7 +20,9 @@ params ["_unit", "_vehicle"];
 
 private _config = configOf _vehicle;
 
-if (isClass (_config >> "EjectionSystem")) exitWith {EJECT_TYPE_JET};
+if (isClass (_config >> "EjectionSystem")) exitWith {
+    EJECT_TYPE_JET // return
+};
 
 private _type = [EJECT_TYPE_NONE, EJECT_TYPE_CAR] select (
     switch (_unit call CBA_fnc_vehicleRole) do {
@@ -44,4 +46,4 @@ if (GVAR(settingForceEject) && {_type == EJECT_TYPE_NONE} && {_vehicle isKindOf 
     _type = EJECT_TYPE_FORCE;
 };
 
-_type
+_type // return

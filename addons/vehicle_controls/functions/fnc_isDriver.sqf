@@ -8,10 +8,10 @@
  * 1: Vehicle <OBJECT>
  *
  * Return Value:
- * is driver <BOOL>
+ * Is driver <BOOL>
  *
  * Example:
- * [player, vehicle player] call AIMEE_vehicle_controls_fnc_isDriver;
+ * [player, vehicle player] call AIMEE_vehicle_controls_fnc_isDriver
  *
  * Public: No
  */
@@ -19,11 +19,11 @@
 params ["_unit", "_vehicle"];
 
 if (_unit == (currentPilot _vehicle)) exitWith {
-    true
+    true // return
 };
 
 if (_vehicle == (getConnectedUAV _unit)) exitWith {
-    ((UAVControl _vehicle) select 1) == "DRIVER"
+    ((UAVControl _vehicle) select 1) == "DRIVER" // return
 };
 
-false
+false // return

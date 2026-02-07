@@ -7,13 +7,15 @@
  * 0: Unit <OBJECT>
  *
  * Return Value:
- * Returns menus <ARRAY>
+ * Interaction menu <ARRAY>
  *
  * Example:
  * player call AIMEE_uav_terminal_fnc_infoPanelMenus
  *
  * Public: No
  */
+
+params ["_unit"];
 
 ["left", "right"] apply {
     [
@@ -50,6 +52,6 @@
             }
         ] call ace_interact_menu_fnc_createAction,
         [],
-        _this
+        _unit
     ];
-};
+} // return

@@ -7,10 +7,10 @@
  * 0: Vehicle <OBJECT>
  *
  * Return Value:
- * None
+ * Interaction menu <ARRAY>
  *
  * Example:
- * vehicle player call AIMEE_vehicle_controls_fnc_userActionMenus;
+ * vehicle player call AIMEE_vehicle_controls_fnc_userActionMenus
  *
  * Public: No
  */
@@ -19,9 +19,11 @@ params ["_target"];
 
 private _actions = "true" configClasses (configOf _target >> "UserActions");
 
-if (_actions isEqualTo []) exitWith {[]};
+if (_actions isEqualTo []) exitWith {
+    [] // return
+};
 
-// this is used instead of target in vanilla user actions
+// This is used instead of target in vanilla user actions
 private _run = {
     params ["_target", "", "_args"];
 
@@ -46,12 +48,13 @@ private _condition = {
 
 private _menus = [];
 private _displayName = "";
+private _isFIR = (typeOf _target) select [0, 4] == "FIR_";
 
 {
     _displayName = getText (_x >> "displayName");
 
     // Eject for Firewill plane ejection
-    if (_displayName != "" && {getText (_x >> "shortcut") != "Eject" || {(typeOf _target) select [0, 4] == "FIR_"}}) then {
+    if (_displayName != "" && {_isFIR || {getText (_x >> "shortcut") != "Eject"}}) then {
         _menus pushBack [
             [
                 format [QGVAR(userAction_%1_%2), configName _x, getNumber (_x >> "userActionID")],
@@ -68,4 +71,4 @@ private _displayName = "";
     };
 } forEach _actions;
 
-_menus
+_menus // return

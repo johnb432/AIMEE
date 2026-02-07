@@ -15,8 +15,12 @@
  * Public: No
  */
 
-if (isNull (configOf backpackContainer _this >> "assembleInfo")) exitWith {false};
+params ["_unit"];
 
-(call FUNC(locateBackpack)) params ["_base", "_weapon"];
+if (isNull (configOf backpackContainer _unit >> "assembleInfo")) exitWith {
+    false // return
+};
 
-!isNull _base && {!isNull _weapon}
+(_unit call FUNC(locateBackpack)) params ["_base", "_weapon"];
+
+!isNull _base && {!isNull _weapon} // return

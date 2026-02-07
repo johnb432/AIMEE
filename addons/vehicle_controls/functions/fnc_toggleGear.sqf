@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player, vehicle player] call AIMEE_vehicle_controls_fnc_toggleGear;
+ * [player, vehicle player] call AIMEE_vehicle_controls_fnc_toggleGear
  *
  * Public: No
  */

@@ -19,21 +19,27 @@
 params ["_unit", "_vehicle"];
 
 // Check if disabled via commands
-if !(weaponDisassemblyEnabled _unit && weaponDisassemblyEnabled _vehicle) exitWith {false};
+if !(weaponDisassemblyEnabled _unit && weaponDisassemblyEnabled _vehicle) exitWith {
+    false // return
+};
 
 private _config = configOf _vehicle >> "assembleInfo";
 
 // Check if not possible
-if (isNull _config || {getArray (_config >> "dissasembleTo") isEqualTo []}) exitWith {false};
+if (isNull _config || {getArray (_config >> "dissasembleTo") isEqualTo []}) exitWith {
+    false // return
+};
 
 private _crew = crew _vehicle;
 
 // If vehicle is empty, quit
-if (_crew isEqualTo []) exitWith {true};
+if (_crew isEqualTo []) exitWith {
+    true // return
+};
 
 private _sideUnit = side group _unit;
 
 (_crew select {!unitIsUAV _x}) findIf { // ignore UAV units
     // Units must all be unconscious, captive or friendly (side group is used in case unit is captive/unconscious) for actions to show up
     !captive _x && {lifeState _x in ["HEALTHY", "INJURED"]} && {[_sideUnit, side group _x] call BIS_fnc_sideIsEnemy}
-} == -1
+} == -1 // return

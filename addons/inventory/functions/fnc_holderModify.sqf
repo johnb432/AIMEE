@@ -5,12 +5,12 @@
  *
  * Arguments:
  * 0: Object <OBJECT>
- * 1: Unit <OBJECT>
- * 2: Params <ARRAY>
+ * 1: Unit (not used) <OBJECT>
+ * 2: Params (not used) <ARRAY>
  * 3: Interaction menu <ARRAY>
  *
  * Return Value:
- * Modified interaction menu <ARRAY>
+ * None
  *
  * Public: No
  */

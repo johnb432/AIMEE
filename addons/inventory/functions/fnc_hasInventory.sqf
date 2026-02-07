@@ -15,4 +15,6 @@
  * Public: No
  */
 
-!lockedInventory _this && {maxLoad _this > 0} && {getNumber (configOf _this >> "disableInventory") != 1}
+params ["_object"];
+
+!lockedInventory _object && {maxLoad _object > 0} && {getNumber (configOf _object >> "disableInventory") != 1} // return

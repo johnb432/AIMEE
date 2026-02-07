@@ -1,4 +1,5 @@
 releases/*
 keys/*
 *.biprivatekey
+.hemttprivatekey
 .hemttout

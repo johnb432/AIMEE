@@ -11,13 +11,13 @@
         condition = QUOTE(GVAR(settingLightsAction) && {'headlights' call EFUNC(main,ignoreKeybind)} && {!isLightOn _target} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
         displayName = CQSTRING(STR_ACTION_LIGHTS_ON);\
         icon = ICON_LIGHTS_ON;\
-        statement = QUOTE(_target setPilotLight true);\
+        statement = QPACTION('LightOn',_target);\
     };\
     class GVAR(lightsOffAction) {\
         condition = QUOTE(GVAR(settingLightsAction) && {'headlights' call EFUNC(main,ignoreKeybind)} && {isLightOn _target} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
         displayName = CQSTRING(STR_ACTION_LIGHTS_OFF);\
         icon = ICON_LIGHTS_OFF;\
-        statement = QUOTE(_target setPilotLight false);\
+        statement = QPACTION('LightOff',_target);\
     }
 
 #define MANUAL_FIRE_ACTION \
@@ -39,13 +39,13 @@
         condition = QUOTE(GVAR(settingEngineAction) && {'engineToggle' call EFUNC(main,ignoreKeybind) && {'engineControlACE' call EFUNC(main,ignoreKeybind)}} && {!isEngineOn _target} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
         displayName = CQSTRING(STR_action_engineon);\
         icon = ICON_ENGINE_ON;\
-        statement = QUOTE(_target engineOn true);\
+        statement = QPACTION('EngineOn',_target);\
     };\
     class GVAR(engineOffAction) {\
         condition = QUOTE(GVAR(settingEngineAction) && {'engineToggle' call EFUNC(main,ignoreKeybind) && {'engineControlACE' call EFUNC(main,ignoreKeybind)}} && {isEngineOn _target} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
         displayName = CQSTRING(STR_action_engineoff);\
         icon = ICON_ENGINE_OFF;\
-        statement = QUOTE(_target engineOn false);\
+        statement = QPACTION('EngineOff',_target);\
     }
 
 #define GEAR_ACTION \
@@ -62,24 +62,27 @@
         condition = QUOTE(GVAR(settingCollisionAction) && {!isCollisionLightOn _target} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
         displayName = CQSTRING(STR_ACTION_COLLISIONLIGHTS_ON);\
         icon = ICON_COLLISION_LIGHTS_ON;\
-        statement = QUOTE(_target setCollisionLight true);\
+        statement = QPACTION('CollisionLightOn',_target);\
     };\
     class GVAR(collisionLightsOffAction) {\
         condition = QUOTE(GVAR(settingCollisionAction) && {isCollisionLightOn _target} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
         displayName = CQSTRING(STR_ACTION_COLLISIONLIGHTS_OFF);\
         icon = ICON_COLLISION_LIGHTS_OFF;\
-        statement = QUOTE(_target setCollisionLight false);\
+        statement = QPACTION('CollisionLightOff',_target);\
     }
 
+// From Apollo in the Arma discord:
+// class Reflectors {} do not have animationSources to switch them on and off.
+// If they're in the root of the vehicle the game puts a userAction "lights on", or if they're in a turret it gives a "searchlight on" option. There are no "hide" animations in model.cfg for them.
 #define SEARCH_LIGHT_ACTION \
     class GVAR(searchLightOnAction) {\
-        condition = QUOTE(GVAR(settingSearchAction) && {(_target unitTurret _player) isEqualTo [0]} && {!isLightOn [ARR_2(_target,[0])]});\
+        condition = QUOTE(GVAR(settingSearchAction) && {private _turret = _target unitTurret _player; !(_turret in [ARR_2([],[-1])]) && {!isLightOn [ARR_2(_target,_turret)]} && {count ([ARR_2(_target,_turret)] call CBA_fnc_getTurret >> 'Reflectors') != 0}});\
         displayName = CQSTRING(STR_action_searchlights_on);\
         icon = ICON_LIGHTS_ON;\
         statement = QPACTION('SearchLightOn',_target);\
     };\
     class GVAR(searchLightOffAction) {\
-        condition = QUOTE(GVAR(settingSearchAction) && {(_target unitTurret _player) isEqualTo [0]} && {isLightOn [ARR_2(_target,[0])]});\
+        condition = QUOTE(GVAR(settingSearchAction) && {isLightOn [ARR_2(_target,_target unitTurret _player)]});\
         displayName = CQSTRING(STR_action_searchlights_off);\
         icon = ICON_LIGHTS_OFF;\
         statement = QPACTION('SearchLightOff',_target);\
@@ -99,6 +102,30 @@
         statement = QPACTION('AutoHoverCancel',_target);\
     }
 
+#define LOCK_CONTROL_ACTION \
+    class GVAR(lockControlAction) {\
+        condition = QUOTE(GVAR(settingTakeControlsAction) && {isCopilotEnabled _target} && {driver _target == _player} && {_target getVariable [ARR_2(QQGVAR(copilotControlsUnlocked),false)]});\
+        displayName = CQSTRING(STR_action_lock_control);\
+        statement = QPACTION('LockVehicleControl',_target);\
+    };\
+    class GVAR(unlockControlAction) {\
+        condition = QUOTE(GVAR(settingTakeControlsAction) && {isCopilotEnabled _target} && {driver _target == _player} && {!(_target getVariable [ARR_2(QQGVAR(copilotControlsUnlocked),false)])});\
+        displayName = CQSTRING(STR_action_unlock_control);\
+        statement = QPACTION('UnlockVehicleControl',_target);\
+    }
+
+#define TAKE_CONTROL_ACTION \
+    class GVAR(takeControlAction) {\
+        condition = QUOTE(GVAR(settingTakeControlsAction) && {isCopilotEnabled _target} && {!isPlayer driver _target || {_target getVariable [ARR_2(QQGVAR(copilotControlsUnlocked),false)]}} && {!([ARR_2(_player,_target)] call FUNC(isDriver))} && {getNumber ([ARR_2(_target,_target unitTurret _player)] call CBA_fnc_getTurret >> 'isCopilot') == 1});\
+        displayName = CQSTRING(STR_action_take_control);\
+        statement = QPACTION('TakeVehicleControl',_target);\
+    };\
+    class GVAR(releaseControlAction) {\
+        condition = QUOTE(GVAR(settingTakeControlsAction) && {isCopilotEnabled _target} && {!isPlayer driver _target || {_target getVariable [ARR_2(QQGVAR(copilotControlsUnlocked),false)]}} && {[ARR_2(_player,_target)] call FUNC(isDriver)} && {getNumber ([ARR_2(_target,_target unitTurret _player)] call CBA_fnc_getTurret >> 'isCopilot') == 1});\
+        displayName = CQSTRING(STR_action_suspend_control);\
+        statement = QPACTION('SuspendVehicleControl',_target);\
+    }
+
 #define FLAPS_ACTION \
     class GVAR(flapsAction) {\
         condition = QUOTE(GVAR(settingFlapsAction) && {'FlapsDown' call EFUNC(main,ignoreKeybind)} && {getNumber (configOf _target >> 'flaps') != 0} && {[ARR_2(_player,_target)] call FUNC(isDriver)});\
@@ -112,9 +139,10 @@ class CfgVehicles {
     class Car: LandVehicle {
         class ACE_SelfActions {
             ENGINE_ACITON;
-            MANUAL_FIRE_ACTION;
             LIGHTS_ACTION;
+            SEARCH_LIGHT_ACTION;
             ARTY_COMP_ACTION;
+            MANUAL_FIRE_ACTION;
         };
     };
 
@@ -134,36 +162,37 @@ class CfgVehicles {
     class Tank: LandVehicle {
         class ACE_SelfActions {
             ENGINE_ACITON;
-            MANUAL_FIRE_ACTION;
             LIGHTS_ACTION;
+            SEARCH_LIGHT_ACTION;
             ARTY_COMP_ACTION;
+            MANUAL_FIRE_ACTION;
         };
     };
 
     class Air;
     class Helicopter: Air {
         class ACE_SelfActions {
+            TAKE_CONTROL_ACTION;
+            LOCK_CONTROL_ACTION;
             ENGINE_ACITON;
-            MANUAL_FIRE_ACTION;
-            COLLISION_LIGHTS_ACTION;
-            GEAR_ACTION;
             HOVER_ACTION;
-        };
-    };
-	class Helicopter_Base_F: Helicopter {};
-	class Heli_light_03_base_F: Helicopter_Base_F {
-        class ACE_SelfActions: ACE_SelfActions {
+            GEAR_ACTION;
+            LIGHTS_ACTION;
+            COLLISION_LIGHTS_ACTION;
             SEARCH_LIGHT_ACTION;
+            MANUAL_FIRE_ACTION;
         };
     };
 
     class Plane: Air {
         class ACE_SelfActions {
             ENGINE_ACITON;
-            MANUAL_FIRE_ACTION;
-            COLLISION_LIGHTS_ACTION;
             GEAR_ACTION;
             FLAPS_ACTION;
+            LIGHTS_ACTION;
+            COLLISION_LIGHTS_ACTION;
+            SEARCH_LIGHT_ACTION;
+            MANUAL_FIRE_ACTION;
         };
     };
 
@@ -171,10 +200,11 @@ class CfgVehicles {
     class Ship_F: Ship {
         class ACE_SelfActions {
             ENGINE_ACITON;
-            MANUAL_FIRE_ACTION;
             LIGHTS_ACTION;
             COLLISION_LIGHTS_ACTION;
+            SEARCH_LIGHT_ACTION;
             ARTY_COMP_ACTION;
+            MANUAL_FIRE_ACTION;
         };
     };
 };

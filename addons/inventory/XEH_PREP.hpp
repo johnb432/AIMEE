@@ -1,7 +1,6 @@
 PREP(assemble);
 PREP(assembleModify);
 PREP(backpackPos);
-PREP(backpackType);
 PREP(backpackUAVModify);
 PREP(canAssemble);
 PREP(canDisassemble);

@@ -6,31 +6,27 @@
  * Arguments:
  * 0: Unit <OBJECT>
  * 1: Vehicle <OBJECT>
- * 2: Type <STRING>
+ * 2: Type <NUMBER>
  *
  * Return Value:
  * Can turn in or out <BOOL>
  *
  * Example:
- * [player, vehicle player, "turnIn"] call AIMEE_vehicle_seats_fnc_canTurnInOrOut
+ * [player, vehicle player, TURN_IN] call AIMEE_vehicle_seats_fnc_canTurnInOrOut
  *
  * Public: No
  */
 
 params ["_unit", "_vehicle", "_type"];
 
-if (_type != "turnOut" && {_type != "turnIn"}) exitWith {
-    false
-};
-
 private _condition = isTurnedOut _unit;
 
-if (_type == "turnOut") then {
+if (_type == TURN_OUT) then {
     _condition = !_condition;
 };
 
 if (!_condition) exitWith {
-    false
+    false // return
 };
 
 private _fullCrew = fullCrew _vehicle;
@@ -41,4 +37,4 @@ if (_index != -1 && {(_fullCrew select _index) select 4}) then {
     _condition = getText ([_vehicle, _vehicle unitTurret _unit] call CBA_fnc_getTurret >> "personTurretAction") != "";
 };
 
-_condition && {_unit call ace_common_fnc_hasHatch}
+_condition && {_unit call ace_common_fnc_hasHatch} // return

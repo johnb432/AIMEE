@@ -11,7 +11,7 @@
  * 4: Container <OBJECT>
  *
  * Return Value:
- * Returns if the item was picked up or not  <BOOL>
+ * Returns if the item was picked up or not <BOOL>
  *
  * Example:
  * [player, cursorObject, "FirstAidKit"] call AIMEE_inventory_fnc_playerPickupItem
@@ -33,6 +33,11 @@ if (headgear _unit == "" && {_description == "headgear"}) exitWith {
     [{
         params ["_unit", "_item", "_container"];
 
+        if (!alive _unit) exitWith {};
+
+        // Check if unit's gear hasn't updated; Don't continue
+        if (headgear _unit != "") exitWith {};
+
         // If item couldn't be removed, it means it was deleted before; Don't continue
         if !([_container, _item] call CBA_fnc_removeItemCargo) exitWith {};
 
@@ -40,7 +45,7 @@ if (headgear _unit == "" && {_description == "headgear"}) exitWith {
         _unit addHeadgear _item;
     }, [_unit, _item, _container], 1] call CBA_fnc_waitAndExecute;
 
-    true
+    true // return
 };
 // Face wear
 if (goggles _unit == "" && {_description == "goggles"}) exitWith {
@@ -49,6 +54,11 @@ if (goggles _unit == "" && {_description == "goggles"}) exitWith {
     [{
         params ["_unit", "_item", "_container"];
 
+        if (!alive _unit) exitWith {};
+
+        // Check if unit's gear hasn't updated; Don't continue
+        if (goggles _unit != "") exitWith {};
+
         // If item couldn't be removed, it means it was deleted before; Don't continue
         if !([_container, _item] call CBA_fnc_removeItemCargo) exitWith {};
 
@@ -56,7 +66,7 @@ if (goggles _unit == "" && {_description == "goggles"}) exitWith {
         _unit addGoggles _item;
     }, [_unit, _item, _container], 1] call CBA_fnc_waitAndExecute;
 
-    true
+    true // return
 };
 
 private _containerIndex = ["uniform", "vest"] findIf {_description == _x};
@@ -69,6 +79,11 @@ if (_containerIndex != -1) exitWith {
         [{
             params ["_unit", "_firstContainerClassname", "_container", "_containerIndex", "_weaponItemsCargo", "_magazinesAmmoCargo", "_itemCargo"];
             _itemCargo params ["_items", "_itemsCount"];
+
+            if (!alive _unit) exitWith {};
+
+            // Check if unit's gear hasn't updated; Don't continue
+            if (([uniform _unit, vest _unit] select _containerIndex) != "") exitWith {};
 
             // If item couldn't be removed, it means it was deleted before; Don't continue
             if !([_container, _firstContainerClassname] call CBA_fnc_removeItemCargo) exitWith {};
@@ -107,7 +122,7 @@ if (_containerIndex != -1) exitWith {
             } forEach _items;
         }, [_unit, _firstContainerClassname, _container, _containerIndex, weaponsItemsCargo _firstContainer, magazinesAmmoCargo _firstContainer, getItemCargo _firstContainer], 1] call CBA_fnc_waitAndExecute;
 
-        true
+        true // return
     } else {
         // Add to inventory if possible
         if (_unit canAdd _firstContainerClassname && {load _firstContainer == 0}) exitWith {
@@ -116,16 +131,21 @@ if (_containerIndex != -1) exitWith {
             [{
                 params ["_unit", "_firstContainerClassname", "_container"];
 
+                if (!alive _unit) exitWith {};
+
+                // Check if unit's gear hasn't updated; Don't continue
+                if !(_unit canAdd _firstContainerClassname) exitWith {};
+
                 // If item couldn't be removed, it means it was deleted before; Don't continue
                 if !([_container, _firstContainerClassname] call CBA_fnc_removeItemCargo) exitWith {};
 
                 _unit addItem _firstContainerClassname;
             }, [_unit, _firstContainerClassname, _container], 1] call CBA_fnc_waitAndExecute;
 
-            true
+            true // return
         };
 
-        false
+        false // return
     };
 };
 
@@ -143,50 +163,68 @@ if (load _firstContainer == 0) exitWith {
 
     // Check if the assignedItems slot for item is empty
     {
-        if (_x == _description) exitWith {
-            // If the item can't be added to the assignedItems, check if it fits in the inventory further below
-            if (((_loadout select 9) select _forEachIndex) != "") exitWith {};
-
-            _unit playAction "PutDown";
-
-            [{
-                params ["_unit", "_item", "_container"];
-
-                // If item couldn't be removed, it means it was deleted before; Don't continue
-                if !([_container, _item] call CBA_fnc_removeItemCargo) exitWith {};
-
-                _unit linkItem _item;
-            }, [_unit, _item, _container], 1] call CBA_fnc_waitAndExecute;
-
-            true breakOut "main"
+        if (_x != _description) then {
+            continue;
         };
+
+        // If the item can't be added to the assignedItems, check if it fits in the inventory further below
+        if (((_loadout select 9) select _forEachIndex) != "") exitWith {};
+
+        _unit playAction "PutDown";
+
+        [{
+            params ["_unit", "_item", "_container", "_slotNumber"];
+
+            if (!alive _unit) exitWith {};
+
+            // Check if unit's gear hasn't updated; Don't continue
+            if ((_unit getSlotItemName _slotNumber) != "") exitWith {};
+
+            // If item couldn't be removed, it means it was deleted before; Don't continue
+            if !([_container, _item] call CBA_fnc_removeItemCargo) exitWith {};
+
+            _unit linkItem _item;
+        }, [_unit, _item, _container, [608, 612, 611, 609, 610, 616] select _forEachIndex], 1] call CBA_fnc_waitAndExecute;
+
+        true breakOut "main" // return
     } forEach ["map", "uav_terminal", "radio", "compass", "watch", "nvgoggles"];
 
     // Check if weapons have space for item
     {
-        if (_x == _description) exitWith {
-            private _attachmentIndex = _forEachIndex;
-
-            {
-                _x params [["_weapon", ""], ["_muzzle", ""], ["_flashlight", ""], ["_optics", ""], "", "", ["_bipod", ""]];
-
-                // Check if item is compatible and if slot is empty
-                if (_weapon canAdd _item && {([_optics, _flashlight, _muzzle, _bipod] select _attachmentIndex) == ""}) exitWith {
-                    _unit playAction "PutDown";
-
-                    [{
-                        params ["_unit", "_item", "_container", "_weapon"];
-
-                        // If item couldn't be removed, it means it was deleted before; Don't continue
-                        if !([_container, _item] call CBA_fnc_removeItemCargo) exitWith {};
-
-                        _unit addWeaponItem [_weapon, _item];
-                    }, [_unit, _item, _container, _weapon], 1] call CBA_fnc_waitAndExecute;
-
-                    true breakOut "main"
-                };
-            } forEach [_loadout select 0, _loadout select 1, _loadout select 2, _loadout select 8]; // Primary, secondary, handgun weapons, binoculars
+        if (_x != _description) then {
+            continue;
         };
+
+        private _attachmentIndex = _forEachIndex;
+
+        {
+            _x params [["_weapon", ""], ["_muzzle", ""], ["_flashlight", ""], ["_optics", ""], "", "", ["_bipod", ""]];
+
+            // Check if item is compatible and if slot is empty
+            if !(_weapon canAdd _item && {([_optics, _flashlight, _muzzle, _bipod] select _attachmentIndex) == ""}) then {
+                continue;
+            };
+
+            _unit playAction "PutDown";
+
+            [{
+                params ["_unit", "_item", "_container", "_weapon", "_attachmentIndex", "_weaponIndex"];
+
+                if (!alive _unit) exitWith {};
+
+                ((getUnitLoadout _unit) select ([_weaponIndex, 8] select (_weaponIndex == 3))) params [["_newWeapon", ""], ["_muzzle", ""], ["_flashlight", ""], ["_optics", ""], "", "", ["_bipod", ""]];
+
+                // Check if unit's gear hasn't updated; Don't continue
+                if (_newWeapon != _weapon || {([_optics, _flashlight, _muzzle, _bipod] select _attachmentIndex) != ""}) exitWith {};
+
+                // If item couldn't be removed, it means it was deleted before; Don't continue
+                if !([_container, _item] call CBA_fnc_removeItemCargo) exitWith {};
+
+                _unit addWeaponItem [_weapon, _item];
+            }, [_unit, _item, _container, _weapon, _attachmentIndex, _forEachIndex], 1] call CBA_fnc_waitAndExecute;
+
+            true breakOut "main" // return
+        } forEach [_loadout select 0, _loadout select 1, _loadout select 2, _loadout select 8]; // Primary, secondary, handgun weapons, binoculars
     } forEach ["optics", "flashlight", "muzzle", "under"];
 
     // Add to inventory if possible
@@ -196,17 +234,22 @@ if (load _firstContainer == 0) exitWith {
         [{
             params ["_unit", "_item", "_container"];
 
+            if (!alive _unit) exitWith {};
+
+            // Check if unit's gear hasn't updated; Don't continue
+            if !(_unit canAdd _item) exitWith {};
+
             // If item couldn't be removed, it means it was deleted before; Don't continue
             if !([_container, _item] call CBA_fnc_removeItemCargo) exitWith {};
 
             _unit addItem _item;
         }, [_unit, _item, _container], 1] call CBA_fnc_waitAndExecute;
 
-        true
+        true // return
     };
 
-    false
+    false // return
 };
 
 // If not possible, open container
-false
+false // return

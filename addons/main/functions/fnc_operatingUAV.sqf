@@ -15,4 +15,6 @@
  * Public: No
  */
 
-((UAVControl getConnectedUAV _this) select 1) != ""
+params ["_unit"];
+
+((UAVControl getConnectedUAV _unit) select 1) != "" // return

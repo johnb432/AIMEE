@@ -9,7 +9,7 @@
  * 1: Set new value <BOOL>
  *
  * Return Value:
- * None
+ * Gear status <NUMBER>
  *
  * Public: No
  */
@@ -33,7 +33,7 @@ if (_old == GEAR_UNKNOWN) then {
         };
     } forEach (animationNames _vehicle);
 
-    if (_phases isEqualTo []) exitWith {-1};
+    if (_phases isEqualTo []) exitWith {};
 
     _phases sort true;
 
@@ -67,4 +67,4 @@ if (!isNil "_set") then {
     _vehicle setVariable [QGVAR(gearStatus), _set];
 };
 
-_old;
+_old // return

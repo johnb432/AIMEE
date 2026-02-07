@@ -1,3 +1,9 @@
+# Changelog for AIMEE 7.2.2026
+
+1.3.10.0
+- Added search light interactions to ground vehicles.
+- Added 4 copilot-related controls: 'Take Controls', 'Release Controls', 'Lock Controls' and 'Unlock Controls'.
+
 # Changelog for AIMEE 27.9.2025
 
 1.3.9.0
