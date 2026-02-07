@@ -4,13 +4,13 @@
  * Sets the icon and name of the interaction.
  *
  * Arguments:
- * 0: Object <OBJECT>
+ * 0: Object (not used) <OBJECT>
  * 1: Unit <OBJECT>
- * 2: Params <ARRAY>
+ * 2: Params (not used) <ARRAY>
  * 3: Interaction menu <ARRAY>
  *
  * Return Value:
- * Modified interaction menu <ARRAY>
+ * None <ARRAY>
  *
  * Public: No
  */

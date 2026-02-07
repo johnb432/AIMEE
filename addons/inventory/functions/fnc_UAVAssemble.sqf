@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * player call AIMEE_uav_terminal_fnc_UAVAssemble
+ * player call AIMEE_inventory_fnc_UAVAssemble
  *
  * Public: No
  */
@@ -26,6 +26,8 @@ _unit playAction "PutDown";
 [{
     params ["_unit"];
 
+    if (!alive _unit) exitWith {};
+
     // Check if backpack hasn't changed
     private _UAVType = _unit call FUNC(UAVType);
 
@@ -38,7 +40,7 @@ _unit playAction "PutDown";
 
     // Find position to place UAV
     private _direction = getDir _unit;
-    private _position = (getPosASL _unit) vectorAdd [0.8 * sin(_direction), 0.8 * cos(_direction), 0];
+    private _position = (getPosASL _unit) vectorAdd [sin _direction, cos _direction, 0] vectorMultiply 0.8;
     private _intersection = (lineIntersectsSurfaces [_position vectorAdd [0, 0, 1.5], _position vectorDiff [0, 0, 1.5], _unit, objNull, true, 1, "GEOM", "FIRE"]) param [0, []];
 
     private _vectorUp = if (_intersection isNotEqualTo []) then {

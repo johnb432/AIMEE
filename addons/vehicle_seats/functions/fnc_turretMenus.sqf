@@ -7,10 +7,14 @@
  * 0: Vehicle <OBJECT>
  * 1: Prefix <STRING>
  * 2: Seat <ARRAY>
+ *  2.0: Occupant <OBJECT>
+ *  2.1: Role <STRING>
+ *  2.2: Cargo Index <NUMBER>
+ *  2.3: Turret <ARRAY>
  * 3: Icon <STRING>
  *
  * Return Value:
- * All interaction submenus for all seat changing for a given class of vehicle <ARRAY>
+ * Interaction menu <ARRAY>
  *
  * Example:
  * [vehicle player, "GetIn", [player, "driver", nil, [-1]], "A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_commander_ca.paa"] call AIMEE_vehicle_seats_fnc_turretMenus
@@ -43,4 +47,4 @@ if (_turretPath in (_vehicle call ace_common_fnc_getTurretsFFV)) then {
     ] call ace_interact_menu_fnc_createAction,
     [],
     _vehicle
-]
+] // return

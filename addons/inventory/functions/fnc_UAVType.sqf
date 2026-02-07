@@ -10,18 +10,24 @@
  * Returns what type of UAV can be assembled from backpack <STRING>
  *
  * Example:
- * player call AIMEE_uav_terminal_fnc_UAVType
+ * player call AIMEE_inventory_fnc_UAVType
  *
  * Public: No
  */
 
-private _backpack = backpackContainer _this;
+params ["_unit"];
 
-if (isNull _backpack) exitWith {""};
+private _backpack = backpackContainer _unit;
+
+if (isNull _backpack) exitWith {
+    "" // return
+};
 
 private _config = configOf _backpack >> "assembleInfo";
 
 // Ignore static weapons
-if (isNull _config || {isArray (_config >> "base")}) exitWith {""};
+if (isNull _config || {isArray (_config >> "base")}) exitWith {
+    "" // return
+};
 
-getText (_config >> "assembleTo")
+getText (_config >> "assembleTo") // return

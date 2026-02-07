@@ -15,24 +15,26 @@
  * Public: No
  */
 
+params ["_type"];
+
 !GVAR(settingHide) || {
     // Show Engine off/on interaction if ACE Keybinds for turning engine off and on are unbound
-    if (_this == "engineControlACE") then {
+    if (_type == "engineControlACE") then {
         private _engineOff = ["ACE3 Vehicles", "ace_weaponselect_EngineOff"] call CBA_fnc_getKeybind;
         private _engineOn = ["ACE3 Vehicles", "ace_weaponselect_EngineOn"] call CBA_fnc_getKeybind;
 
         // If both keybinds don't exist, show
         if (isNil "_engineOff" && isNil "_engineOn") exitWith {
-            true
+            true // return
         };
 
         if (!isNil "_engineOff") then {
-            (_engineOff select 8) isEqualTo []
+            (_engineOff select 8) isEqualTo [] // return
         } else {
-            (_engineOn select 8) isEqualTo []
-        }
+            (_engineOn select 8) isEqualTo [] // return
+        };
     } else {
         // Vanilla keybinds
-        (actionKeysNamesArray [_this, 1]) isEqualTo []
+        (actionKeysNamesArray [_type, 1]) isEqualTo [] // return
     };
 }

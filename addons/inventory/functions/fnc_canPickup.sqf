@@ -22,4 +22,4 @@ private _content = itemCargo _target;
 _content append (magazineCargo _target);
 _content append (backpackCargo _target);
 
-count _content == 1 && {[_unit, _target, []] call ace_common_fnc_canInteractWith}
+count _content == 1 && {[_unit, _target, []] call ace_common_fnc_canInteractWith} // return

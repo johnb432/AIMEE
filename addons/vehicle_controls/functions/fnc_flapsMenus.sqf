@@ -15,6 +15,8 @@
  * Public: No
  */
 
+params ["_vehicle"];
+
 private _menus = [];
 private _icons = [ICON_FLAPS_0, ICON_FLAPS_1, ICON_FLAPS_2];
 private _texts = ["Retracted", "Extended 1", "Extended 2"];
@@ -34,8 +36,8 @@ for "_i" from 0 to FLAPS_MAX do {
             _i
         ] call ace_interact_menu_fnc_createAction,
         [],
-        _this
+        _vehicle
     ];
 };
 
-_menus
+_menus // return

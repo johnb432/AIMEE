@@ -4,7 +4,6 @@ PREP(flapsDown);
 PREP(flapsMenus);
 PREP(gearHandler);
 PREP(gearStatus);
-PREP(initUserActions);
 PREP(isDriver);
 PREP(toggleGear);
 PREP(userActionMenus);

@@ -8,7 +8,7 @@
  * 1: Unit <OBJECT>
  *
  * Return Value:
- * All interaction submenus for all seat changing for a given class of vehicle <ARRAY>
+ * Interaction menu <ARRAY>
  *
  * Example:
  * [vehicle player, player] call AIMEE_vehicle_seats_fnc_changeMenus
@@ -29,11 +29,13 @@ private _menus = [];
 }) params ["_drivers", "_commanders", "_gunners", "_turrets", "_cargos"];
 
 if (_drivers isNotEqualTo [] && {[_unit, _vehicle, _drivers select 0] call FUNC(canSwitch)}) then {
+    private _isAir = _vehicle isKindOf "Air";
+
     _menus pushBack [
         [
             QGVAR(driverAction),
-            [TEXT_DRIVER, TEXT_PILOT] select (_vehicle isKindOf "Air"),
-            [ICON_DRIVER, ICON_PILOT] select (_vehicle isKindOf "Air"),
+            [TEXT_DRIVER, TEXT_PILOT] select _isAir,
+            [ICON_DRIVER, ICON_PILOT] select _isAir,
             {_player action (_this select 2)},
             {true},
             nil,
@@ -76,4 +78,4 @@ if (_gunners isNotEqualTo [] && {[_unit, _vehicle, _gunners select 0] call FUNC(
     };
 } forEach _cargos;
 
-_menus
+_menus // return

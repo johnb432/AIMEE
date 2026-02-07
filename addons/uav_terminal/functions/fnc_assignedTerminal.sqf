@@ -15,7 +15,9 @@
  * Public: No
  */
 
-private _cfgWeapons = configFile >> "CfgWeapons";
-private _terminal = _this getSlotItemName 612;
+params ["_unit"];
 
-_terminal isKindOf ["UavTerminal_base", _cfgWeapons] && {[_cfgWeapons >> _terminal >> "ItemInfo" >> "side", "NUMBER", -1] call CBA_fnc_getConfigEntry == (side _this) call BIS_fnc_sideID}
+private _cfgWeapons = configFile >> "CfgWeapons";
+private _terminal = _unit getSlotItemName 612;
+
+_terminal isKindOf ["UavTerminal_base", _cfgWeapons] && {[_cfgWeapons >> _terminal >> "ItemInfo" >> "side", "NUMBER", -1] call CBA_fnc_getConfigEntry == (side _unit) call BIS_fnc_sideID} // return

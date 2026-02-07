@@ -7,7 +7,7 @@
  * 0: Unit <OBJECT>
  *
  * Return Value:
- * Returns menus <ARRAY>
+ * Interaction menu <ARRAY>
  *
  * Example:
  * player call AIMEE_uav_terminal_fnc_UAVMenus
@@ -15,10 +15,14 @@
  * Public: No
  */
 
-private _uav = getConnectedUAV _this;
+params ["_unit"];
+
+private _uav = getConnectedUAV _unit;
 (UAVControl _uav) params ["_controller", "_role"];
 
-if (_controller != _this) exitWith {[]};
+if (_controller != _unit) exitWith {
+    [] // return
+};
 
 private _config = configOf _uav;
 private _menus = [];
@@ -67,7 +71,7 @@ if (_role != "") then {
             }
         ] call ace_interact_menu_fnc_createAction,
         [],
-        _this
+        _unit
     ];
 };
 
@@ -105,4 +109,4 @@ if (getText (_config >> "uavCameraDriverPos") != "" && {_role != "DRIVER"}) then
     ];
 };
 
-_menus
+_menus // return

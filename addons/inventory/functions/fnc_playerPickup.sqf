@@ -27,19 +27,21 @@ private _backpacks = backpackCargo _container;
 switch (true) do {
     // Item
     case (count _items == 1): {
-        [_unit, _container, _items select 0, _firstContainerClassname, _firstContainer] call FUNC(playerPickupItem)
+        [_unit, _container, _items select 0, _firstContainerClassname, _firstContainer] call FUNC(playerPickupItem) // return
     };
     // Magazine
     case (count _magazines == 1): {
-        [_unit, _container, _magazines select 0] call FUNC(playerPickupMagazine)
+        [_unit, _container, _magazines select 0] call FUNC(playerPickupMagazine) // return
     };
     // Backpack
     case (count _backpacks == 1): {
         _unit action ["PutBag"];
         _unit action ["AddBag", _container, _backpacks select 0];
 
-        true
+        true // return
     };
     // If not one item
-    default {false};
+    default {
+        false // return
+    };
 };

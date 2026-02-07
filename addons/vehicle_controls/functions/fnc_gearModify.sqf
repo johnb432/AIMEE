@@ -5,18 +5,20 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
- * 1: Player <OBJECT>
- * 2: Params <ARRAY>
+ * 1: Player (not used) <OBJECT>
+ * 2: Params (not used) <ARRAY>
  * 3: Interaction menu <ARRAY>
  *
  * Return Value:
- * Modified interaction menu <ARRAY>
+ * None
  *
  * Public: No
  */
 
-(_this select 3) set [1,
-    switch ((_this select 0) call FUNC(gearStatus)) do {
+params ["_target", "", "", "_menu"];
+
+_menu set [1,
+    switch (_target call FUNC(gearStatus)) do {
         case GEAR_ERROR: {
             LQSTRING(str_lib_info_retract_gear) + " " + toUpper LQSTRING(str_mis_state_error)
         };
