@@ -38,9 +38,12 @@ _unit playAction "PutDown";
     // Prevent collision damage to unit
     ["ace_common_fixCollision", _unit] call CBA_fnc_localEvent;
 
-    // Find position to place UAV
+    // Place UAV
+    private _uav = _UAVType createVehicle [0, 0, 0];
+
+    // Find position to move UAV
     private _direction = getDir _unit;
-    private _position = (getPosASL _unit) vectorAdd [sin _direction, cos _direction, 0] vectorMultiply 0.8;
+    private _position = (getPosASL _unit) vectorAdd ([sin _direction, cos _direction, 0] vectorMultiply (1 max ((boundingBoxReal [_uav, "FireGeometry"]) select 2)));
     private _intersection = (lineIntersectsSurfaces [_position vectorAdd [0, 0, 1.5], _position vectorDiff [0, 0, 1.5], _unit, objNull, true, 1, "GEOM", "FIRE"]) param [0, []];
 
     private _vectorUp = if (_intersection isNotEqualTo []) then {
@@ -52,8 +55,7 @@ _unit playAction "PutDown";
         [0, 0, 1]
     };
 
-    // Place UAV
-    private _uav = _UAVType createVehicle [0, 0, 0];
+    // Move UAV
     createVehicleCrew _uav;
 
     _uav setDir _direction;

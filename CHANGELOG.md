@@ -1,3 +1,8 @@
+# Changelog for AIMEE 29.7.2026
+
+1.3.11.0
+- Fixed UAV placement during assembly.
+
 # Changelog for AIMEE 7.2.2026
 
 1.3.10.0
