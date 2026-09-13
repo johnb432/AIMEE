@@ -12,7 +12,7 @@
  * Can turn in or out <BOOL>
  *
  * Example:
- * [player, vehicle player, TURN_IN] call AIMEE_vehicle_seats_fnc_canTurnInOrOut
+ * [player, vehicle player, TURN_IN] call aimee_vehicle_seats_fnc_canTurnInOrOut
  *
  * Public: No
  */

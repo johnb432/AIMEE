@@ -10,7 +10,7 @@
  * Returns what type of UAV can be assembled from backpack <STRING>
  *
  * Example:
- * player call AIMEE_inventory_fnc_UAVType
+ * player call aimee_inventory_fnc_UAVType
  *
  * Public: No
  */

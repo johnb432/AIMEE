@@ -7,8 +7,8 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "AIMEE_main",
-            "AIMEE_vehicle_controls",
+            "aimee_main",
+            "aimee_vehicle_controls",
             "ace_interaction"
         };
         author = "johnb43";

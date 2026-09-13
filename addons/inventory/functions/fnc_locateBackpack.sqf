@@ -14,7 +14,7 @@
  * 3: If base is on ground or not <BOOL>
  *
  * Example:
- * player call AIMEE_inventory_fnc_locateBackpack
+ * player call aimee_inventory_fnc_locateBackpack
  *
  * Public: No
  */

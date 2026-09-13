@@ -10,7 +10,7 @@
  * Returns if terminal is present <BOOL>
  *
  * Example:
- * player call AIMEE_uav_terminal_fnc_assignedTerminal
+ * player call aimee_uav_terminal_fnc_assignedTerminal
  *
  * Public: No
  */

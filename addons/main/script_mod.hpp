@@ -1,5 +1,5 @@
 #define MAINPREFIX x
-#define PREFIX AIMEE
+#define PREFIX aimee
 
 #include "script_version.hpp"
 

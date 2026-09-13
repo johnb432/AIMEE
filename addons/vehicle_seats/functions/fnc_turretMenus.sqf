@@ -17,7 +17,7 @@
  * Interaction menu <ARRAY>
  *
  * Example:
- * [vehicle player, "GetIn", [player, "driver", nil, [-1]], "A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_commander_ca.paa"] call AIMEE_vehicle_seats_fnc_turretMenus
+ * [vehicle player, "GetIn", [player, "driver", nil, [-1]], "A3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_commander_ca.paa"] call aimee_vehicle_seats_fnc_turretMenus
  *
  * Public: No
  */

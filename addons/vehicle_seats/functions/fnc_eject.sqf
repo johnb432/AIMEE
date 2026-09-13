@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player, vehicle player] call AIMEE_vehicle_seats_fnc_eject
+ * [player, vehicle player] call aimee_vehicle_seats_fnc_eject
  *
  * Public: No
  */

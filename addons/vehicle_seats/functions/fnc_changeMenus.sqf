@@ -11,7 +11,7 @@
  * Interaction menu <ARRAY>
  *
  * Example:
- * [vehicle player, player] call AIMEE_vehicle_seats_fnc_changeMenus
+ * [vehicle player, player] call aimee_vehicle_seats_fnc_changeMenus
  *
  * Public: No
  */

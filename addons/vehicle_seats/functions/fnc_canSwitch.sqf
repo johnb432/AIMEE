@@ -16,7 +16,7 @@
  * Can switch <BOOL>
  *
  * Example:
- * [player, vehicle player, [player, "driver", nil, [-1]]] call AIMEE_vehicle_seats_fnc_canSwitch
+ * [player, vehicle player, [player, "driver", nil, [-1]]] call aimee_vehicle_seats_fnc_canSwitch
  *
  * Public: No
  */

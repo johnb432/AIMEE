@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="AIMEE">
+<Project name="aimee">
     <Package name="change_ammo">
-        <Key ID="STR_AIMEE_change_ammo_settingAmmoClass">
+        <Key ID="STR_aimee_change_ammo_settingAmmoClass">
             <Original>Enable magazine switch menu</Original>
             <English>Enable magazine switch menu</English>
             <French>Permission du menu "changer magazines"</French>
             <German>Magazinwechselinteraktion zulassen</German>
         </Key>
-        <Key ID="STR_AIMEE_change_ammo_settingAmmoClass_ToolTip">
+        <Key ID="STR_aimee_change_ammo_settingAmmoClass_ToolTip">
             <Original>Allows the player to switch magazine types using the ACE interaction menu.</Original>
             <English>Allows the player to switch magazine types using the ACE interaction menu.</English>
             <French>Permet au joueur de changer de magazine avec une interaction ACE sur soi-même.</French>
             <German>Erlaubt den Spieler Magazine mit einer ACE-Selbstinteraktion auszuwechseln.</German>
         </Key>
-        <Key ID="STR_AIMEE_change_ammo_settingVehicleAmmoClass">
+        <Key ID="STR_aimee_change_ammo_settingVehicleAmmoClass">
             <Original>Enable vehicle gunner magazine switch menu</Original>
             <English>Enable vehicle gunner magazine switch menu</English>
             <French>Permission du menu "changer magazines" véhicule</French>
             <German>Fahrzeugmagazinwechsel-Menu zulassen</German>
         </Key>
-        <Key ID="STR_AIMEE_change_ammo_settingVehicleAmmoClass_ToolTip">
+        <Key ID="STR_aimee_change_ammo_settingVehicleAmmoClass_ToolTip">
             <Original>Allows the player to switch vehicle magazines using the ACE self-interaction menu.</Original>
             <English>Allows the player to switch vehicle magazines using the ACE self-interaction menu.</English>
             <French>Permet au joueur de changer les magazines d'un véhicule avec une interaction ACE sur soi-même.</French>

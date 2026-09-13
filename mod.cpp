@@ -2,10 +2,10 @@
 name = "ACE Interaction Menu Expansion - Enhanced";
 author = "johnb43, upsilon";
 // https://community.bistudio.com/wiki/ImageToPAA
-picture = "\x\AIMEE\addons\main\ui\logo_AIMEE.paa";
-logo = "\x\AIMEE\addons\main\ui\logo_AIMEE.paa";
-logoOver = "\x\AIMEE\addons\main\ui\logo_AIMEE.paa";
-logoSmall = "\x\AIMEE\addons\main\ui\logo_AIMEE.paa";
+picture = "\x\aimee\addons\main\ui\logo_aimee.paa";
+logo = "\x\aimee\addons\main\ui\logo_aimee.paa";
+logoOver = "\x\aimee\addons\main\ui\logo_aimee.paa";
+logoSmall = "\x\aimee\addons\main\ui\logo_aimee.paa";
 tooltip = "ACE Interaction Menu Expansion - Enhanced";
 tooltipOwned = "ACE Interaction Menu Expansion - Enhanced";
 action = "https://github.com/johnb432/AIMEE";

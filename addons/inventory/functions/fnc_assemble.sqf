@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * player call AIMEE_inventory_fnc_assemble
+ * player call aimee_inventory_fnc_assemble
  *
  * Public: No
  */

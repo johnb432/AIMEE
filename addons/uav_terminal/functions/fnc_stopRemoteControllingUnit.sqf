@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * call AIMEE_uav_terminal_fnc_stopRemoteControllingUnit
+ * call aimee_uav_terminal_fnc_stopRemoteControllingUnit
  *
  * Public: No
  */

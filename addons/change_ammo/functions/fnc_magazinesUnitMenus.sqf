@@ -10,7 +10,7 @@
  * Interaction menu <ARRAY>
  *
  * Example:
- * player call AIMEE_change_ammo_fnc_magazinesUnitMenus
+ * player call aimee_change_ammo_fnc_magazinesUnitMenus
  *
  * Public: No
  */

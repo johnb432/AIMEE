@@ -11,7 +11,7 @@
  * If weapon can be disassembled <BOOL>
  *
  * Example:
- * [player, cursorObject] call AIMEE_inventory_fnc_canDisassemble
+ * [player, cursorObject] call aimee_inventory_fnc_canDisassemble
  *
  * Public: No
  */

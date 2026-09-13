@@ -10,7 +10,7 @@
  * Interaction menu <ARRAY>
  *
  * Example:
- * player call AIMEE_inventory_fnc_explosiveMenus
+ * player call aimee_inventory_fnc_explosiveMenus
  *
  * Public: No
  */

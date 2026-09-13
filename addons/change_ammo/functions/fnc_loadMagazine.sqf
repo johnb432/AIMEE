@@ -16,7 +16,7 @@
  * None
  *
  * Example:
- * [vehicle player, vehicle player, [currentWeapon vehicle player, currentMuzzle vehicle player, currentMagazine vehicle player, vehicle player unitTurret player]] call AIMEE_change_ammo_fnc_loadMagazine
+ * [vehicle player, vehicle player, [currentWeapon vehicle player, currentMuzzle vehicle player, currentMagazine vehicle player, vehicle player unitTurret player]] call aimee_change_ammo_fnc_loadMagazine
  *
  * Public: No
  */

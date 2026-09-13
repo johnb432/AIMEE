@@ -10,7 +10,7 @@
  * If object has inventory <BOOL>
  *
  * Example:
- * cursorObject call AIMEE_inventory_fnc_hasInventory
+ * cursorObject call aimee_inventory_fnc_hasInventory
  *
  * Public: No
  */

@@ -10,7 +10,7 @@
  * Show action <BOOL>
  *
  * Example:
- * "headlights" call AIMEE_main_fnc_ignoreKeybind
+ * "headlights" call aimee_main_fnc_ignoreKeybind
  *
  * Public: No
  */
