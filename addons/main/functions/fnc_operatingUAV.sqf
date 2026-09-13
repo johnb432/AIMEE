@@ -10,7 +10,7 @@
  * Is controlling UAV <BOOL>
  *
  * Example:
- * player call AIMEE_main_fnc_operatingUAV
+ * player call aimee_main_fnc_operatingUAV
  *
  * Public: No
  */

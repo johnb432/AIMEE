@@ -1,3 +1,8 @@
+# Changelog for AIMEE 13.9.2026
+
+1.3.12.0
+- Made addon name lowercase to improve Linux compatibility.
+
 # Changelog for AIMEE 29.7.2026
 
 1.3.11.0

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="AIMEE">
+<Project name="aimee">
     <Package name="main">
-        <Key ID="STR_AIMEE_main_settingHide">
+        <Key ID="STR_aimee_main_settingHide">
             <English>Hide actions if associated keybinds exist</English>
             <French>Cacher interactions si keybinds correspondant existent</French>
             <German>Interaktionen verstecken falls zugewiesene Keybinds existieren</German>
         </Key>
-        <Key ID="STR_AIMEE_main_settingHide_ToolTip">
+        <Key ID="STR_aimee_main_settingHide_ToolTip">
             <English>Hides interactions if keybinds are present.</English>
             <French>Cache des interactions si les keybinds sont présents.</French>
             <German>Versteckt Interaktionen falls Keybinds vorhanden sind.</German>

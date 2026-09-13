@@ -11,7 +11,7 @@
  * Can manual fire <BOOL>
  *
  * Example:
- * [player, vehicle player] call AIMEE_vehicle_controls_fnc_canManual
+ * [player, vehicle player] call aimee_vehicle_controls_fnc_canManual
  *
  * Public: No
  */

@@ -12,7 +12,7 @@
  * If something was taken <BOOL>
  *
  * Example:
- * [player, cursorObject] call AIMEE_inventory_fnc_playerPickup
+ * [player, cursorObject] call aimee_inventory_fnc_playerPickup
  *
  * Public: No
  */

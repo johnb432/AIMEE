@@ -7,7 +7,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "AIMEE_main",
+            "aimee_main",
             "ace_interaction"
         };
         author = "johnb43";

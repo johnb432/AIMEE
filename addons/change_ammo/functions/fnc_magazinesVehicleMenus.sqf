@@ -11,7 +11,7 @@
  * Interaction menu <ARRAY>
  *
  * Example:
- * [player, vehicle player] call AIMEE_change_ammo_fnc_magazinesVehicleMenus
+ * [player, vehicle player] call aimee_change_ammo_fnc_magazinesVehicleMenus
  *
  * Public: No
  */

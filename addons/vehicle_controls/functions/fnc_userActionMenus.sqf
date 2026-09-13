@@ -10,7 +10,7 @@
  * Interaction menu <ARRAY>
  *
  * Example:
- * vehicle player call AIMEE_vehicle_controls_fnc_userActionMenus
+ * vehicle player call aimee_vehicle_controls_fnc_userActionMenus
  *
  * Public: No
  */

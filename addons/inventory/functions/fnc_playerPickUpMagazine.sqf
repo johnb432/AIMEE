@@ -12,7 +12,7 @@
  * Returns if the magazine was picked up or not <BOOL>
  *
  * Example:
- * [player, cursorObject, ["30Rnd_762x39_AK12_Mag_F", 30]] call AIMEE_inventory_fnc_playerPickupMagazine
+ * [player, cursorObject, ["30Rnd_762x39_AK12_Mag_F", 30]] call aimee_inventory_fnc_playerPickupMagazine
  *
  * Public: No
  */

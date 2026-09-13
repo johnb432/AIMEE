@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [vehicle player, 2] call AIMEE_vehicle_controls_fnc_flapsDown
+ * [vehicle player, 2] call aimee_vehicle_controls_fnc_flapsDown
  *
  * Public: No
  */

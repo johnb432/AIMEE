@@ -14,7 +14,7 @@
  * Returns if the item was picked up or not <BOOL>
  *
  * Example:
- * [player, cursorObject, "FirstAidKit"] call AIMEE_inventory_fnc_playerPickupItem
+ * [player, cursorObject, "FirstAidKit"] call aimee_inventory_fnc_playerPickupItem
  *
  * Public: No
  */

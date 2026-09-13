@@ -10,7 +10,7 @@
  * Position <ARRAY>
  *
  * Example:
- * cursorTarget call AIMEE_inventory_fnc_backpackPos
+ * cursorTarget call aimee_inventory_fnc_backpackPos
  *
  * Public: No
  */

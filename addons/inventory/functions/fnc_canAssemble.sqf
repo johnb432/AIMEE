@@ -10,7 +10,7 @@
  * If weapon can be assembled <BOOL>
  *
  * Example:
- * player call AIMEE_inventory_fnc_canAssemble
+ * player call aimee_inventory_fnc_canAssemble
  *
  * Public: No
  */

@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="AIMEE">
+<Project name="aimee">
     <Package name="inventory">
-        <Key ID="STR_AIMEE_inventory_settingAssembleAction">
+        <Key ID="STR_aimee_inventory_settingAssembleAction">
             <English>Enable static weapon assembly actions</English>
             <French>Permission des interactions de montage des armes lourdes</French>
             <German>Aufstellungsinteraktionen für statische Waffen zulassen</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingAssembleAction_ToolTip">
+        <Key ID="STR_aimee_inventory_settingAssembleAction_ToolTip">
             <English>Allows the player to ACE-interact to assemble/disassemble static weapons.</English>
             <French>Permet au joueur de monter des armes lourdes avec des interactions ACE.</French>
             <German>Erlaubt den Spieler statische Waffen anhand ACE-Interaktionen aufzustellen.</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingAssembleUavAction">
+        <Key ID="STR_aimee_inventory_settingAssembleUavAction">
             <English>Enable UAV assembly actions</English>
             <French>Permission des interactions de montage de drone</French>
             <German>Aufstellungsinteraktionen für UAVs zulassen</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingAssembleUavAction_ToolTip">
+        <Key ID="STR_aimee_inventory_settingAssembleUavAction_ToolTip">
             <English>Allows the player to ACE-interact to assemble/disassemble UAVs.</English>
             <French>Permet au joueur de monter des drones avec des interactions ACE.</French>
             <German>Erlaubt den Spieler UAVs anhand ACE-Interaktionen aufzustellen.</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingBackpackAction">
+        <Key ID="STR_aimee_inventory_settingBackpackAction">
             <English>Show 3D icon on backpacks</English>
             <French>Afficher un icône 3D pour les sac-à-dos</French>
             <German>Zeige 3D-Symbol für Rucksäcke</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingBackpackAction_ToolTip">
+        <Key ID="STR_aimee_inventory_settingBackpackAction_ToolTip">
             <English>Shows the interaction on the backpack instead of on the ACE interaction point of the player.</English>
             <French>Montre l'interaction sur le sac-à-dos en 3D au lieu de sur l'interaction du joueur lui-même.</French>
             <German>Zeigt die ACE-Interaktion in 3D auf dem Rucksack anstatt auf der Interaktion des Spielers selbst.</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingExplosivesAction">
+        <Key ID="STR_aimee_inventory_settingExplosivesAction">
             <English>Enable explosive actions</English>
             <French>Permission des interactions de placement des explosifs</French>
             <German>Platzierungsinteraktionen für Sprengladungen zulassen</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingExplosivesAction_ToolTip">
+        <Key ID="STR_aimee_inventory_settingExplosivesAction_ToolTip">
             <English>Allows the player to ACE-interact to place explosives.</English>
             <French>Permet au joueur de placer des explosifs avec des interactions ACE.</French>
             <German>Erlaubt den Spieler Sprengladungen anhand ACE-Interaktionen zu plazieren.</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingHolderAction">
+        <Key ID="STR_aimee_inventory_settingHolderAction">
             <English>Show ground inventory and pick up actions</English>
             <French>Afficher des inventaries parterre</French>
             <German>Zeige Bodeninventare-/Aufgreifeninteraktionen</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingHolderAction_ToolTip">
+        <Key ID="STR_aimee_inventory_settingHolderAction_ToolTip">
             <English>Allows the player to ACE-interact with inventories on the ground.</English>
             <French>Permet au joueur de manipuler des inventaires parterre et de prendre des choses.</French>
             <German>Erlaubt den Spieler mit Inventaren auf dem Boden zu interagieren und Sachen aufzugreifen.</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingOpenAction">
+        <Key ID="STR_aimee_inventory_settingOpenAction">
             <English>Show vehicle/backpack inventory action</English>
             <French>Permission d'ouvrir des inventaires et sac-à-dos</French>
             <German>Inventar-/Rucksackinteraktion zulassen</German>
         </Key>
-        <Key ID="STR_AIMEE_inventory_settingOpenAction_ToolTip">
+        <Key ID="STR_aimee_inventory_settingOpenAction_ToolTip">
             <English>Allows the player to open inventories using the ACE interaction menu.</English>
             <French>Permet au joueur d'ouvrir des inventaires avec une interaction ACE sur soi-même.</French>
             <German>Erlaubt den Spieler Inventare mit einer ACE-Selbstinteraktion zu öffnen.</German>

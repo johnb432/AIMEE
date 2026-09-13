@@ -11,7 +11,7 @@
  * If object can be picked up <BOOL>
  *
  * Example:
- * [player, cursorObject] call AIMEE_inventory_fnc_canPickup
+ * [player, cursorObject] call aimee_inventory_fnc_canPickup
  *
  * Public: No
  */

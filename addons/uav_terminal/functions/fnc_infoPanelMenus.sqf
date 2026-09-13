@@ -10,7 +10,7 @@
  * Interaction menu <ARRAY>
  *
  * Example:
- * player call AIMEE_uav_terminal_fnc_infoPanelMenus
+ * player call aimee_uav_terminal_fnc_infoPanelMenus
  *
  * Public: No
  */

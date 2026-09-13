@@ -11,7 +11,7 @@
  * Can eject <BOOL>
  *
  * Example:
- * [player, vehicle player] call AIMEE_vehicle_seats_fnc_canEject
+ * [player, vehicle player] call aimee_vehicle_seats_fnc_canEject
  *
  * Public: No
  */
